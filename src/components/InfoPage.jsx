@@ -1,28 +1,64 @@
 import { Link } from "react-router-dom";
+import gdprBg from "@/assets/gdpr.jpg";
+import socConsultingBg from "@/assets/soc consulting.jpg";
+import vaptImg from "@/assets/vapt.jpg";
+import webImg from "@/assets/web.jpg";
+import mobileImg from "@/assets/mobile.jpg";
+import networkImg from "@/assets/network.jpg";
 
 export default function InfoPage({ page }) {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden gradient-hero py-24 text-brand-foreground">
-        <div className="absolute inset-0 grid-pattern opacity-15" />
-        <div className="container-x relative text-center">
-          <h1 className="font-display text-4xl uppercase tracking-wide md:text-5xl">
-            {page.hero}
-          </h1>
-          <div className="mx-auto mt-5 gold-divider" />
-        </div>
-      </section>
+      {/* <section className="relative overflow-hidden gradient-hero py-24 text-brand-foreground"> */}
+      {/* Hero */}
+<section
+  className={`relative overflow-hidden bg-cover bg-center py-24 text-brand-foreground`}
+ style={{
+  backgroundImage: `url(${
+    page.slug === "gdpr"
+      ? gdprBg
+      : page.slug === "soc-consulting"
+      ? socConsultingBg
+      : page.slug === "vapt"
+      ? vaptImg
+      : page.slug === "web-pentest"
+      ? webImg
+      : page.slug === "mobile-pentest"
+      ? mobileImg
+      : page.slug === "network-pentest"
+      ? networkImg
+      : ""
+  })`,
+}}
+>
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-black/70" />
+
+  {/* Pattern */}
+  <div className="absolute inset-0 grid-pattern opacity-15" />
+
+  <div className="container-x relative text-center">
+    <h1 className="font-display text-4xl uppercase tracking-wide md:text-5xl">
+      {page.hero}
+    </h1>
+
+    <div className="mx-auto mt-5 gold-divider" />
+  </div>
+</section>
 
       {/* Lead: image + copy */}
       <section className="bg-background py-20">
-        <div className="container-x grid items-center gap-12 lg:grid-cols-2">
-          <div className="reveal overflow-hidden rounded-xl shadow-elegant">
+        {/* <div className="container-x grid items-center gap-12 lg:grid-cols-2"> */}
+        <div className="container-x grid gap-10 lg:grid-cols-2 lg:items-center">
+          {/* <div className="reveal overflow-hidden rounded-xl shadow-elegant"> */}
+          <div className="reveal overflow-hidden rounded-xl shadow-elegant h-[320px] lg:h-[420px]">
             <img
               src={page.lead.image}
               alt={page.lead.title}
               loading="lazy"
-              className="h-full w-full object-cover"
+              // className="h-full w-full object-cover"
+              className="h-full w-full object-cover object-center"
             />
           </div>
           <div>

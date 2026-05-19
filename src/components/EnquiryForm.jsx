@@ -1,14 +1,55 @@
 import { useState } from "react";
 
-export default function EnquiryForm({ compact = false }) {
+const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
+export default function EnquiryForm({
+  compact = false,
+  sourcePage = "contact",
+}) {
+
+// export default function EnquiryForm({ compact = false }) {
   const [sent, setSent] = useState(false);
-  const submit = (e) => {
-    e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
-    e.target.reset();
+  // const submit = (e) => {
+  //   e.preventDefault();
+  //   setSent(true);
+  //   setTimeout(() => setSent(false), 4000);
+  //   e.target.reset();
+  // };
+
+  const submit = async (e) => {
+  e.preventDefault();
+
+  const form = e.target;
+
+  const payload = {
+    name: form.name.value,
+    email: form.email.value,
+    phone: form.phone.value,
+    subject: form.subject.value || null,
+    message: form.message.value,
+    source_page: sourcePage,
   };
 
+  try {
+    const res = await fetch(`${API_URL}/api/enquiries`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      throw new Error("Server error");
+    }
+
+    setSent(true);
+    setTimeout(() => setSent(false), 4000);
+
+    form.reset();
+  } catch (err) {
+    alert("Something went wrong. Please try again.");
+  }
+};
   return (
     <form
       onSubmit={submit}

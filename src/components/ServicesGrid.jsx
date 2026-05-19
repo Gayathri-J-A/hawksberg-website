@@ -4,6 +4,7 @@ import useReveal from "@/hooks/useReveal";
 
 function ServiceCard({ s, index }) {
   const [ref, shown] = useReveal();
+
   return (
     <Link
       ref={ref}
@@ -21,10 +22,17 @@ function ServiceCard({ s, index }) {
         height={768}
         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
       />
+
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+
       <div className="absolute inset-x-0 bottom-0 p-5 transition-transform duration-500 group-hover:-translate-y-1">
-        <h3 className="text-sm font-semibold text-white drop-shadow">
-          {s.code} {s.title}
+        <h3 className="text-sm text-white drop-shadow">
+          <span style={{ fontFamily: "Calibri" }}>
+            {s.code}
+          </span>{" "}
+          <span className="font-semibold">
+            {s.title}
+          </span>
         </h3>
       </div>
     </Link>
@@ -33,6 +41,7 @@ function ServiceCard({ s, index }) {
 
 export default function ServicesGrid() {
   const [headRef, headShown] = useReveal();
+
   return (
     <section className="container-x py-20">
       <div
@@ -41,7 +50,10 @@ export default function ServicesGrid() {
           headShown ? "is-visible" : ""
         }`}
       >
-        <h2 className="font-display text-4xl md:text-5xl">Our Services</h2>
+        <h2 className="font-display text-4xl md:text-5xl">
+          Our Services
+        </h2>
+
         <div className="mx-auto mt-4 gold-divider" />
       </div>
 

@@ -1,19 +1,98 @@
 import { Link } from "react-router-dom";
 import EnquiryForm from "./EnquiryForm";
+import pageHeroBg from "@/assets/page-hero-bg.jpg";
+import tisaxBg from "@/assets/TISAX.jpg";
+import iso14001Bg from "@/assets/14001.jpg";
+import iso9001Bg from "@/assets/9001.jpg";
+import iso45001Bg from "@/assets/45001.jpg";
+import iatf16949Bg from "@/assets/16949.jpg";
+import iso50001Bg from "@/assets/50001.jpg";
+import soc2Bg from "@/assets/Soc2.jpg";
 
 export default function ServicePage({ service }) {
   return (
     <>
-      <section className="relative overflow-hidden gradient-hero py-20 text-brand-foreground">
+      {/* <section className="relative overflow-hidden gradient-hero py-20 text-brand-foreground"> */}
+  <section
+  className={`relative overflow-hidden py-20 text-brand-foreground ${
+    [
+      "iso-27001",
+      "tisax",
+      "iso-14001",
+      "iso-9001",
+      "iso-45001",
+      "iatf-16949",
+      "iso-50001",
+      "soc-2",
+    ].includes(service.slug)
+      ? "bg-cover bg-center"
+      : "gradient-hero"
+  }`}
+  style={
+    service.slug === "iso-27001"
+      ? { backgroundImage: `url(${pageHeroBg})` }
+      : service.slug === "tisax"
+      ? { backgroundImage: `url(${tisaxBg})` }
+      : service.slug === "iso-14001"
+      ? { backgroundImage: `url(${iso14001Bg})` }
+      : service.slug === "iso-9001"
+      ? { backgroundImage: `url(${iso9001Bg})` }
+      : service.slug === "iso-45001"
+      ? { backgroundImage: `url(${iso45001Bg})` }
+      : service.slug === "iatf-16949"
+      ? { backgroundImage: `url(${iatf16949Bg})` }
+      : service.slug === "iso-50001"
+      ? { backgroundImage: `url(${iso50001Bg})` }
+      : service.slug === "soc-2"
+      ? { backgroundImage: `url(${soc2Bg})` }
+      : {}
+  }
+>
+  {/* {service.slug === "iso-27001" && (
+  <div className="absolute inset-0 bg-[#0b3d91]/50 backdrop-blur-[1px]" />
+)} */}
+{[
+  "iso-27001",
+  "tisax",
+  "iso-14001",
+  "iso-9001",
+  "iso-45001",
+  "iatf-16949",
+  "iso-50001",
+  "soc-2",
+].includes(service.slug) && (
+  <div className="absolute inset-0 bg-black/75" />
+)}
         <div className="absolute inset-0 grid-pattern opacity-10" />
         <div className="container-x relative">
           <p className="text-xs uppercase tracking-[0.3em] text-gold">
             ISO Consulting Services
           </p>
-          <h1 className="mt-3 font-display text-5xl md:text-6xl">
+          {/* <h1 className="mt-3 font-display text-5xl md:text-6xl">
             {service.code}{" "}
             <span className="text-gold">— {service.title}</span>
-          </h1>
+          </h1> */}
+          <h1 className="mt-3 text-5xl md:text-6xl">
+  <span
+    style={{
+      fontFamily: "'Poppins', sans-serif",
+      fontWeight: 400,
+      letterSpacing: "-1px",
+    }}
+  >
+    {service.code}
+  </span>{" "}
+  
+  <span
+    className="text-gold"
+    style={{
+      fontFamily: "'Cormorant Garamond', serif",
+      fontWeight: 400,
+    }}
+  >
+    — {service.title}
+  </span>
+</h1>
           <div className="mt-4 gold-divider" />
           <p className="mt-6 max-w-2xl text-brand-foreground/80">
             {service.short}
@@ -22,9 +101,9 @@ export default function ServicePage({ service }) {
             <Link to="/contact" className="btn-primary">
               Get Free Evaluation →
             </Link>
-            <Link to="/services/iso-27001" className="btn-outline">
+            {/* <Link to="/services/iso-27001" className="btn-outline">
               Other Services
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>
@@ -33,20 +112,39 @@ export default function ServicePage({ service }) {
         <div className="lg:col-span-2 space-y-10">
           <div>
             <h2 className="font-display text-3xl">
-              About {service.code} Consulting
+              {service.overviewTitle || `About ${service.code} Consulting`}
             </h2>
             <div className="mt-3 gold-divider" />
-            <p className="mt-5 text-muted-foreground">
-              Hawksberg International offers complete {service.code} consulting
-              — from gap analysis through certification — designed for measurable
-              business value. Our consultants combine global best practice with
-              local domain knowledge.
-            </p>
-            <p className="mt-3 text-muted-foreground">
-              Whether you are pursuing certification for the first time or
-              upgrading an existing system, our phase-wise approach ensures
-              audit readiness with minimal business disruption.
-            </p>
+            {(service.description && service.description.length > 0
+              ? service.description
+              : [
+                  `Hawksberg International offers complete ${service.code} consulting — from gap analysis through certification — designed for measurable business value. Our consultants combine global best practice with local domain knowledge.`,
+                  "Whether you are pursuing certification for the first time or upgrading an existing system, our phase-wise approach ensures audit readiness with minimal business disruption.",
+                ]
+            ).map((p, i) => (
+              <p key={i} className="mt-5 text-muted-foreground">
+                {p}
+              </p>
+            ))}
+            {service.benefitsTitle && service.benefits && (
+              <div className="mt-8">
+                <h3 className="font-display text-2xl text-gold">
+                  {service.benefitsTitle}
+                </h3>
+                <div className="mt-3 gold-divider" />
+                <ul className="mt-5 grid gap-2">
+                  {service.benefits.map((b) => (
+                    <li
+                      key={b}
+                      className="flex items-start gap-3 text-sm text-foreground"
+                    >
+                      <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-gold" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           <div>

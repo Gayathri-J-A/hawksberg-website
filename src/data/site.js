@@ -59,9 +59,19 @@ export const isoServices = [
   {
     slug: "iso-27001",
     code: "ISO 27001",
-    title: "Information Security Management System",
+    title: "Consultant — Managed Information Security",
     short:
       "Implement a robust ISMS framework to safeguard data, ensure confidentiality and earn customer trust.",
+    overviewTitle: "ISO 27001 Consultant — Managed Information Security",
+    description: [
+      "ISO 27001 requires 14 information security disciplines that correspond to 114 security controls to ensure all information means — covering people, processes and technology including suppliers and merchandisers — are secure. An ISO 27001 Consultant offers a fast, effective way to achieve certification.",
+      "ISO Risk Categorization: Associations must classify their information and information systems in order of risk to ensure that sensitive information and the systems that use it are given the topmost level of security.",
+      "ISO System Security Plan: ISO 27001 requires agencies to produce a security plan which is regularly maintained and kept up to date. The plan should cover items like the security controls executed within the association, security programs, and a schedule for the introduction of further controls.",
+      "ISO Security Controls: ISO 27001 outlines an extensive catalogue of suggested security controls for ISO 27001 compliance. The standard does not require an agency to apply every single control; rather, they are instructed to apply the controls that are applicable to their organisation and systems. Once the applicable controls are selected and the security conditions have been satisfied, the organisation must validate the named controls in their system security plan.",
+      "Information Security Management System (ISMS) certification is an international standard which helps you identify the threats that may affect your organization's confidential information or data security and implement effective measures to reduce or eliminate the identified risk factors.",
+      "Similar to other management systems, ISO 27001 is based on the P-D-C-A approach towards quality improvement. ISO 27001 certification for IT companies offers a methodical and well-organized approach that will protect the confidentiality of your data, fortify the integrity of business data and intensify the availability of your business IT systems.",
+      "When you are certified to ISO 27001:2013, you are demonstrating that your Information Security Management System meets the standards of the ISO model of implementation, maintenance and continual improvement. Our ISO 27001 security consulting services include ISMS implementation and an ISO 27001-ready program of an organization through a well-defined, phased approach.",
+    ],
     points: [
       "Gap analysis and risk assessment",
       "ISMS documentation and policy framework",
@@ -75,6 +85,20 @@ export const isoServices = [
     title: "Quality Management System",
     short:
       "Build a customer-centric QMS that drives operational excellence and consistent product quality.",
+    overviewTitle: "ISO 9001 — Quality Management System",
+    description: [
+      "ISO 9001 is the international standard that designates provisions for a quality management system (QMS). It was published in 1987 by the International Organization for Standardization (ISO), a worldwide agency that includes the national standards bodies of over 160 countries.",
+      "ISO 9001:2015 is the most prestigious standard in the ISO 9001 series and the only standard in the series to which businesses can certify the value of their management system.",
+      "ISO 9001 designates provisions for a quality management system when a corporation requires to showcase its capability to constantly offer products and services that meet customer and applicable statutory and regulatory requirements, and intends to improve customer satisfaction by effectively applying the system, comprising processes for enhancing the system and the affirmation of compliance with customer and applicable statutory as well as regulatory concerns.",
+    ],
+    benefitsTitle: "Benefits of ISO 9001",
+    benefits: [
+      "Puts great importance on leadership engagement",
+      "Helps address organizational risks and opportunities in a structured way",
+      "Uses a common structure and terminology, helpful to organizations using multiple management systems (environment, health & safety, business continuity)",
+      "Addresses supply chain management more efficiently",
+      "More user-friendly for service and knowledge-based organizations",
+    ],
     points: [
       "Process mapping and standardization",
       "Quality manual and SOPs",
@@ -88,6 +112,23 @@ export const isoServices = [
     title: "Environmental Management System",
     short:
       "Reduce environmental footprint and meet regulatory obligations with a structured EMS.",
+    overviewTitle: "ISO 14001 — Environmental Management System",
+    description: [
+      "ISO 14001 Environmental Management System (EMS) is a systematic framework to effectively regulate the immediate as well as long-term environmental impacts of a corporation's products, services and processes.",
+      "ISO 14001 designates the requirements of an environmental management system that a corporation uses to improve its environmental performance. It is ideal to implement ISO 14001 in a corporation that seeks to regulate its environmental responsibilities in a systematic way, contributing to the environmental pillar of sustainability.",
+      "As an international ISO 14001 consultancy service provider, Hawksberg's expertise is known and recognized globally. We also offer foundation and internal auditor training courses for the ISO 14001 environmental management system to better equip your company for the challenges of implementation, certification and continuous improvement.",
+    ],
+    benefitsTitle: "Benefits of ISO 14001",
+    benefits: [
+      "Recognises cost savings with emphasis on resource, waste and energy management",
+      "Develops corporate image and credibility",
+      "Quantifies, monitors and controls the impact of operations on the environment, now and in the future",
+      "Guarantees legislative awareness and compliance",
+      "Enhances the environmental performance of the supply chain",
+      "Protects the business, assets, shareholders and directors",
+      "Potentially reduces public liability insurance costs for your organization",
+      "Grows your access to business partners and potential customers",
+    ],
     points: [
       "Environmental aspect & impact analysis",
       "Legal and regulatory mapping",
@@ -98,9 +139,25 @@ export const isoServices = [
   {
     slug: "iso-45001",
     code: "ISO 45001",
-    title: "Occupational Health & Safety",
+    title: "Occupational Health & Safety Management Systems",
     short:
       "Protect your workforce with internationally recognised OH&S management practices.",
+    overviewTitle:
+      "ISO 45001 — Occupational Health and Safety Management Systems",
+    description: [
+      "First published in March 2018, ISO 45001 is a standard designed for the management systems of occupational health and safety (OH&S). The main objective of the ISO 45001 standard is to reduce occupational injuries and diseases by promoting and protecting physical as well as mental health.",
+      "The ISO 45001 certification defines the diverse concerns required for an occupational health & safety management system that enables businesses to provide safe and healthy workplaces by avoiding work-related injury and ill health, and by proactively enhancing their occupational health and safety performance.",
+    ],
+    benefitsTitle: "Benefits of ISO 45001",
+    benefits: [
+      "Shows commitment to occupational health and safety with an internationally recognized certificate",
+      "Boosts safety awareness and engagement among employees",
+      "Mitigates occupational hazard incidents systematically",
+      "Restrains business disruptions and unnecessary downtime",
+      "Enhances brand image among clients, authorities, and investors",
+      "Improves confidence in the fulfillment of legal and other compliance requirements",
+      "Aligns with other ISO standards & business systems, streamlining inter- and intra-organization communication",
+    ],
     points: [
       "Hazard identification and risk control",
       "OH&S policy and procedures",
@@ -114,6 +171,21 @@ export const isoServices = [
     title: "Energy Management System",
     short:
       "Optimise energy performance, reduce costs and demonstrate sustainability commitment.",
+    overviewTitle: "ISO 50001 — Energy Management System",
+    description: [
+      "Established by the International Organization for Standardization (ISO), ISO 50001 is an international standard for energy management systems. It is specially developed for organizations committed to focusing on their impact, preserving resources and developing the essence through a powerful energy management method.",
+      "Replacing the European standard EN 16001, ISO 50001 is conceived as an international certification that defines particular requirements to establish, implement, maintain and enhance an energy management system, with the objective to help a business follow a methodical approach in attaining constant improvement of energy performance — involving energy efficiency, energy use and consumption.",
+    ],
+    benefitsTitle: "Benefits of ISO 50001",
+    benefits: [
+      "Internationally recognized standard with energy reduction of up to 10% within the first 12 months",
+      "Minimised greenhouse gas (GHG) emissions and carbon footprint",
+      "Assists in compliance with present and future voluntary and/or mandatory energy efficiency targets",
+      "Improves corporate image and credibility among clients and stakeholders",
+      "Helps inform decision-making processes from system design through to operation & maintenance",
+      "Enhanced energy awareness among employees at all levels",
+      "Updated operational efficiencies and maintenance practices",
+    ],
     points: [
       "Energy review and baseline",
       "EnMS documentation",
@@ -127,6 +199,12 @@ export const isoServices = [
     title: "Automotive Quality Management System",
     short:
       "Specialised QMS framework for the global automotive supply chain.",
+    overviewTitle: "IATF 16949 — Automotive Quality Management System",
+    description: [
+      "IATF 16949:2016 certification is a symbol of the stability and continuity of your organization's performance to reach and outshine customer expectations. Today, customers are not ready to take a chance — to reduce the risk of purchasing low-quality products they always look for best-quality certified products and services. IATF 16949:2016 certification for business is a powerful tool to increase the credibility of the organization by showing that your products or services meet the expectations of your customer.",
+      "Out of the various certifications, IATF 16949:2016 is highly recommended for automotive as it is specially tailor-made for automotive industries. The certification helps to expand your business locally and in overseas markets and definitely helps impress your clients with the quality of the business and its products and services.",
+      "The most significant change from ISO to IATF is the requirement for documented evidence — ensuring that suppliers conform to statutory and regulatory requirements while continuing to implement and improve their Automotive Quality Management Systems.",
+    ],
     points: [
       "Automotive-specific process design",
       "Core tools (APQP, PPAP, FMEA, MSA, SPC)",
@@ -140,6 +218,18 @@ export const isoServices = [
     title: "Trusted Information Security Assessment Exchange",
     short:
       "TISAX labelling for automotive suppliers handling sensitive information.",
+    overviewTitle: "TISAX — Trusted Information Security Assessment Exchange",
+    description: [
+      "TISAX® stands for Trusted Information Security Assessment Exchange. TISAX® enables mutual acceptance of information security assessments in the automotive industry and provides a common assessment and exchange mechanism that ensures the secure sharing of sensitive information to partner companies, to inspire trust throughout the automotive supply chain.",
+      "TISAX® was established by VDA (the German association of the automotive industry) and is operated by ENX Association, who have assessed and confirmed approved audit providers to perform the assessments.",
+      "Developed by automotive industry security experts and based on international information security management system (ISMS) standards like ISO/IEC 27001, TISAX® provides a catalogue of requirements, covering virtual, physical and social aspects of information security, specific to the automotive supply chain. This catalogue is referred to as the Information Security Assessment (ISA) and forms the basis of the assessment conducted by approved TISAX® audit providers.",
+    ],
+    benefitsTitle: "Who does it apply to?",
+    benefits: [
+      "Original Equipment Manufacturers (OEMs) increasingly recognise — and in some cases mandate — that a TISAX® label demonstrates compliance with information security requirements across the automotive supply chain.",
+      "There are currently more than 3,000 TISAX® participants (OEMs and TISAX® certified suppliers) across almost 6,000 registered locations worldwide.",
+      "Applies to a wide range of organisations working with OEMs — from vehicle component suppliers to technology service providers and beyond.",
+    ],
     points: [
       "TISAX scope definition",
       "Information security implementation",
@@ -150,7 +240,7 @@ export const isoServices = [
   {
     slug: "soc-2",
     code: "SOC 2",
-    title: "SOC 2 Compliance",
+    title: "Compliance",
     short:
       "Demonstrate trust to your customers with a SOC 2 attestation aligned to your service commitments.",
     points: [
@@ -436,6 +526,11 @@ export const trainings = [
       "Hands-on offensive security training covering reconnaissance, exploitation and reporting.",
     duration: "60 hours",
     level: "Beginner to Advanced",
+    description: [
+      "Ethical Hacking training in Chennai by Hawksberg International Certification Associate Partner with Indian Cyber Security Solutions is the most demanded training in India. The Ethical Hacking Professional certification training program aims at providing the highest level of technical skill set required to get into the field of cyber security. The course goes in-depth into the techniques used by Black Hat hackers and demonstrates them live in a lab-based, 100% practically oriented class.",
+      "Ethical hacker certification provides the gateway to enter the cyber security domain. MNCs have made ethical hacker certification compulsory for security-related job opportunities, making this certification highly important for security professionals.",
+      "As these hacking skills can be used in a bad way, our ethical hacking course will teach you how to use the same skills to protect the intellectual property of organisations and individuals and become a white hat hacker. During the course, you will develop the ability to measure and mitigate threats and find out where your organisation is most vulnerable to be hacked.",
+    ],
     modules: [
       "Footprinting & Reconnaissance",
       "Scanning, Enumeration & Vulnerability Analysis",
@@ -451,6 +546,12 @@ export const trainings = [
       "Learn to find, validate and responsibly disclose vulnerabilities on real bug bounty platforms.",
     duration: "45 hours",
     level: "Intermediate",
+    description: [
+      "Bug Bounty Training in Chennai by Hawksberg International Certification Associate Partner with Indian Cyber Security Solutions is a certification and guidance program for individuals who are willing to flourish in the field of cyber security. ICSS has established itself as a renowned institution for cyber security management by providing extraordinary services and education to its clients.",
+      "Hawksberg International Certification has introduced the Bug Bounty Course in Chennai — currently one of the highest in demand by cyber security professionals. ICSS has a pool of professional certified ethical hackers working as security analysts in different organisations and is a reliable partner of HackerU and EC-Council.",
+      "Bug Bounty is a program organised by multinationals and tech giants where individual cyber security professionals participate and report vulnerabilities (bugs) to an organisation in return for high rewards. Reported issues include security exploits, hardware flaws, vulnerabilities and process issues.",
+      "This training is completely focused on making an individual fully capable of reporting such issues within tight time limits — so when they face the competition, they can handle the pressure and come out with flying colours. We are proud to be a highly-rated EC-Council training partner and also provide practical, in-depth offensive hacking classes from real penetration testers.",
+    ],
     modules: [
       "Bug bounty platforms & methodology",
       "Recon and asset discovery",
@@ -466,6 +567,12 @@ export const trainings = [
       "Foundational networking skills aligned with the latest Cisco CCNA blueprint.",
     duration: "80 hours",
     level: "Beginner",
+    description: [
+      "CCNA Training in Chennai by Hawksberg International Certification Associate Partner with Indian Cyber Security Solutions is rated among the best CISCO CCNA training centres in Chennai. Learn the CCNA course from industry experts with 10 years of industry experience.",
+      "Our trainers are working professionals in different organisations as network security professionals with around 5 to 10 years of vast experience in the field of network security, with CCNA CISCO certification and MPLS certification.",
+      "Our CCNA Training is completely focused on providing hands-on practical knowledge of networks with various CCNA projects during the course curriculum. It is rated among the top ten institutes providing in-depth knowledge in CCNA-CISCO certification, with real-time training and placement opportunities for freshers.",
+      "Join our instructor-led CCNA Training for 3 months. We have a basic startup course as well as an advanced level CCNA Training. From the first day of class you will select one project and gradually work on it as the class progresses. By the end of the course you will be ready with a fully built network/tool. B.Tech / BCA / MCA students looking for summer or winter training, and any student with minimum knowledge in computers, can apply for this course.",
+    ],
     modules: [
       "Network Fundamentals",
       "Network Access & VLANs",
@@ -481,6 +588,12 @@ export const trainings = [
       "Industry-grade Python training with projects in automation, data and security scripting.",
     duration: "50 hours",
     level: "Beginner to Intermediate",
+    description: [
+      "Python training in Chennai from Hawksberg International Associate Partner with Indian Cyber Security Solutions is an award-winning python training program with placement assistance. With more enhanced practical sessions, we aim to provide the best python training in Chennai.",
+      "As the need for skilled individuals increases in the IT industry, professionals and students are grabbing this opportunity with open arms. If you are willing to enhance your skills in coding, our updated and comprehensive training module — backed by practical-based classes and a 100% money-back guarantee — ensures you won't be disappointed.",
+      "Python is a very easy-to-learn programming language with many libraries that make it more effective and popular. Python is extensively used in Machine Learning and Data Science, which has driven up the demand for python training among IT professionals and students.",
+      "Our Python Training is designed to develop the skill set of students with compulsory exams after each module. During these exams, students work on a project of their choice and implement the programming skills they have learned during the training.",
+    ],
     modules: [
       "Core Python & OOP",
       "File I/O and Modules",
@@ -496,6 +609,12 @@ export const trainings = [
       "Master core and advanced Java with hands-on backend and enterprise patterns.",
     duration: "60 hours",
     level: "Beginner to Intermediate",
+    description: [
+      "Java training in Chennai by ICSS Associate Partner with Hawksberg International Certification provides hands-on training in Java programming and focuses on security issues. With prime focus in cyber security, we provide secured coding in Java for aspiring students who want to be placed in MNCs as Java developers.",
+      "Our Java training provides hands-on lab training where students not only learn Java programming but also how to avoid common mistakes which allow hackers to compromise websites developed by Java developers. Our trainers are Oracle Java certified and CEHv9 certified, working as code reviewers in different MNCs. You will learn secured coding on Java, Java basics, OOP concepts, Exception Handling and Swing. Placement assistance is provided.",
+      "Students who want to learn Android Penetration Testing should know Java programming to understand Android functionality. We have successfully trained more than 300 students from different engineering colleges across Chennai with a near 5-star rating. Weekend and weekday classes are available, including summer and winter internship programs.",
+      "C|JD — Certified Java Programmer (Basic & Advanced). Join our instructor-led Java training for 3 months. Both basic and advanced courses are hands-on practical sessions delivered by industry professionals with more than 7 years of development experience in MNCs. From day one you will choose a project and gradually work on it as the class progresses; at the end you will have a fully developed software/tool.",
+    ],
     modules: [
       "Core Java & OOP",
       "Collections & Generics",
@@ -526,6 +645,12 @@ export const trainings = [
       "CCNP Routing & Switching certification training delivered by industry experts in Chennai.",
     duration: "70 hours",
     level: "Intermediate to Advanced",
+    description: [
+      "Get trained from the leading CCNP Certification Institute in Chennai. The CCNP Certification Course validates the ability to plan, implement, verify and troubleshoot local and wide-area enterprise networks and work collaboratively with specialists on advanced security, voice, wireless and video solutions.",
+      "Those who achieve CCNP Routing and Switching have demonstrated the skills required in enterprise roles such as network engineer, support engineer, systems engineer or network technician. The routing and switching protocol knowledge from this certification provides a lasting foundation — these skills are equally relevant in today's physical networks and tomorrow's virtualised network functions.",
+      "This course is appropriate for those with at least one year of networking experience, ready to advance their skills and work independently on complex network solutions. It validates the ability to design, apply, authenticate and troubleshoot local and wide-area enterprise networks.",
+      "CCNP Routing and Switching is a widely respected IT certification that adds value and helps networking professionals advance their careers. According to Robert Half Technology, networking professionals with Cisco networking administration skills can expect to earn a 9% premium above average industry salaries. After this course you can succeed in enterprise-level networking roles such as network administrator and network engineer.",
+    ],
     modules: [
       "Advanced Routing — OSPF, EIGRP, route redistribution & policy-based routing",
       "BGP & WAN fundamentals, path attributes and WAN technologies",

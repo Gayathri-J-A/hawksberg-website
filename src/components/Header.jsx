@@ -43,7 +43,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="container-x flex h-20 items-center justify-between">
+      {/* <div className="container-x flex h-20 items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
           <span className="logo-circle h-11 w-11 flex items-center justify-center">
             <img src={mainLogo} alt="Hawksberg" className="w-full h-full object-cover scale-[1.18]" />
@@ -54,12 +54,107 @@ export default function Header() {
               <span className="text-gold"> International</span>
             </span>
             <span className="block text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              Business Management Solutions
+              certification
             </span>
           </span>
-        </Link>
+        </Link> */}
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        {/* <div className="container-x flex h-20 items-center justify-between">
+  <Link to="/" className="flex items-center gap-3">
+    <span className="logo-circle h-11 w-11 flex items-center justify-center">
+      <img
+        src={mainLogo}
+        alt="Hawksberg"
+        className="w-full h-full object-cover scale-[1.18]"
+      />
+    </span>
+
+    <span className="leading-tight">
+      
+      <span
+        className="block text-xl tracking-wide text-foreground"
+        style={{
+          fontFamily: '"Copperplate", "Copperplate Gothic Bold", serif',
+          letterSpacing: "0.08em",
+        }}
+      >
+        <span style={{ color: "##111111",fontFamily: '"Copperplate", "Copperplate Gothic Light", serif' }}>Hawksberg</span>
+        
+        <span className="text-gold"
+         style={{
+          fontFamily: '"Copperplate", "Copperplate Gothic Light", serif',
+        }}> International</span>
+      </span>
+
+     
+      <span
+        className="block text-[10px] uppercase tracking-[0.25em] text-muted-foreground"
+        style={{
+          fontFamily: '"Copperplate", "Copperplate Gothic Light", serif',
+        }}
+      >
+        certification
+      </span>
+    </span>
+  </Link> */}
+
+  {/* <div className="container-x flex h-20 items-center justify-between"> */}
+  <div className="container-x flex h-15 lg:h-20 items-center justify-between">
+  <Link to="/" className="flex items-center gap-3">
+    <span className="logo-circle h-11 w-11 flex items-center justify-center">
+      <img
+        src={mainLogo}
+        alt="Hawksberg"
+        className="w-full h-full object-cover scale-[1.18]"
+      />
+    </span>
+
+    <span className="leading-tight">
+      {/* COMPANY NAME */}
+      <span
+        // className="block text-[17px] tracking-wide text-foreground"
+        className="block text-[14px] lg:text-[17px] tracking-wide text-foreground"
+        style={{
+          fontFamily: '"Copperplate", "Copperplate Gothic Bold", serif',
+          letterSpacing: "0.06em",
+        }}
+      >
+        <span
+          style={{
+            color: "#111111",
+            fontFamily: '"Copperplate", "Copperplate Gothic Light", serif',
+          }}
+        >
+          Hawksberg
+        </span>
+
+        <span
+          className="text-gold"
+          style={{
+            fontFamily: '"Copperplate", "Copperplate Gothic Light", serif',
+          }}
+        >
+          {" "}
+          International
+        </span>
+      </span>
+
+      {/* SUB TEXT */}
+      <span
+        className="block text-[8px] uppercase tracking-[0.22em] text-muted-foreground"
+        style={{
+          fontFamily: '"Copperplate", "Copperplate Gothic Light", serif',
+        }}
+      >
+        certification
+      </span>
+    </span>
+  </Link>
+
+
+
+        {/* <nav className="hidden items-center gap-8 lg:flex"> */}
+        <nav className="hidden items-center gap-4 xl:gap-8 lg:flex">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
 
@@ -167,7 +262,8 @@ export default function Header() {
           </div>
 
           <NavLink to="/contact">Contact</NavLink>
-          <Link to="/contact" className="btn-primary !px-5 !py-2 text-xs">
+          {/* <Link to="/contact" className="btn-primary !px-5 !py-2 text-xs"> */}
+          <Link to="/contact" className="btn-primary !px-4 !py-2 !text-[11px]">
             Enquire Now
           </Link>
         </nav>

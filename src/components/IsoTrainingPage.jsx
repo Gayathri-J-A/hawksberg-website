@@ -1,11 +1,21 @@
 import { Link } from "react-router-dom";
 import EnquiryForm from "./EnquiryForm";
+import trainingBg from "@/assets/Training.jpg";
 
 export default function IsoTrainingPage({ training }) {
   return (
     <>
       {/* Hero banner */}
-      <section className="relative overflow-hidden gradient-hero py-24 text-brand-foreground">
+      {/* <section className="relative overflow-hidden gradient-hero py-24 text-brand-foreground"> */}
+      <section
+  className="relative overflow-hidden bg-cover bg-center py-24 text-brand-foreground"
+  style={{
+    backgroundImage: `url(${trainingBg})`,
+  }}
+>
+   {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-black/70" />
+
         <div className="absolute inset-0 grid-pattern opacity-15" />
         <div
           className="absolute inset-0 opacity-25 bg-cover bg-center mix-blend-overlay"
@@ -18,7 +28,8 @@ export default function IsoTrainingPage({ training }) {
           <p className="text-xs uppercase tracking-[0.4em] text-gold">
             ISO Training Programs
           </p>
-          <h1 className="mt-4 font-display text-5xl uppercase tracking-wide md:text-6xl">
+          <h1 className="mt-4 font-display text-5xl uppercase tracking-wide md:text-6xl"
+          style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             {training.code} Training
           </h1>
           <div className="mx-auto mt-5 gold-divider" />
