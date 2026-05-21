@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { stats } from "@/data/site";
-import managementPartnerImg from "@/assets/management-partner.jpg";
+import managementPartnerImg from "@/assets/management-partner.webp";
 import useReveal from "@/hooks/useReveal";
 
 export default function AboutSection() {

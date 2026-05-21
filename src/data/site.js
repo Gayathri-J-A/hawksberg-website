@@ -59,7 +59,7 @@ export const isoServices = [
   {
     slug: "iso-27001",
     code: "ISO 27001",
-    title: "Consultant — Managed Information Security",
+    title: "Consulting — Auditing — Training",
     short:
       "Implement a robust ISMS framework to safeguard data, ensure confidentiality and earn customer trust.",
     overviewTitle: "ISO 27001 Consultant — Managed Information Security",
@@ -264,7 +264,7 @@ export const serviceMenu = [
       { label: "ISO 45001", to: "/services/iso-45001" },
       { label: "IATF 16949", to: "/services/iatf-16949" },
       { label: "ISO 50001", to: "/services/iso-50001" },
-      { label: "SOC 2", to: "/services/soc-2" },
+      // { label: "SOC 2", to: "/services/soc-2" },
     ],
   },
   {
@@ -682,11 +682,16 @@ export const isoTrainings = [
       "Internal auditing techniques (ISO 19011)",
       "Management review & continual improvement",
     ],
-    audience: [
-      "Quality managers and QMS coordinators",
-      "Internal auditors and process owners",
-      "Operations & production leadership",
-      "Consultants and certification candidates",
+    // audience: [
+    //   "Quality managers and QMS coordinators",
+    //   "Internal auditors and process owners",
+    //   "Operations & production leadership",
+    //   "Consultants and certification candidates",
+    // ],
+     audience: [
+      "Internal Auditor",
+      "Lead Auditor",
+      "Lead Implementer",
     ],
   },
   {
@@ -770,7 +775,7 @@ export const isoTrainings = [
 ];
 
 export const stats = [
-  { value: "40+", label: "Years of combined expertise" },
+  { value: " 10+", label: "Years of combined expertise" },
   { value: "500+", label: "Projects delivered" },
   { value: "20+", label: "Countries served" },
   { value: "98%", label: "Client retention" },

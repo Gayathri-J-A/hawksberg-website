@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import EnquiryForm from "./EnquiryForm";
-import pageHeroBg from "@/assets/page-hero-bg.jpg";
-import tisaxBg from "@/assets/TISAX.jpg";
-import iso14001Bg from "@/assets/14001.jpg";
-import iso9001Bg from "@/assets/9001.jpg";
-import iso45001Bg from "@/assets/45001.jpg";
-import iatf16949Bg from "@/assets/16949.jpg";
-import iso50001Bg from "@/assets/50001.jpg";
-import soc2Bg from "@/assets/Soc2.jpg";
+import pageHeroBg from "@/assets/page-hero-bg.webp";
+import tisaxBg from "@/assets/TISAX.webp";
+import iso14001Bg from "@/assets/14001.webp";
+import iso9001Bg from "@/assets/9001.webp";
+import iso45001Bg from "@/assets/45001.webp";
+import iatf16949Bg from "@/assets/16949.webp";
+import iso50001Bg from "@/assets/50001.webp";
+import soc2Bg from "@/assets/Soc2.webp";
 
 export default function ServicePage({ service }) {
   return (
@@ -166,10 +166,11 @@ export default function ServicePage({ service }) {
           </div>
 
           <div className="rounded-2xl border border-gold/30 bg-secondary/40 p-8">
-            <h3 className="font-display text-2xl">Our 5-step methodology</h3>
+            <h3 className="font-display text-2xl">Our 6-step methodology</h3>
             <ol className="mt-5 grid gap-4 sm:grid-cols-2">
               {[
                 "Gap analysis & scoping",
+                "Risk assessment & treatment",
                 "Documentation framework",
                 "Implementation & training",
                 "Internal audit & review",

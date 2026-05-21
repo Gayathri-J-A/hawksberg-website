@@ -3,7 +3,7 @@ import EnquiryForm from "@/components/EnquiryForm";
 import { company } from "@/data/site";
 
 // IMPORT CONTACT BACKGROUND IMAGE
-import contactBg from "@/assets/contact.jpg";
+import contactBg from "@/assets/contact.webp";
 
 export default function Contact() {
   return (

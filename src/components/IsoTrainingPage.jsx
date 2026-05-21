@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import EnquiryForm from "./EnquiryForm";
-import trainingBg from "@/assets/Training.jpg";
+import trainingBg from "@/assets/Training.webp";
 
 export default function IsoTrainingPage({ training }) {
   return (
@@ -65,9 +65,9 @@ export default function IsoTrainingPage({ training }) {
                 )
               )}
             </p>
-            <Link to="/contact" className="btn-primary mt-8 inline-block">
+            {/* <Link to="/contact" className="btn-primary mt-8 inline-block">
               Get Free Evaluation & Get Started Today!
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>

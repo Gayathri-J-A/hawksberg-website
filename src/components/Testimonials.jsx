@@ -13,12 +13,12 @@ const items = [
     name: "Priya Menon",
     role: "Compliance Lead, Avon Logistics",
   },
-  {
-    quote:
-      "Our team's ethical hacking training was hands-on and current. Trainers are clearly senior practitioners.",
-    name: "Arun Iyer",
-    role: "Head of Security, Aroopa",
-  },
+  // {
+  //   quote:
+  //     "Our team's ethical hacking training was hands-on and current. Trainers are clearly senior practitioners.",
+  //   name: "Arun Iyer",
+  //   role: "Head of Security, Aroopa",
+  // },
 ];
 
 export default function Testimonials() {

@@ -3,7 +3,7 @@ import AboutSection from "@/components/AboutSection";
 import ValuesStrip from "@/components/ValuesStrip";
 import Clients from "@/components/Clients";
 import Testimonials from "@/components/Testimonials";
-import aboutUsBg from "@/assets/aboutus.jpg";
+import aboutUsBg from "@/assets/aboutus.webp";
 export default function About() {
   return (
     <Layout>

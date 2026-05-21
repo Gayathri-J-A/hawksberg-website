@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import gdprBg from "@/assets/gdpr.jpg";
-import socConsultingBg from "@/assets/soc consulting.jpg";
-import vaptImg from "@/assets/vapt.jpg";
-import webImg from "@/assets/web.jpg";
-import mobileImg from "@/assets/mobile.jpg";
-import networkImg from "@/assets/network.jpg";
+import gdprBg from "@/assets/gdpr.webp";
+import socConsultingBg from "@/assets/soc consulting.webp";
+import vaptImg from "@/assets/vapt.webp";
+import webImg from "@/assets/web.webp";
+import mobileImg from "@/assets/mobile.webp";
+import networkImg from "@/assets/network.webp";
 
 export default function InfoPage({ page }) {
   return (

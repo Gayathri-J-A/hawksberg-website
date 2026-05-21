@@ -2,13 +2,13 @@ import { Link, useLocation } from "react-router-dom";
 import EnquiryForm from "./EnquiryForm";
 
 // Background Images
-import cisoBg from "@/assets/ciso.jpg";
-import pythonBg from "@/assets/python.jpg";
-import javaBg from "@/assets/java.jpg";
-import penetrationBg from "@/assets/penetration.jpg";
-import ccnpBg from "@/assets/cnnp.jpg";
-import ethicalBg from "@/assets/ethicalhacking.jpg";
-import bugBg from "@/assets/bug.jpg";
+import cisoBg from "@/assets/ciso.webp";
+import pythonBg from "@/assets/python.webp";
+import javaBg from "@/assets/java.webp";
+import penetrationBg from "@/assets/penetration.webp";
+import ccnpBg from "@/assets/cnnp.webp";
+import ethicalBg from "@/assets/ethicalhacking.webp";
+import bugBg from "@/assets/bug.webp";
 
 export default function TrainingPage({ training }) {
   const location = useLocation();

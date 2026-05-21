@@ -1,4 +1,4 @@
-const clients = ["Apptivo", "Avon Logistics", "Aroopa", "1Sid Asia", "E-Prominent", "Northstar", "Innovex", "Cygnus"];
+const clients = ["Apptivo", "Avon Logistics", "Marriott", "1Sid Asia", "E-Prominent", "Northstar", "Innovex", "Cygnus", "Minuscule Technologies","EPC","GreenMile","Profit.co","Shakara Plating","JMI","GigHZ","Logic Valley","asia E&O","Janatics Pnematic","Accumed","Salzer Technologies","Courtyard","Wentin Hotels & Resorts","Aloft Hotels","Steam A","Resolute Groups"];
 
 export default function Clients() {
   return (
@@ -11,7 +11,8 @@ export default function Clients() {
           {clients.map((c) => (
             <div
               key={c}
-              className="grid h-16 place-items-center rounded-md border border-border bg-card font-display text-lg text-muted-foreground transition-colors hover:text-gold"
+              // className="grid h-16 place-items-center rounded-md border border-border bg-card font-display text-lg text-muted-foreground transition-colors hover:text-gold"
+              className="flex min-h-[80px] items-center justify-center rounded-md border border-border bg-card px-2 text-center font-display text-lg leading-snug text-muted-foreground transition-colors hover:text-gold"
             >
               {c}
             </div>

@@ -60,10 +60,18 @@ export default function Hero() {
             ★ {s.eyebrow}
           </span>
           {/* <h1 className="mt-6 font-display text-5xl leading-[1.05] md:text-6xl lg:text-7xl"> */}
-          <h1 className="mt-5 font-display text-4xl leading-tight md:text-5xl lg:text-6xl">
+          {/* <h1 className="mt-5 font-display text-4xl leading-tight md:text-5xl lg:text-6xl"> */}
+          <h1
+  className="mt-5 text-3xl leading-tight md:text-4xl lg:text-5xl"
+  style={{ fontFamily: "Copperplate, 'Copperplate Gothic Light', serif" }}
+>
             {s.title}
           </h1>
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-brand-foreground/80 md:text-lg">
+          {/* <p className="mt-6 max-w-lg text-base leading-relaxed text-brand-foreground/80 md:text-lg"> */}
+          <p
+  className="mt-6 max-w-lg text-base leading-relaxed text-brand-foreground/80 md:text-lg"
+  style={{ fontFamily: "'Playfair Display', serif" }}
+>
           {/* <p className="mt-5 max-w-2xl text-base leading-relaxed text-brand-foreground/80 md:text-lg"> */}
             {s.sub}
           </p>
