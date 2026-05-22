@@ -39,25 +39,16 @@ export default function EnquiryForm({
   },
   body: JSON.stringify(payload),
 });
+if (!res.ok) {
+  throw new Error("Server error");
+}
 
-    if (!res.ok) {
-      throw new Error("Server error");
-    }
-
-    // setSent(true);
-    // setTimeout(() => setSent(false), 4000);
-
-    // form.reset();
-//     setSent(true);
-
-// form.reset();
-
-// window.location.reload();
-
-// setTimeout(() => setSent(false), 4000);
+setSent(true);
 form.reset();
-window.location.reload();
-return;
+
+setTimeout(() => {
+  window.location.reload();
+}, 2000);
   } catch (err) {
     alert("Something went wrong. Please try again.");
   }
