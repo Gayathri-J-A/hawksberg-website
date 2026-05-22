@@ -18,6 +18,12 @@ export default defineConfig({
     strictPort: true,
   },
 
+  preview: {
+    host: "0.0.0.0",
+    port: Number(process.env.PORT) || 8080,
+    allowedHosts: ["hawksberg-website-production.up.railway.app"],
+  },
+
   build: {
     outDir: "dist",
   },
