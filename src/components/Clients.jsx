@@ -1,22 +1,107 @@
-const clients = ["Apptivo", "Avon Logistics", "Marriott", "1Sid Asia", "E-Prominent", "Northstar", "Innovex", "Cygnus", "Minuscule Technologies","EPC","GreenMile","Profit.co","Shakara Plating","JMI","GigHZ","Logic Valley","asia E&O","Janatics Pnematic","Accumed","Salzer Technologies","Courtyard","Wentin Hotels & Resorts","Aloft Hotels","Steam A","Resolute Groups"];
+import { motion } from "framer-motion";
+
+import apptivo from "@/assets/clients/apptivo.webp";
+import avon from "@/assets/clients/aperta.webp";
+import marriott from "@/assets/clients/jwmarriott.webp";
+import isid from "@/assets/clients/search.webp";
+import eprominent from "@/assets/clients/deccan.webp";
+import northstar from "@/assets/clients/royal.webp";
+import innovex from "@/assets/clients/INDO.webp";
+import cygnus from "@/assets/clients/space.webp";
+import minuscule from "@/assets/clients/minuscule.webp";
+import epc from "@/assets/clients/epc.webp";
+import greenmile from "@/assets/clients/kalyani.webp";
+import profit from "@/assets/clients/profit.webp";
+import shakara from "@/assets/clients/deccan.webp";
+import jmi from "@/assets/clients/jmi.webp";
+import gighz from "@/assets/clients/gighz.webp";
+import logicvalley from "@/assets/clients/logicvalley.webp";
+import asiaeo from "@/assets/clients/asia e & o.webp";
+import janatics from "@/assets/clients/janatics.webp";
+import accumed from "@/assets/clients/search.webp";
+import salzer from "@/assets/clients/salzer.webp";
+import courtyard from "@/assets/clients/courtyard.webp";
+import wentin from "@/assets/clients/royal.webp";
+import aloft from "@/assets/clients/jwmarriott.webp";
+import steam from "@/assets/clients/steam.webp";
+import resolute from "@/assets/clients/resolute.webp";
+
+const firstRow = [
+  apptivo,
+  avon,
+  marriott,
+  isid,
+  eprominent,
+  northstar,
+  innovex,
+  cygnus,
+  minuscule,
+  epc,
+  greenmile,
+  profit,
+];
+
+const secondRow = [
+  shakara,
+  jmi,
+  gighz,
+  logicvalley,
+  asiaeo,
+  janatics,
+  accumed,
+  salzer,
+  courtyard,
+  wentin,
+  aloft,
+  steam,
+  resolute,
+];
+
+const LogoRow = ({ logos, reverse = false }) => {
+  const duplicated = [...logos, ...logos, ...logos];
+
+  return (
+    <div className="overflow-hidden w-full">
+      <motion.div
+        className="flex gap-6 w-max"
+        animate={{
+          x: reverse ? ["-33.33%", "0%"] : ["0%", "-33.33%"],
+        }}
+        transition={{
+          duration: 27,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      >
+        {duplicated.map((logo, index) => (
+          <div
+            key={index}
+            className="flex h-28 min-w-[220px] items-center justify-center rounded-xl border border-border bg-white px-6 shadow-sm"
+          >
+            <img
+              src={logo}
+              alt={`Client ${index}`}
+              className="max-h-16 w-auto object-contain transition-transform duration-300 hover:scale-110"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
 
 export default function Clients() {
   return (
-    <section className="border-y border-border bg-secondary/40 py-14">
+    <section className="border-y border-border bg-secondary/40 py-14 overflow-hidden">
       <div className="container-x">
-        <p className="text-center text-xs uppercase tracking-[0.3em] text-muted-foreground">
+        <p className="mb-10 text-center text-xs uppercase tracking-[0.3em] text-muted-foreground">
           Trusted by leading organisations across the globe
         </p>
-        <div className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-4 lg:grid-cols-8">
-          {clients.map((c) => (
-            <div
-              key={c}
-              // className="grid h-16 place-items-center rounded-md border border-border bg-card font-display text-lg text-muted-foreground transition-colors hover:text-gold"
-              className="flex min-h-[80px] items-center justify-center rounded-md border border-border bg-card px-2 text-center font-display text-lg leading-snug text-muted-foreground transition-colors hover:text-gold"
-            >
-              {c}
-            </div>
-          ))}
+
+        <div className="space-y-6">
+          <LogoRow logos={firstRow} />
+          <LogoRow logos={secondRow} reverse />
         </div>
       </div>
     </section>

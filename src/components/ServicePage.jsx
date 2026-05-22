@@ -8,6 +8,7 @@ import iso45001Bg from "@/assets/45001.webp";
 import iatf16949Bg from "@/assets/16949.webp";
 import iso50001Bg from "@/assets/50001.webp";
 import soc2Bg from "@/assets/Soc2.webp";
+import dpdpBg from "@/assets/soc consulting.webp";
 
 export default function ServicePage({ service }) {
   return (
@@ -24,6 +25,7 @@ export default function ServicePage({ service }) {
       "iatf-16949",
       "iso-50001",
       "soc-2",
+      "dpdpp",
     ].includes(service.slug)
       ? "bg-cover bg-center"
       : "gradient-hero"
@@ -45,7 +47,10 @@ export default function ServicePage({ service }) {
       ? { backgroundImage: `url(${iso50001Bg})` }
       : service.slug === "soc-2"
       ? { backgroundImage: `url(${soc2Bg})` }
+      : service.slug === "dpdpp"
+      ? { backgroundImage: `url(${dpdpBg})` }
       : {}
+      
   }
 >
   {/* {service.slug === "iso-27001" && (
@@ -60,6 +65,7 @@ export default function ServicePage({ service }) {
   "iatf-16949",
   "iso-50001",
   "soc-2",
+  "dpdpp",
 ].includes(service.slug) && (
   <div className="absolute inset-0 bg-black/75" />
 )}
@@ -110,7 +116,7 @@ export default function ServicePage({ service }) {
 
       <section className="container-x grid gap-12 py-20 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-10">
-          <div>
+          {/* <div>
             <h2 className="font-display text-3xl">
               {service.overviewTitle || `About ${service.code} Consulting`}
             </h2>
@@ -145,8 +151,127 @@ export default function ServicePage({ service }) {
                 </ul>
               </div>
             )}
-          </div>
+          </div> */}
+{service.slug === "dpdpp" ? (
+  <div>
+    <h2 className="font-display text-3xl">
+      DPDP Act Compliance for Indian Businesses
+    </h2>
+    <div className="mt-3 gold-divider" />
 
+    <p className="mt-5 text-muted-foreground">
+      The Digital Personal Data Protection Act, 2023 establishes mandatory obligations for businesses that collect, store, or process personal data in India.
+    </p>
+
+    <p className="mt-5 text-muted-foreground">
+      From customer information to employee records, organizations must ensure lawful consent, secure data handling, and clear governance structures to remain compliant.
+    </p>
+
+    <p className="mt-5 text-muted-foreground">
+      With enforcement expected, businesses should proactively assess DPDP readiness to avoid penalties of up to ₹250 crores, operational and reputational risks.
+    </p>
+
+    <div className="mt-10">
+      <h3 className="font-display text-2xl text-gold">
+        Who Must Comply With the DPDP Act?
+      </h3>
+
+      <div className="mt-3 gold-divider" />
+
+      <ul className="mt-5 grid gap-2">
+        {[
+          "MSMEs and startups",
+          "IT and SaaS companies",
+          "Pharma and healthcare organizations",
+          "FMCG brands and distributors",
+          "E-commerce platforms",
+          "Businesses using websites, apps, CRMs, or digital marketing tools",
+          "Organizations handling customer, employee, or vendor personal data",
+        ].map((item) => (
+          <li
+            key={item}
+            className="flex items-start gap-3 text-sm text-foreground"
+          >
+            <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-gold" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div className="mt-10">
+      <h3 className="font-display text-2xl text-gold">
+        Are You Compliant With the Latest DPDP Updates?
+      </h3>
+
+      <div className="mt-3 gold-divider" />
+
+      <p className="mt-5 text-muted-foreground">
+        Even small businesses that thought they were compliant may now be at risk.
+      </p>
+
+      <ul className="mt-5 grid gap-3">
+        {[
+          "Your data collection and processing might not meet legal standards",
+          "Consent forms and privacy policies may be outdated or unenforceable",
+          "High-risk data practices could trigger penalties or audits",
+          "Cross-border transfers and vendor arrangements may be non-compliant",
+        ].map((item) => (
+          <li
+            key={item}
+            className="flex items-start gap-3 rounded-lg border border-border bg-card p-4"
+          >
+            <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-gold" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div className="mt-10">
+      <h3 className="font-display text-2xl text-gold">
+        Compliance Risks and Penalties
+      </h3>
+
+      <div className="mt-3 gold-divider" />
+
+      <ul className="mt-5 grid gap-3">
+        {[
+          "Monetary penalties up to ₹250 crore",
+          "Regulatory inquiries and notices",
+          "Mandatory corrective actions",
+          "Reputational and customer trust damage",
+          "Business disruption during investigations",
+        ].map((item) => (
+          <li
+            key={item}
+            className="flex items-start gap-3 rounded-lg border border-border bg-card p-4"
+          >
+            <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-gold" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+) : (
+  <div>
+    <h2 className="font-display text-3xl">
+      {service.overviewTitle || `About ${service.code} Consulting`}
+    </h2>
+    <div className="mt-3 gold-divider" />
+    {(service.description && service.description.length > 0
+      ? service.description
+      : [
+          `Hawksberg International offers complete ${service.code} consulting — from gap analysis through certification.`,
+        ]
+    ).map((p, i) => (
+      <p key={i} className="mt-5 text-muted-foreground">
+        {p}
+      </p>
+    ))}
+  </div>
+)}
           <div>
             <h2 className="font-display text-3xl">What you get</h2>
             <div className="mt-3 gold-divider" />
@@ -165,7 +290,7 @@ export default function ServicePage({ service }) {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-gold/30 bg-secondary/40 p-8">
+          {/* <div className="rounded-2xl border border-gold/30 bg-secondary/40 p-8">
             <h3 className="font-display text-2xl">Our 6-step methodology</h3>
             <ol className="mt-5 grid gap-4 sm:grid-cols-2">
               {[
@@ -184,7 +309,29 @@ export default function ServicePage({ service }) {
                 </li>
               ))}
             </ol>
-          </div>
+          </div> */}
+          {service.slug !== "dpdpp" && (
+  <div className="rounded-2xl border border-gold/30 bg-secondary/40 p-8">
+    <h3 className="font-display text-2xl">Our 6-step methodology</h3>
+    <ol className="mt-5 grid gap-4 sm:grid-cols-2">
+      {[
+        "Gap analysis & scoping",
+        "Risk assessment & treatment",
+        "Documentation framework",
+        "Implementation & training",
+        "Internal audit & review",
+        "Certification & sustenance",
+      ].map((step, i) => (
+        <li key={step} className="flex gap-4">
+          <span className="font-display text-3xl text-gold">
+            0{i + 1}
+          </span>
+          <p className="pt-1 text-sm text-foreground">{step}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+)}
         </div>
 
         <aside className="lg:sticky lg:top-28 self-start">
