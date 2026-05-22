@@ -55,12 +55,9 @@ export default function EnquiryForm({
 // window.location.reload();
 
 // setTimeout(() => setSent(false), 4000);
-setSent(true);
 form.reset();
-
-setTimeout(() => {
-  window.location.reload();
-}, 2000);
+window.location.reload();
+return;
   } catch (err) {
     alert("Something went wrong. Please try again.");
   }
