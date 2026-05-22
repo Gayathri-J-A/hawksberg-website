@@ -2,16 +2,17 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.routes import enquiry, service, training, info_page, auth
+from app.database import Base, engine
+from app.models import enquiry as enquiry_model
 
 app = FastAPI(title="Hawksberg API")
 
+Base.metadata.create_all(bind=engine)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://hawksberg-website-production.up.railway.app",
-        "http://localhost:5173",
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
