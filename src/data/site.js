@@ -1,16 +1,16 @@
 export const company = {
   name: "Hawksberg International",
   tagline: "Business Management & Cyber Security Solutions",
-  phone: "+91 90426 51581",
+  phone: "+91 90805 83283",
   altPhone: "+91 90805 83283",
-  email: "info@hawksberg.com",
+  email: "sebastian@hawksberg.onmicrsoft.com",
   address:
     "No 58, Gandhi Street, Rajaji Nagar, Tiruvottiyur, Chennai, Tamil Nadu 600019",
   social: {
     facebook: "#",
     instagram: "#",
     linkedin: "#",
-    whatsapp: "https://wa.me/919042651581",
+    whatsapp: "https://wa.me/919080583283",
   },
 };
 
@@ -239,19 +239,19 @@ export const isoServices = [
       "Label maintenance support",
     ],
   },
-  {
-    slug: "soc-2",
-    code: "SOC 2",
-    title: "Compliance",
-    short:
-      "Demonstrate trust to your customers with a SOC 2 attestation aligned to your service commitments.",
-    points: [
-      "Readiness assessment",
-      "Control design and remediation",
-      "Policy and evidence framework",
-      "Auditor coordination",
-    ],
-  },
+  // {
+  //   slug: "soc-2",
+  //   code: "SOC 2",
+  //   title: "Compliance",
+  //   short:
+  //     "Demonstrate trust to your customers with a SOC 2 attestation aligned to your service commitments.",
+  //   points: [
+  //     "Readiness assessment",
+  //     "Control design and remediation",
+  //     "Policy and evidence framework",
+  //     "Auditor coordination",
+  //   ],
+  // },
   {
   slug: "dpdpp",
   code: "DPDP",

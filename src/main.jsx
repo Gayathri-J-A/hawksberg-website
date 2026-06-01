@@ -4,7 +4,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import "./styles.css";
-import mainLogo from "./assets/main-logo.jpg";
+// import mainLogo from "./assets/main-logo.jpg";
+import mainLogo from "./assets/shieldlogo.jpg";
 
 // ✅ Set favicon dynamically
 const setFavicon = (url) => {
@@ -74,7 +75,9 @@ const setCircularFaviconFromImage = async (imgUrl) => {
   }
 };
 
-setCircularFaviconFromImage(mainLogo);
+// setCircularFaviconFromImage(mainLogo);
+// setFavicon(mainLogo);
+setFavicon("/shieldlogo.jpg");
 
 // ✅ ROOT RENDER
 ReactDOM.createRoot(document.getElementById("root")).render(

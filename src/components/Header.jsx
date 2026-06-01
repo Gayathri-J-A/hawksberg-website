@@ -1,7 +1,8 @@
 import { Link, NavLink as RRNavLink } from "react-router-dom";
 import { useState } from "react";
 import { company, isoServices, trainings, isoTrainings, serviceMenu } from "@/data/site";
-import mainLogo from "../assets/main-logo.jpg";
+// import mainLogo from "../assets/main-logo.jpg";
+import mainLogo from "../assets/shieldlogo.jpg";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -101,13 +102,25 @@ export default function Header() {
   {/* <div className="container-x flex h-20 items-center justify-between"> */}
   <div className="container-x flex h-15 lg:h-20 items-center justify-between">
   <Link to="/" className="flex items-center gap-3">
-    <span className="logo-circle h-11 w-11 flex items-center justify-center">
+    {/* <span className="logo-circle h-11 w-11 flex items-center justify-center">
       <img
         src={mainLogo}
         alt="Hawksberg"
         className="w-full h-full object-cover scale-[1.18]"
       />
-    </span>
+    </span> */}
+    <span className="flex items-center justify-center">
+  <img
+    src={mainLogo}
+    alt="Hawksberg"
+    // className="h-14 lg:h-16 w-auto object-contain"
+    //  className="h-20 lg:h-24 w-auto object-contain"
+     className="h-16 lg:h-18 w-auto object-contain"
+    style={{
+      background: "transparent",
+    }}
+  />
+</span>
 
     <span className="leading-tight">
       {/* COMPANY NAME */}
@@ -117,6 +130,7 @@ export default function Header() {
         style={{
           fontFamily: '"Copperplate", "Copperplate Gothic Bold", serif',
           letterSpacing: "0.06em",
+          fontWeight: "700",
         }}
       >
         <span

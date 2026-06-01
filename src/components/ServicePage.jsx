@@ -7,7 +7,7 @@ import iso9001Bg from "@/assets/9001.webp";
 import iso45001Bg from "@/assets/45001.webp";
 import iatf16949Bg from "@/assets/16949.webp";
 import iso50001Bg from "@/assets/50001.webp";
-import soc2Bg from "@/assets/Soc2.webp";
+// import soc2Bg from "@/assets/Soc2.webp";
 import dpdpBg from "@/assets/soc consulting.webp";
 
 export default function ServicePage({ service }) {
@@ -24,7 +24,7 @@ export default function ServicePage({ service }) {
       "iso-45001",
       "iatf-16949",
       "iso-50001",
-      "soc-2",
+      // "soc-2",
       "dpdpp",
     ].includes(service.slug)
       ? "bg-cover bg-center"
@@ -45,8 +45,8 @@ export default function ServicePage({ service }) {
       ? { backgroundImage: `url(${iatf16949Bg})` }
       : service.slug === "iso-50001"
       ? { backgroundImage: `url(${iso50001Bg})` }
-      : service.slug === "soc-2"
-      ? { backgroundImage: `url(${soc2Bg})` }
+      // : service.slug === "soc-2"
+      // ? { backgroundImage: `url(${soc2Bg})` }
       : service.slug === "dpdpp"
       ? { backgroundImage: `url(${dpdpBg})` }
       : {}
@@ -64,7 +64,7 @@ export default function ServicePage({ service }) {
   "iso-45001",
   "iatf-16949",
   "iso-50001",
-  "soc-2",
+  // "soc-2",
   "dpdpp",
 ].includes(service.slug) && (
   <div className="absolute inset-0 bg-black/75" />

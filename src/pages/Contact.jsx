@@ -49,7 +49,7 @@ export default function Contact() {
         <div className="space-y-6 lg:col-span-2">
           {[
             ["Address", company.address],
-            ["Phone", `${company.phone} · ${company.altPhone}`],
+            ["Phone", `${company.phone}`],
             ["Email", company.email],
             ["Hours", "Mon – Sat · 9:30 AM – 7:00 PM IST"],
           ].map(([t, d]) => (
