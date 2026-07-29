@@ -50,7 +50,8 @@ export default function InfoPage({ page }) {
       {/* Lead: image + copy */}
       <section className="bg-background py-20">
         {/* <div className="container-x grid items-center gap-12 lg:grid-cols-2"> */}
-        <div className="container-x grid gap-10 lg:grid-cols-2 lg:items-center">
+        {/* <div className="container-x grid gap-10 lg:grid-cols-2 lg:items-center"> */}
+        <div className="container-x grid gap-10 lg:grid-cols-2 lg:items-start">
           {/* <div className="reveal overflow-hidden rounded-xl shadow-elegant"> */}
           <div className="reveal overflow-hidden rounded-xl shadow-elegant h-[320px] lg:h-[420px]">
             {/* <img
@@ -73,11 +74,19 @@ export default function InfoPage({ page }) {
               {page.lead.title}
             </h2>
             <div className="mt-4 gold-divider" />
-            {page.lead.paragraphs.map((p, i) => (
+            {/* {page.lead.paragraphs.map((p, i) => (
               <p key={i} className="mt-5 text-muted-foreground">
                 {p}
               </p>
-            ))}
+            ))} */}
+            {page.lead.paragraphs.map((p, i) => (
+  <p
+    key={i}
+    className="mt-5 text-[15px] leading-9 text-muted-foreground text-justify"
+  >
+    {p}
+  </p>
+))}
             <Link to="/contact" className="btn-primary mt-8 inline-block">
               Get Free Evaluation & Get Started Today!
             </Link>
