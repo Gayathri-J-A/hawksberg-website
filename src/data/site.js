@@ -9,7 +9,7 @@ export const company = {
   social: {
     facebook: "#",
     instagram: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/company/hawksberg-international-certification/",
     whatsapp: "https://wa.me/919080583283",
   },
 };
