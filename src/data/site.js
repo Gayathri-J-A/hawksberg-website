@@ -2,7 +2,7 @@ export const company = {
   name: "Hawksberg International",
   tagline: "Business Management & Cyber Security Solutions",
   phone: "+91 90805 83283",
-  // altPhone: "+91 90805 83283",
+  altPhone: "+91 90805 83283",
   email: "sebastian@hawksberginternational.com",
   address:
     "No 58, Gandhi Street, Rajaji Nagar, Tiruvottiyur, Chennai, Tamil Nadu 600019",
