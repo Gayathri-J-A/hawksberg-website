@@ -156,7 +156,7 @@ export default function TrainingPage({ training }) {
 
     <div className="mt-3 gold-divider" />
 
-    <div className="mt-8 grid gap-6 md:grid-cols-2">
+    {/* <div className="mt-8 grid gap-6 md:grid-cols-2">
       {training.whyJoin.map((item, index) => (
         <div
           key={index}
@@ -164,15 +164,31 @@ export default function TrainingPage({ training }) {
         >
           <h3 className="font-display text-xl text-gold">
             {item.title}
-          </h3>
+          </h3> */}
 
           {/* <p className="mt-3 text-muted-foreground"> */}
-          <p className="mt-3 text-[15px] leading-8 text-slate-700">
+          {/* <p className="mt-3 text-[15px] leading-8 text-slate-700">
             {item.description}
           </p>
         </div>
       ))}
+    </div> */}
+    <div className="mt-10 grid gap-8 md:grid-cols-2">
+  {training.whyJoin.map((item, index) => (
+    <div
+      key={index}
+      className="flex flex-col rounded-2xl border border-slate-200 bg-white p-10 shadow-sm transition-all duration-300 hover:shadow-md"
+    >
+      <h3 className="font-display text-[25px] leading-tight text-gold">
+        {item.title}
+      </h3>
+
+      <p className="mt-6 text-[14px] leading-10 text-slate-700">
+        {item.description}
+      </p>
     </div>
+  ))}
+</div>
   </div>
 )}
 
