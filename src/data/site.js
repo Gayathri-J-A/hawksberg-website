@@ -8,7 +8,7 @@ export const company = {
     "No 58, Gandhi Street, Rajaji Nagar, Tiruvottiyur, Chennai, Tamil Nadu 600019",
   social: {
     facebook: "#",
-    instagram: "#",
+    instagram: "https://www.instagram.com/international_audit_training?igsh=a2NoaW85Y3Ntam5t",
     linkedin: "https://www.linkedin.com/company/hawksberg-international-certification/",
     whatsapp: "https://wa.me/919080583283",
   },
