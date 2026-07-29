@@ -256,22 +256,43 @@ export default function ServicePage({ service }) {
     </div>
   </div>
 ) : (
+  // <div>
+  //   <h2 className="font-display text-3xl">
+  //     {service.overviewTitle || `About ${service.code} Consulting`}
+  //   </h2>
+  //   <div className="mt-3 gold-divider" />
+  //   {(service.description && service.description.length > 0
+  //     ? service.description
+  //     : [
+  //         `Hawksberg International offers complete ${service.code} consulting — from gap analysis through certification.`,
+  //       ]
+  //   ).map((p, i) => (
+  //     <p key={i} className="mt-5 text-muted-foreground">
+  //       {p}
+  //     </p>
+  //   ))}
+  // </div>
   <div>
-    <h2 className="font-display text-3xl">
-      {service.overviewTitle || `About ${service.code} Consulting`}
-    </h2>
-    <div className="mt-3 gold-divider" />
-    {(service.description && service.description.length > 0
-      ? service.description
-      : [
-          `Hawksberg International offers complete ${service.code} consulting — from gap analysis through certification.`,
-        ]
-    ).map((p, i) => (
-      <p key={i} className="mt-5 text-muted-foreground">
-        {p}
-      </p>
-    ))}
-  </div>
+  <h2 className="font-display text-3xl">
+    {service.overviewTitle || `About ${service.code} Consulting`}
+  </h2>
+
+  <div className="mt-3 gold-divider" />
+
+  {(service.description && service.description.length > 0
+    ? service.description
+    : [
+        `Hawksberg International offers complete ${service.code} consulting — from gap analysis through certification.`,
+      ]
+  ).map((p, i) => (
+    <p
+      key={i}
+      className="mt-5 text-[16px] leading-9 text-muted-foreground text-justify"
+    >
+      {p}
+    </p>
+  ))}
+</div>
 )}
           <div>
             <h2 className="font-display text-3xl">What you get</h2>
