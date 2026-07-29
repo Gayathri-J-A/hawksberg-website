@@ -108,10 +108,14 @@ export default function TrainingPage({ training }) {
                   `The ${training.title} program at Hawksberg International is built for learners who want practical, job-ready skills. Sessions are led by industry professionals using a mix of theory, labs and capstone projects.`,
                 ]
             ).map((p, i) => (
-              <p
-                key={i}
-                className="mt-5 text-muted-foreground"
-              >
+              // <p
+              //   key={i}
+              //   className="mt-5 text-muted-foreground"
+              // >
+                     <p
+  key={i}
+  className="mt-5 text-[15px] leading-9 text-slate-600 text-justify"
+>
                 {p}
               </p>
             ))}
@@ -162,7 +166,8 @@ export default function TrainingPage({ training }) {
             {item.title}
           </h3>
 
-          <p className="mt-3 text-muted-foreground">
+          {/* <p className="mt-3 text-muted-foreground"> */}
+          <p className="mt-3 text-[15px] leading-8 text-slate-700">
             {item.description}
           </p>
         </div>
