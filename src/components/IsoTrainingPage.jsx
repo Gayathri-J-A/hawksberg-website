@@ -143,9 +143,12 @@ export default function IsoTrainingPage({ training }) {
             {String(i + 1).padStart(2, "0")}
           </span>
 
-          <span className="pt-1 text-foreground">
+          {/* <span className="pt-1 text-foreground">
             {m}
-          </span>
+          </span> */}
+          <span className="pt-1 text-[14px] leading-6 text-slate-700">
+  {m}
+</span>
         </li>
       ))}
     </ol>
@@ -196,9 +199,14 @@ export default function IsoTrainingPage({ training }) {
 
     <div className="mt-3 gold-divider" />
 
-    <p className="mt-6 leading-8 text-muted-foreground">
+    {/* <p className="mt-6 leading-8 text-muted-foreground">
       {training.whyTake}
-    </p>
+    </p> */}
+   <div className="mt-8 max-w-4xl">
+  <p className="text-[15px] leading-9 text-slate-700 whitespace-pre-line">
+    {training.whyTake}
+  </p>
+</div>
   </div>
 )}
 {/* 
@@ -230,14 +238,28 @@ export default function IsoTrainingPage({ training }) {
     <div className="mt-3 gold-divider" />
 
     {Array.isArray(training.courseCovers) ? (
-      <ul className="mt-6 space-y-4">
-        {training.courseCovers.map((item, i) => (
-          <li key={i} className="flex gap-3">
-            <span className="text-gold">✓</span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
+      // <ul className="mt-6 space-y-4">
+      //   {training.courseCovers.map((item, i) => (
+      //     <li key={i} className="flex gap-3">
+      //       <span className="text-gold">✓</span>
+      //       <span>{item}</span>
+      //     </li>
+      //   ))}
+      // </ul>
+      <ul className="mt-8 space-y-5 max-w-4xl">
+  {training.courseCovers.map((item, i) => (
+    <li
+      key={i}
+      className="flex items-start gap-4 text-[15px] leading-8 text-slate-700"
+    >
+      <span className="mt-1 text-lg text-gold">✓</span>
+
+      <span className="flex-1">
+        {item}
+      </span>
+    </li>
+  ))}
+</ul>
     ) : (
       <div className="mt-6 whitespace-pre-line leading-8 text-muted-foreground text-justify">
         {training.courseCovers}
@@ -274,14 +296,28 @@ export default function IsoTrainingPage({ training }) {
     <div className="mt-3 gold-divider" />
 
     {Array.isArray(training.benefits) ? (
-      <ul className="mt-6 space-y-4">
-        {training.benefits.map((item, i) => (
-          <li key={i} className="flex gap-3">
-            <span className="text-gold">✓</span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
+      // <ul className="mt-6 space-y-4">
+      //   {training.benefits.map((item, i) => (
+      //     <li key={i} className="flex gap-3">
+      //       <span className="text-gold">✓</span>
+      //       <span>{item}</span>
+      //     </li>
+      //   ))}
+      // </ul>
+      <ul className="mt-8 space-y-5 max-w-4xl">
+  {training.benefits.map((item, i) => (
+    <li
+      key={i}
+      className="flex items-start gap-4 text-[15px] leading-8 text-slate-700"
+    >
+      <span className="mt-1 text-lg text-gold">✓</span>
+
+      <span className="flex-1">
+        {item}
+      </span>
+    </li>
+  ))}
+</ul>
     ) : (
       <div className="mt-6 whitespace-pre-line leading-8 text-muted-foreground text-justify">
         {training.benefits}
@@ -353,14 +389,28 @@ export default function IsoTrainingPage({ training }) {
 
     <div className="mt-3 gold-divider" />
 
-    <ul className="mt-6 space-y-4">
+    {/* <ul className="mt-6 space-y-4">
       {training.audience.map((item, i) => (
         <li key={i} className="flex gap-3">
           <span className="text-gold">✓</span>
           <span>{item}</span>
         </li>
       ))}
-    </ul>
+    </ul> */}
+    <ul className="mt-8 space-y-5 max-w-4xl">
+  {training.audience.map((item, i) => (
+    <li
+      key={i}
+      className="flex items-start gap-4 text-[15px] leading-8 text-slate-700"
+    >
+      <span className="mt-1 text-lg text-gold">✓</span>
+
+      <span className="flex-1">
+        {item}
+      </span>
+    </li>
+  ))}
+</ul>
   </div>
 )}
 
@@ -372,11 +422,25 @@ export default function IsoTrainingPage({ training }) {
 
     <div className="mt-3 gold-divider" />
 
-    <ul className="mt-6 space-y-4">
+    {/* <ul className="mt-6 space-y-4">
       {training.prerequisites.map((item, i) => (
         <li key={i}>{item}</li>
       ))}
-    </ul>
+    </ul> */}
+    <ul className="mt-8 space-y-5 max-w-4xl">
+  {training.prerequisites.map((item, i) => (
+    <li
+      key={i}
+      className="flex items-start gap-4 text-[16px] leading-8 text-slate-700"
+    >
+      <span className="mt-1 text-lg text-gold">✓</span>
+
+      <span className="flex-1">
+        {item}
+      </span>
+    </li>
+  ))}
+</ul>
   </div>
 )}
 
