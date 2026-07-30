@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import hero1 from "@/assets/hero1.webp";   // change to your image
 import hero2 from "@/assets/hero2.webp";   // change to your image
 import hero3 from "@/assets/hero3.webp";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import heros from "@/assets/heros.webp";
 
@@ -171,7 +172,8 @@ export default function HeroCarousel() {
     delay: 0.2,
   }}
   // className="inline-flex items-center gap-2 rounded-full border border-[#D8A23A]/70 px-4 py-1.5 text-xs tracking-[0.28em] uppercase text-[#D8A23A]"
-  className="inline-flex items-center gap-2 rounded-full border border-[#D8A23A]/70 bg-[#D8A23A]/10 px-5 py-2 text-xs tracking-[0.28em] uppercase text-[#D8A23A] backdrop-blur-[2px]"
+  // className="inline-flex items-center gap-2 rounded-full border border-[#D8A23A]/70 bg-[#D8A23A]/10 px-5 py-2 text-xs tracking-[0.28em] uppercase text-[#D8A23A] backdrop-blur-[2px]"
+  className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-gradient-to-r from-white/35 via-white/18 to-gray-400/10 px-5 py-2 text-xs tracking-[0.28em] uppercase text-white backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.45),0_8px_24px_rgba(0,0,0,0.2)]"
 >
   ★ <span>{slide.eyebrow}</span>
 </motion.span>
