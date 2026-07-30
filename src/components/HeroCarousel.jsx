@@ -8,6 +8,10 @@ import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import heros from "@/assets/heros.webp";
 
+import hero1Mobile from "@/assets/hero1Mobile.webp";
+import hero2Mobile from "@/assets/hero2Mobile.webp";
+import hero3Mobile from "@/assets/hero3Mobile.webp";
+import herosMobile from "@/assets/herosMobile.webp";
 const slides = [
 //   {
 //     type: "video",
@@ -22,6 +26,7 @@ const slides = [
 {
   type: "image",
   src: heros,
+   mobileSrc: herosMobile,
 
   eyebrow: "ISO Consultancy & Training",
   title: "Delivering Excellence in Compliance & Cyber Security",
@@ -33,6 +38,7 @@ const slides = [
   {
     type: "image",
     src: hero1,
+    mobileSrc: hero1Mobile,
 
     eyebrow: "Cyber Security",
     title: "Trusted Cyber Security & Compliance Expertise",
@@ -44,6 +50,7 @@ link: "/services/iso-27001",
   {
     type: "image",
     src: hero2,
+    mobileSrc: hero2Mobile,
 
     eyebrow: "Industry-Ready Training",
     title: "Our Trainings",
@@ -55,6 +62,7 @@ link: "/training/ethical-hacking",
   {
     type: "image",
     src: hero3,
+    mobileSrc: hero3Mobile,
 
     eyebrow: "ISO Certification",
     title: "Global ISO Consulting & Audit Services",
@@ -69,9 +77,12 @@ export default function HeroCarousel() {
 
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
+  // const orderedSlides = isMobile
+  //   ? [slides[1], slides[0], slides[2], slides[3]]
+  //   : slides;
   const orderedSlides = isMobile
-    ? [slides[1], slides[0], slides[2], slides[3]]
-    : slides;
+  ? [slides[0], slides[1], slides[2], slides[3]]
+  : slides;
 
  useEffect(() => {
   setCurrent(0);
@@ -97,28 +108,16 @@ export default function HeroCarousel() {
       : "opacity-0 z-10 pointer-events-none"
   }`}
 >
-          {/* {slide.type === "video" ? (
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-               preload="auto"
-              className="h-full w-full object-cover"
-            >
-              <source src={slide.src} type="video/mp4" />
-            </video>
-          ) : (
-            <img
-              src={slide.src}
-              alt=""
-              className={`h-full w-full object-cover ${
-                current === index ? "animate-zoom" : ""
-              }`}
-            />
-          )} */}
-         <img
+      
+         {/* <img
   src={slide.src}
+  alt=""
+  className={`block h-full w-full object-cover ${
+    current === index ? "animate-zoom" : ""
+  }`}
+/> */}
+<img
+  src={isMobile ? slide.mobileSrc : slide.src}
   alt=""
   className={`block h-full w-full object-cover ${
     current === index ? "animate-zoom" : ""
@@ -131,7 +130,23 @@ export default function HeroCarousel() {
           {/* Text */}
           {/* <div className="absolute left-[8%] top-1/2 -translate-y-1/2 z-30 max-w-4xl text-white"> */}
          {/* <div className="absolute left-[7%] top-[60%] -translate-y-1/2 z-30 max-w-2xl text-white"> */}
-         <div className="absolute left-[7%] top-[58%] -translate-y-1/2 z-30 max-w-4xl text-white">
+         {/* <div 
+         className="absolute left-[7%] top-[58%] -translate-y-1/2 z-30 max-w-4xl text-white"
+         > */}
+         <div
+  className="
+    absolute
+    left-[7%]
+    lg:left-[7%]
+    top-[54%]
+    lg:top-[58%]
+    -translate-y-1/2
+    z-30
+    max-w-[88%]
+    lg:max-w-4xl
+    text-white
+  "
+>
            {/* <span className="border border-yellow-500 rounded-full px-5 py-2 text-sm tracking-[4px] uppercase">
   {slide.eyebrow}
 </span> */}
@@ -186,7 +201,8 @@ className={`mt-5 font-semibold leading-[1.08]
         ? "max-w-3xl text-[30px] lg:text-[40px]"
         : slide.title === "Our Trainings"
         ? "max-w-2xl text-[30px] lg:text-[40px]"
-        : "max-w-3xl text-[42px] lg:text-[52px]"
+        // : "max-w-3xl text-[42px] lg:text-[52px]"
+        : "max-w-3xl text-[28px] sm:text-[34px] lg:text-[52px]"
     }`}
   style={{
     fontFamily: "Copperplate, 'Copperplate Gothic Light', serif",
@@ -208,7 +224,8 @@ className={`mt-5 font-semibold leading-[1.08]
     delay: 0.55,
     ease: "easeOut",
   }}
-  className="mt-6 max-w-xl text-[18px] lg:text-[20px] leading-9 text-white/85"
+  // className="mt-6 max-w-xl text-[18px] lg:text-[20px] leading-9 text-white/85"
+  className="mt-5 max-w-xl text-[15px] sm:text-[16px] lg:text-[20px] leading-7 lg:leading-9 text-white/85"
   style={{
     fontFamily: "'Playfair Display', serif",
   }}
@@ -222,7 +239,8 @@ className={`mt-5 font-semibold leading-[1.08]
 </button> */}
 <Link
   to={slide.link}
-  className="mt-10 inline-flex items-center rounded-full bg-[#d89d2d] px-8 py-3 font-semibold text-black transition hover:scale-105"
+  // className="mt-10 inline-flex items-center rounded-full bg-[#d89d2d] px-8 py-3 font-semibold text-black transition hover:scale-105"
+  className="mt-8 inline-flex items-center rounded-full bg-[#d89d2d] px-6 py-3 lg:px-8 lg:py-3 text-[15px] lg:text-base font-semibold text-black transition hover:scale-105"
 >
   {slide.button} →
 </Link>
