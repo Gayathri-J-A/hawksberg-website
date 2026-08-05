@@ -368,7 +368,8 @@ export default function ServicePage({ service }) {
       </section>
    {service.slug === "tisax" && (
   <>
-    <section className="container-x py-20">
+    {/* <section className="container-x py-20"> */}
+    <section className="container-x pt-0 pb-20">
       <TisaxSections />
     </section>
 

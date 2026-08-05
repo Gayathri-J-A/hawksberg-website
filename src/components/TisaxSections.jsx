@@ -74,7 +74,8 @@ const STEPS = [
 ];
 export default function TisaxSections() {
   return (
-    <div className="mt-20 space-y-24">
+    // <div className="mt-20 space-y-24">
+    <div className="mt-0 space-y-0">
 
       {/* =======================================================
           WHAT IS TISAX®
@@ -1107,7 +1108,7 @@ py-4
 
           {/* Bottom Note */}
 
-          <p
+          {/* <p
             className="
               mt-12
               text-center
@@ -1118,7 +1119,7 @@ py-4
           >
             Only AL 2 and AL 3 result in TISAX labels recognised by
             OEMs via the ENX portal.
-          </p>
+          </p> */}
 
         </div>
 
