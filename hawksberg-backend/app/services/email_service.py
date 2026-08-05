@@ -167,7 +167,7 @@ def send_enquiry_email(name, email, phone, subject, message):
             },
             {
                 # "email": ADMIN_EMAIL_2
-                "email": "hawksberginternational@gmail.com"
+                "email": "aadhinij632@gmail.com"
             }
         ],
 
