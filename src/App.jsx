@@ -11,8 +11,8 @@ import InfoPageDetail from "./pages/InfoPageDetail.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import CourseDetail from "./pages/CourseDetail.jsx";
 // import TrainingPortal from "./pages/TrainingPortal.jsx";
-import TrainingLogin from "@/pages/TrainingLogin.jsx";
-import AdminTraining from "@/pages/AdminTraining.jsx";
+// import TrainingLogin from "@/pages/TrainingLogin.jsx";
+// import AdminTraining from "@/pages/AdminTraining.jsx";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -38,8 +38,8 @@ export default function App() {
         <Route path="/course/:slug" element={<CourseDetail />} />
         {/* <Route path="/training" element={<TrainingPortal />} /> */}
         <Route path="*" element={<NotFound />} />
-        <Route path="/training-login" element={<TrainingLogin />} />
-        <Route path="/admin-training" element={<AdminTraining />} />
+        {/* <Route path="/training-login" element={<TrainingLogin />} />
+        <Route path="/admin-training" element={<AdminTraining />} /> */}
 
       </Routes>
     </>
