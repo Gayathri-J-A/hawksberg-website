@@ -10,7 +10,7 @@ import IsoTrainingDetail from "./pages/IsoTrainingDetail.jsx";
 import InfoPageDetail from "./pages/InfoPageDetail.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import CourseDetail from "./pages/CourseDetail.jsx";
-import TrainingPortal from "./pages/TrainingPortal.jsx";
+// import TrainingPortal from "./pages/TrainingPortal.jsx";
 import TrainingLogin from "@/pages/TrainingLogin.jsx";
 import AdminTraining from "@/pages/AdminTraining.jsx";
 
@@ -36,7 +36,7 @@ export default function App() {
         <Route path="/iso-training/:slug" element={<IsoTrainingDetail />} />
         <Route path="/info/:slug" element={<InfoPageDetail />} />
         <Route path="/course/:slug" element={<CourseDetail />} />
-        <Route path="/training" element={<TrainingPortal />} />
+        {/* <Route path="/training" element={<TrainingPortal />} /> */}
         <Route path="*" element={<NotFound />} />
         <Route path="/training-login" element={<TrainingLogin />} />
         <Route path="/admin-training" element={<AdminTraining />} />
