@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { company, isoServices } from "@/data/site";
+// import { company, isoServices } from "@/data/site";
+import { company } from "@/data/site";
 import logo from "@/assets/shieldlogo.jpg";
 // import {
 //   FaFacebook,
@@ -122,7 +123,7 @@ className="h-20 w-auto shrink-0"
           <h4 className="font-display text-lg text-gold">ISO Consulting</h4>
           <div className="mt-3 gold-divider" />
           {/* <ul className="mt-5 space-y-2 text-sm text-brand-foreground/80"> */}
-          <ul className="mt-6 space-y-4 text-sm text-brand-foreground/80">
+          {/* <ul className="mt-6 space-y-4 text-sm text-brand-foreground/80">
             {isoServices.slice(0, 7).map((s) => (
               <li key={s.slug}>
                 <Link
@@ -134,7 +135,72 @@ className="h-20 w-auto shrink-0"
                 </Link>
               </li>
             ))}
-          </ul>
+          </ul> */}
+
+          <ul className="mt-6 space-y-4 text-sm text-brand-foreground/80">
+  <li>
+    <Link
+      to="/services/iso-9001"
+      className="inline-flex items-center transition-all duration-300 hover:text-gold hover:translate-x-1"
+    >
+      → ISO 9001 Consulting
+    </Link>
+  </li>
+
+  <li>
+    <Link
+      to="/services/iso-14001"
+      className="inline-flex items-center transition-all duration-300 hover:text-gold hover:translate-x-1"
+    >
+      → ISO 14001 Consulting
+    </Link>
+  </li>
+
+  <li>
+    <Link
+      to="/services/iso-45001"
+      className="inline-flex items-center transition-all duration-300 hover:text-gold hover:translate-x-1"
+    >
+      → ISO 45001 Consulting
+    </Link>
+  </li>
+
+  <li>
+    <Link
+      to="/services/iso-50001"
+      className="inline-flex items-center transition-all duration-300 hover:text-gold hover:translate-x-1"
+    >
+      → ISO 50001 Consulting
+    </Link>
+  </li>
+
+  <li>
+    <Link
+      to="/services/iatf-16949"
+      className="inline-flex items-center transition-all duration-300 hover:text-gold hover:translate-x-1"
+    >
+      → IATF 16949 Consulting
+    </Link>
+  </li>
+
+  <li>
+    <Link
+      to="/services/tisax"
+      className="inline-flex items-center transition-all duration-300 hover:text-gold hover:translate-x-1"
+    >
+      → TISAX Consulting
+    </Link>
+  </li>
+
+  <li>
+    <Link
+      to="/services/dpdp"
+      className="inline-flex items-center transition-all duration-300 hover:text-gold hover:translate-x-1"
+    >
+      → DPDP Consulting
+    </Link>
+  </li>
+</ul>
         </div>
 
         <div>

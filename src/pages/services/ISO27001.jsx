@@ -1,7 +1,10 @@
-import ServicePage from "@/components/ServicePage";
 import Layout from "@/components/Layout";
+import ServicePage from "@/components/ServicePage";
 
-const service = {
+import iso27001Image from "@/assets/services/iso-27001.webp";
+import iso27001HeroBg from "@/assets/page-hero-bg.webp";
+
+export const service = {
   slug: "iso-27001",
 
   code: "ISO 27001",
@@ -13,6 +16,12 @@ const service = {
 
   overviewTitle:
     "ISO 27001 Consultant — Managed Information Security",
+
+  // Service/content image
+  image: iso27001Image,
+
+  // Static hero background image
+  heroImage: iso27001HeroBg,
 
   description: [
     "ISO 27001 requires 14 information security disciplines that correspond to 114 security controls to ensure all information means — covering people, processes and technology including suppliers and merchandisers — are secure. An ISO 27001 Consultant offers a fast, effective way to achieve certification.",
@@ -36,6 +45,13 @@ const service = {
     "Internal audit and certification readiness",
     "Continuous improvement support",
   ],
+};
+
+export const serviceMeta = {
+  label: "ISO 27001",
+  slug: "iso-27001",
+  image: iso27001Image,
+  to: "/services/iso-27001",
 };
 
 export default function ISO27001() {

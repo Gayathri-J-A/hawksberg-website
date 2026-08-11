@@ -5,13 +5,14 @@ import { useEffect, useState } from "react";
 // import { company, isoServices, trainings, isoTrainings, serviceMenu } from "@/data/site";
 import {
   company,
-  isoServices,
+  // isoServices,
   trainings,
   isoTrainings,
-  serviceMenu,
+  // serviceMenu,
   courseMenu,
   isoTrainingMenu,
 } from "@/data/site";
+import { serviceMenu } from "@/components/ServiceMenu";
 // import mainLogo from "../assets/main-logo.jpg";
 import mainLogo from "../assets/shieldlogo.jpg";
 import CourseDropdown from "./CourseDropdown";
@@ -122,6 +123,7 @@ useEffect(() => {
     </a>
   </div>
 </div>
+
       {/* <div className="hidden bg-brand text-brand-foreground/90 md:block"> */}
       <div
   className={`hidden md:block transition-all duration-300 ${
@@ -275,17 +277,6 @@ className={open || !isHome || scrolled ? "text-[#111111]" : "text-white"}
 
       {/* SUB TEXT */}
       <span
-        // className="block text-[8px] uppercase tracking-[0.22em] text-muted-foreground"
-//         className={`block text-[8px] uppercase tracking-[0.22em] ${
-//   isHome && !scrolled
-//     ? "text-white/80"
-//     : "text-muted-foreground"
-// }`}
-// className={`block text-[8px] uppercase tracking-[0.22em] ${
-//   open || !isHome || scrolled
-//     ? "text-muted-foreground"
-//     : "text-white/80"
-// }`}
 className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
   isHome && !scrolled
     ? "text-[8px] lg:text-[10px] text-white/80"
@@ -443,8 +434,8 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
           <Link to="/contact" className="btn-primary !px-4 !py-2 !text-[11px]">
             Enquire Now
           </Link>
-{/*          
-<Link
+      
+{/* <Link
   to="/training-login"
   onClick={() => setOpen(false)}
   className={`text-[15px] font-bold tracking-wide transition-colors hover:text-gold ${
@@ -701,6 +692,9 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
               </div>
             </details>
             <NavLink to="/contact">Contact</NavLink>
+            {/* <NavLink to="/training-login">
+  Training Login
+</NavLink> */}
             {/* <Link
               to="/contact"
               onClick={() => setOpen(false)}

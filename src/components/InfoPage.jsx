@@ -144,9 +144,54 @@ export default function InfoPage({ page }) {
         </section>
       )}
 
+      {/* Content: heading + paragraphs, then a full-width image below
+          — single stacked column (NOT a side-by-side grid), matching
+          the reference design. A two-column split here left a large
+          empty gap under the shorter image column while the text
+          column kept growing, which is what caused the misalignment. */}
+    {page.content && (
+  <section className="bg-[#F8F6F2] py-20">
+    <div className="mx-auto max-w-[1450px] px-8">
+
+      {/* <div className="rounded-[24px] border border-[#E8D8B5] bg-white px-12 pt-12 pb-10 shadow-sm"> */}
+      <div className="rounded-[24px] border border-[#E8D8B5] bg-white px-4 pt-2 pb-4 shadow-sm">
+
+        {/* <h2 className="font-display text-[56px] leading-none text-[#1E2430]"> */}
+    <h2 className="font-display text-[20px] md:text-[24px] font-normal leading-none tracking-[-0.02em] text-[#1E2430] mb-2">
+  {page.content.title}
+</h2>
+       <div className="mt-4 h-[3px] w-16 rounded bg-[#D89A29]" />
+
+       <div className="max-w-[1080px]">
+  {page.content.paragraphs.map((p, i) => (
+    <p
+      key={i}
+      className="mt-5 text-[14px] leading-[2.1] text-[#3F4E63] text-left"
+    >
+      {p}
+    </p>
+  ))}
+</div>
+
+        {page.content.image && (
+          <img
+            src={page.content.image}
+            alt={page.content.title}
+            // className="mt-10 h-[430px] w-full rounded-2xl object-cover"
+            className="mt-6 h-[200px] w-full rounded-2xl object-cover"
+          />
+        )}
+
+      </div>
+
+    </div>
+  </section>
+)}
+
       {/* Grid (optional) */}
       {page.grid && (
-        <section className="bg-background py-20">
+        // <section className="bg-background py-20">
+        <section className="bg-background py-10">
           <div className="container-x">
             <div className="rounded-xl border border-gold/30 bg-gold/5 p-8 md:p-12">
               <h2 className="text-center font-display text-3xl text-foreground">

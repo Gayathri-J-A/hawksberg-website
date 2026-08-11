@@ -1,5 +1,14 @@
 import { Link } from "react-router-dom";
-import { isoServices, serviceImages } from "@/data/site";
+
+import { serviceMeta as ISO9001 } from "@/pages/services/ISO9001";
+import { serviceMeta as ISO14001 } from "@/pages/services/ISO14001";
+import { serviceMeta as ISO45001 } from "@/pages/services/ISO45001";
+import { serviceMeta as ISO50001 } from "@/pages/services/ISO50001";
+import { serviceMeta as IATF16949 } from "@/pages/services/IATF16949";
+import { serviceMeta as TISAX } from "@/pages/services/TISAX";
+import { serviceMeta as ISO27001 } from "@/pages/services/ISO27001";
+import { serviceMeta as DPDP } from "@/pages/services/DPDP";
+
 import useReveal from "@/hooks/useReveal";
 
 function ServiceCard({ s, index }) {
@@ -8,30 +17,36 @@ function ServiceCard({ s, index }) {
   return (
     <Link
       ref={ref}
-      to={`/services/${s.slug}`}
-      style={{ transitionDelay: `${(index % 3) * 90}ms` }}
+      to={s.to}
+      style={{
+        transitionDelay: `${(index % 3) * 90}ms`,
+      }}
       className={`group relative block aspect-[4/3] overflow-hidden rounded-xl shadow-elegant reveal-on-scroll ${
         shown ? "is-visible" : ""
       }`}
     >
+      {/* Service Image */}
       <img
-        src={serviceImages[s.slug]}
-        alt={`${s.code} ${s.title}`}
+        src={s.image}
+        alt={`${s.code || s.label}`}
         loading="lazy"
         width={1024}
         height={768}
         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
       />
 
+      {/* Dark Gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
 
+      {/* Service Name */}
       <div className="absolute inset-x-0 bottom-0 p-5 transition-transform duration-500 group-hover:-translate-y-1">
-        <h3 className="text-sm text-white drop-shadow">
-          <span style={{ fontFamily: "Calibri" }}>
-            {s.code}
-          </span>{" "}
-          <span className="font-semibold">
-            {s.title}
+        <h3 className="text-sm leading-relaxed text-white drop-shadow-lg">
+          <span
+            style={{
+              fontFamily: "Calibri",
+            }}
+          >
+            {s.label}
           </span>
         </h3>
       </div>
@@ -39,27 +54,56 @@ function ServiceCard({ s, index }) {
   );
 }
 
+/*
+|--------------------------------------------------------------------------
+| IMPORTANT:
+| This order exactly matches your reference image.
+|--------------------------------------------------------------------------
+*/
+
+const services = [
+  // Row 1
+  ISO9001,
+  ISO14001,
+  ISO45001,
+
+  // Row 2
+  ISO50001,
+  IATF16949,
+  TISAX,
+
+  // Row 3
+  // ISO27001,
+  DPDP,
+];
+
 export default function ServicesGrid() {
   const [headRef, headShown] = useReveal();
 
   return (
-    <section className="container-x py-20">
+    <section className="py-20">
+      {/* Heading */}
       <div
         ref={headRef}
         className={`mx-auto max-w-2xl text-center reveal-on-scroll ${
           headShown ? "is-visible" : ""
         }`}
       >
-        <h2 className="font-display text-4xl md:text-5xl">
+        <h2 className="text-5xl font-normal tracking-tight text-slate-900 md:text-6xl">
           Our Services
         </h2>
 
-        <div className="mx-auto mt-4 gold-divider" />
+        <div className="mx-auto mt-5 gold-divider" />
       </div>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {isoServices.map((s, i) => (
-          <ServiceCard key={s.slug} s={s} index={i} />
+      {/* Services Grid */}
+      <div className="mx-auto mt-16 grid max-w-[1536px] gap-6 px-6 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((s, i) => (
+          <ServiceCard
+            key={s.slug}
+            s={s}
+            index={i}
+          />
         ))}
       </div>
     </section>

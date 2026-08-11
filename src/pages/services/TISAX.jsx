@@ -1,7 +1,13 @@
 import Layout from "@/components/Layout";
 import ServicePage from "@/components/ServicePage";
 
-const service = {
+// Services Grid image
+import tisaxGridImage from "@/assets/services/tisax.webp";
+
+// TISAX detail page actual hero background
+import tisaxHeroImage from "@/assets/TISAX.webp";
+
+export const service = {
   slug: "tisax",
 
   code: "TISAX",
@@ -13,6 +19,18 @@ const service = {
 
   overviewTitle:
     "TISAX — Trusted Information Security Assessment Exchange",
+
+  // --------------------------------------------------
+  // GRID IMAGE
+  // Used only in ServicesGrid.jsx
+  // --------------------------------------------------
+  image: tisaxGridImage,
+
+  // --------------------------------------------------
+  // HERO IMAGE
+  // Used as the background on the TISAX detail page
+  // --------------------------------------------------
+  heroImage: tisaxHeroImage,
 
   description: [
     "TISAX® stands for Trusted Information Security Assessment Exchange. TISAX® enables mutual acceptance of information security assessments in the automotive industry and provides a common assessment and exchange mechanism that ensures the secure sharing of sensitive information to partner companies, to inspire trust throughout the automotive supply chain.",
@@ -38,6 +56,18 @@ const service = {
     "Assessment preparation",
     "Label maintenance support",
   ],
+};
+
+export const serviceMeta = {
+  label: "TISAX",
+
+  slug: "tisax",
+
+  // IMPORTANT:
+  // This image is ONLY for ServicesGrid.jsx
+  image: tisaxGridImage,
+
+  to: "/services/tisax",
 };
 
 export default function TISAX() {
