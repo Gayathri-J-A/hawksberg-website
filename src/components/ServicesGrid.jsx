@@ -6,7 +6,7 @@ import { serviceMeta as ISO45001 } from "@/pages/services/ISO45001";
 import { serviceMeta as ISO50001 } from "@/pages/services/ISO50001";
 import { serviceMeta as IATF16949 } from "@/pages/services/IATF16949";
 import { serviceMeta as TISAX } from "@/pages/services/TISAX";
-import { serviceMeta as ISO27001 } from "@/pages/services/ISO27001";
+// import { serviceMeta as ISO27001 } from "@/pages/services/ISO27001";
 import { serviceMeta as DPDP } from "@/pages/services/DPDP";
 
 import useReveal from "@/hooks/useReveal";
@@ -26,14 +26,24 @@ function ServiceCard({ s, index }) {
       }`}
     >
       {/* Service Image */}
-      <img
+      {/* <img
         src={s.image}
         alt={`${s.code || s.label}`}
         loading="lazy"
         width={1024}
         height={768}
         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-      />
+      /> */}
+
+      <img
+  src={s.image}
+  alt={s.code || s.label}
+  loading="lazy"
+  decoding="async"
+  width={1024}
+  height={768}
+  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+/>
 
       {/* Dark Gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
