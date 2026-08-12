@@ -3,20 +3,80 @@ import { Link, NavLink as RRNavLink, useLocation } from "react-router-dom";
 // import { useState } from "react";
 import { useEffect, useState } from "react";
 // import { company, isoServices, trainings, isoTrainings, serviceMenu } from "@/data/site";
+// import {
+//   company,
+//   // isoServices,
+//   trainings,
+//   // isoTrainings,
+//   // serviceMenu,
+//   courseMenu,
+//   // isoTrainingMenu,
+// } from "@/data/site";
 import {
   company,
-  // isoServices,
-  trainings,
-  isoTrainings,
-  // serviceMenu,
   courseMenu,
-  isoTrainingMenu,
 } from "@/data/site";
 import { serviceMenu } from "@/components/ServiceMenu";
-// import mainLogo from "../assets/main-logo.jpg";
 import mainLogo from "../assets/shieldlogo.jpg";
 import CourseDropdown from "./CourseDropdown";
 import IsoTrainingDropdown from "@/components/IsoTrainingDropdown";
+
+/* =========================================================
+   MOBILE ISO TRAINING MENU
+
+   ONLY ISO LEAD AUDITOR TRAINING AND ISO INTERNAL AUDITOR
+   TRAINING HAVE SUB-MENUS.
+
+   ISO FOUNDATION TRAINING, ISO 31000 RISK MANAGEMENT,
+   AND ISO TRAINING ONLINE ARE DIRECT PAGE LINKS.
+========================================================= */
+const isoTrainingMenu = [
+  {
+    title: "ISO Lead Auditor Training",
+    items: [
+      { label: "ISO 9001 Lead Auditor Training", slug: "iso-9001-lead-auditor" },
+      { label: "ISO 27001 Lead Auditor Training", slug: "iso-27001-lead-auditor" },
+      { label: "ISO 45001 Lead Auditor Training", slug: "iso-45001-lead-auditor" },
+      { label: "ISO 22301 Lead Auditor Training", slug: "iso-22301-lead-auditor" },
+      { label: "ISO 22000 Lead Auditor Training", slug: "iso-22000-lead-auditor" },
+      { label: "ISO 14001 Lead Auditor Training", slug: "iso-14001-lead-auditor" },
+      { label: "ISO 13485 Lead Auditor Training", slug: "iso-13485-lead-auditor" },
+      { label: "ISO 50001 Lead Auditor Training", slug: "iso-50001-lead-auditor" },
+      { label: "ISO 17025 Lead Auditor Training", slug: "iso-17025-lead-auditor" },
+      { label: "ISO 15189 Lead Auditor Training", slug: "iso-15189-lead-auditor" },
+      { label: "FSSC 22000 Lead Auditor Training", slug: "fssc-22000-lead-auditor" },
+    ],
+  },
+  {
+    title: "ISO Internal Auditor Training",
+    items: [
+      { label: "ISO 13485 Internal Auditor Training", slug: "iso-13485-internal-auditor" },
+      { label: "ISO 14001 Internal Auditor Training", slug: "iso-14001-internal-auditor" },
+      { label: "ISO 27001 Internal Auditor Training", slug: "iso-27001-internal-auditor" },
+      { label: "ISO 50001 Internal Auditor Training", slug: "iso-50001-internal-auditor" },
+      { label: "ISO 45001 Internal Auditor Training", slug: "iso-45001-internal-auditor" },
+      { label: "ISO 9001 Internal Auditor Training", slug: "iso-9001-internal-auditor" },
+      { label: "ISO 22000 Internal Auditor Training", slug: "iso-22000-internal-auditor" },
+      { label: "ISO 22301 Internal Auditor Training", slug: "iso-22301-internal-auditor" },
+      { label: "ISO 17025 Internal Auditor Training", slug: "iso-17025-internal-auditor" },
+      { label: "ISO 15189 Internal Auditor Training", slug: "iso-15189-internal-auditor" },
+      { label: "IATF 16949 Internal Auditor Training", slug: "iatf-16949-internal-auditor" },
+      { label: "ISO 31000 Internal Auditor Training", slug: "iso-31000-internal-auditor" },
+    ],
+  },
+  {
+    title: "ISO Foundation Training",
+    items: [{ label: "ISO Foundation Training", slug: "iso-foundation-training" }],
+  },
+  {
+    title: "ISO 31000 Risk Management",
+    items: [{ label: "ISO 31000 Risk Management", slug: "iso-31000-risk-management" }],
+  },
+  {
+    title: "ISO Training Online",
+    items: [{ label: "Online ISO Training", slug: "online-iso-training" }],
+  },
+];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -604,7 +664,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
     </Link>
   ))}
 </div> */}
-<div className="mt-2 space-y-2 pl-3">
+{/* <div className="mt-2 space-y-2 pl-3">
 
   {isoTrainingMenu.map((category, index) => (
 
@@ -647,6 +707,80 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
     )
 
   ))}
+
+</div> */}
+<div className="mt-2 space-y-2 pl-3">
+
+  {/* ISO LEAD AUDITOR TRAINING — DROPDOWN */}
+  <details className="group">
+    <summary className="cursor-pointer text-sm font-semibold text-foreground">
+      ISO Lead Auditor Training
+    </summary>
+
+    <div className="mt-2 ml-4 flex flex-col gap-2">
+      {isoTrainingMenu[0].items.map((item) => (
+        <Link
+          key={item.slug}
+          to={`/iso-training/${item.slug}`}
+          onClick={() => setOpen(false)}
+          className="text-sm text-muted-foreground hover:text-gold"
+        >
+          {item.label}
+        </Link>
+      ))}
+    </div>
+  </details>
+
+
+  {/* ISO INTERNAL AUDITOR TRAINING — DROPDOWN */}
+  <details className="group">
+    <summary className="cursor-pointer text-sm font-semibold text-foreground">
+      ISO Internal Auditor Training
+    </summary>
+
+    <div className="mt-2 ml-4 flex flex-col gap-2">
+      {isoTrainingMenu[1].items.map((item) => (
+        <Link
+          key={item.slug}
+          to={`/iso-training/${item.slug}`}
+          onClick={() => setOpen(false)}
+          className="text-sm text-muted-foreground hover:text-gold"
+        >
+          {item.label}
+        </Link>
+      ))}
+    </div>
+  </details>
+
+
+  {/* ISO FOUNDATION — DIRECT PAGE */}
+<Link
+  to="/iso-training/iso-foundation"
+  onClick={() => setOpen(false)}
+  className="block text-sm font-semibold text-foreground hover:text-gold"
+>
+  ISO Foundation Training
+</Link>
+
+
+  {/* ISO 31000 — DIRECT PAGE */}
+  <Link
+    to="/iso-training/iso-31000-risk-management"
+    onClick={() => setOpen(false)}
+    className="block text-sm font-semibold text-foreground hover:text-gold"
+  >
+    ISO 31000 Risk Management
+  </Link>
+
+
+  {/* ONLINE ISO TRAINING — DIRECT PAGE */}
+  <Link
+    to="/iso-training/online-iso-training"
+    onClick={() => setOpen(false)}
+    className="block text-sm font-semibold text-foreground hover:text-gold"
+  >
+    ISO Training Online
+  </Link>
 
 </div>
             </details>
