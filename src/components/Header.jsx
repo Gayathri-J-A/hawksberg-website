@@ -12,10 +12,11 @@ import { useEffect, useState } from "react";
 //   courseMenu,
 //   // isoTrainingMenu,
 // } from "@/data/site";
-import {
-  company,
-  courseMenu,
-} from "@/data/site";
+// import {
+//   company,
+//   courseMenu,
+// } from "@/data/site";
+import { company } from "@/data/site";
 import { serviceMenu } from "@/components/ServiceMenu";
 import mainLogo from "../assets/shieldlogo.jpg";
 import CourseDropdown from "./CourseDropdown";
@@ -627,88 +628,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
               <summary className="cursor-pointer text-sm font-medium text-foreground/80">
                 ISO Trainings
               </summary>
-              {/* <div className="mt-2 grid gap-1 pl-3">
-                {isoTrainings.filter((t) => t.slug === "iso-9001").map((t) => (
-                  <Link
-                    key={t.slug}
-                    to={`/iso-training/${t.slug}`}
-                    onClick={() => setOpen(false)}
-                    className="text-sm text-muted-foreground hover:text-gold"
-                  >
-                    {t.code} — Training
-                  </Link>
-                ))}
-              </div> */}
-              {/* <div
-  className="relative z-50"
-  onMouseEnter={() => setIsoTr(true)}
-  onMouseLeave={() => setIsoTr(false)}
->
-  <button className="text-sm font-medium tracking-wide text-foreground/80 hover:text-gold">
-    ISO Trainings ▾
-  </button>
-
-  {isoTr && (
-    <IsoTrainingDropdown />
-  )}
-</div> */}
-{/* <div className="mt-2 grid gap-1 pl-3">
-  {isoTrainingMenu.map((item) => (
-    <Link
-      key={item.label}
-      to={item.to}
-      onClick={() => setOpen(false)}
-      className="text-sm text-muted-foreground hover:text-gold"
-    >
-      {item.label}
-    </Link>
-  ))}
-</div> */}
-{/* <div className="mt-2 space-y-2 pl-3">
-
-  {isoTrainingMenu.map((category, index) => (
-
-    index < 2 ? (
-
-      <details key={category.title} className="group">
-
-        <summary className="cursor-pointer text-sm font-semibold text-foreground">
-          {category.title}
-        </summary>
-
-        <div className="mt-2 ml-4 flex flex-col gap-2">
-
-          {category.items.map((item) => (
-            <Link
-              key={item.slug}
-              to={`/iso-training/${item.slug}`}
-              onClick={() => setOpen(false)}
-              className="text-sm text-muted-foreground hover:text-gold"
-            >
-              {item.label}
-            </Link>
-          ))}
-
-        </div>
-
-      </details>
-
-    ) : (
-
-      <Link
-        key={category.title}
-        to={`/iso-training/${category.items[0].slug}`}
-        onClick={() => setOpen(false)}
-        className="block text-sm text-muted-foreground hover:text-gold"
-      >
-        {category.title}
-      </Link>
-
-    )
-
-  ))}
-
-</div> */}
+           
 <div className="mt-2 space-y-2 pl-3">
 
   {/* ISO LEAD AUDITOR TRAINING — DROPDOWN */}
@@ -799,7 +719,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
                     {t.title}
                   </Link>
                 ))} */}
-                {courseMenu.map((category) => (
+                {/* {courseMenu.map((category) => (
   <details key={category.title} className="group">
 
     <summary className="cursor-pointer text-sm font-semibold text-foreground">
@@ -822,7 +742,235 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
     </div>
 
   </details>
-))}
+))} */}
+
+{/* =========================================================
+    STATIC COURSES MENU
+    Courses no longer use site.js / courseMenu
+========================================================= */}
+
+{/* DIPLOMA */}
+<details className="group">
+  <summary className="cursor-pointer text-sm font-semibold text-foreground">
+    Diploma
+  </summary>
+
+  <div className="mt-2 ml-4 flex flex-col gap-2">
+    <Link
+      to="/courses/diploma-cyber-security"
+      onClick={() => setOpen(false)}
+      className="text-sm text-muted-foreground hover:text-gold"
+    >
+      Diploma in Cyber Security
+    </Link>
+
+    <Link
+      to="/courses/diploma-machine-learning"
+      onClick={() => setOpen(false)}
+      className="text-sm text-muted-foreground hover:text-gold"
+    >
+      Diploma in Machine Learning
+    </Link>
+
+    <Link
+      to="/courses/diploma-network-security"
+      onClick={() => setOpen(false)}
+      className="text-sm text-muted-foreground hover:text-gold"
+    >
+      Diploma in Network Security
+    </Link>
+
+    <Link
+      to="/courses/diploma-web-security"
+      onClick={() => setOpen(false)}
+      className="text-sm text-muted-foreground hover:text-gold"
+    >
+      Diploma in Web Security
+    </Link>
+
+    <Link
+      to="/courses/diploma-advanced-cloud-network-security"
+      onClick={() => setOpen(false)}
+      className="text-sm text-muted-foreground hover:text-gold"
+    >
+      Diploma in Advanced Cloud & Network Security
+    </Link>
+  </div>
+</details>
+
+
+{/* CYBERSECURITY */}
+<details className="group">
+  <summary className="cursor-pointer text-sm font-semibold text-foreground">
+    Cybersecurity
+  </summary>
+
+  <div className="mt-2 ml-4 flex flex-col gap-2">
+    <Link to="/courses/ethical-hacking" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Ethical Hacking
+    </Link>
+
+    <Link to="/courses/bug-bounty" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Bug Bounty
+    </Link>
+
+    <Link to="/courses/cyber-security-professional" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Cyber Security Professional
+    </Link>
+
+    <Link to="/courses/cyber-psychology" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Cyber Psychology
+    </Link>
+
+    <Link to="/courses/web-application-penetration-tester" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Web Application Penetration Tester
+    </Link>
+
+    <Link to="/courses/network-penetration-tester" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Network Penetration Tester
+    </Link>
+
+    <Link to="/courses/android-penetration-tester" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Android Penetration Tester
+    </Link>
+
+    <Link to="/courses/iot-penetration-tester" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      IoT Penetration Tester
+    </Link>
+
+    <Link to="/courses/certified-penetration-tester" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Certified Penetration Tester
+    </Link>
+
+    <Link to="/courses/reverse-engineering" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Reverse Engineering
+    </Link>
+
+    <Link to="/courses/computer-forensic-training" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Computer Forensic Training
+    </Link>
+
+    <Link to="/courses/cissp-training" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      CISSP Training
+    </Link>
+
+    <Link to="/courses/soc-analyst-training" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      SOC Analyst Training
+    </Link>
+
+    <Link to="/courses/penetration-testing" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Penetration Testing
+    </Link>
+
+    <Link to="/courses/advanced-penetration-testing-red-teaming" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Advanced Penetration Testing & Red Teaming
+    </Link>
+  </div>
+</details>
+
+
+{/* MACHINE LEARNING */}
+<details className="group">
+  <summary className="cursor-pointer text-sm font-semibold text-foreground">
+    Machine Learning
+  </summary>
+
+  <div className="mt-2 ml-4 flex flex-col gap-2">
+    <Link to="/courses/artificial-intelligence" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Artificial Intelligence
+    </Link>
+
+    <Link to="/courses/machine-learning-python" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Machine Learning with Python
+    </Link>
+
+    <Link to="/courses/data-science-python" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Data Science with Python
+    </Link>
+
+    <Link to="/courses/embedded-system-robotics" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Embedded System & Robotics
+    </Link>
+  </div>
+</details>
+
+
+{/* NETWORKING */}
+<details className="group">
+  <summary className="cursor-pointer text-sm font-semibold text-foreground">
+    Networking
+  </summary>
+
+  <div className="mt-2 ml-4 flex flex-col gap-2">
+    <Link to="/courses/ccna" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      CCNA
+    </Link>
+
+    <Link to="/courses/ccnp" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      CCNP
+    </Link>
+  </div>
+</details>
+
+
+{/* CLOUD */}
+<details className="group">
+  <summary className="cursor-pointer text-sm font-semibold text-foreground">
+    Cloud Computing
+  </summary>
+
+  <div className="mt-2 ml-4 flex flex-col gap-2">
+    <Link to="/courses/aws-basic-training" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      AWS Basic Training
+    </Link>
+
+    <Link to="/courses/microsoft-azure-training" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Microsoft Azure Training
+    </Link>
+
+    <Link to="/courses/advance-cloud-computing" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Advance Cloud Computing
+    </Link>
+  </div>
+</details>
+
+
+{/* PROGRAMMING */}
+<details className="group">
+  <summary className="cursor-pointer text-sm font-semibold text-foreground">
+    Programming
+  </summary>
+
+  <div className="mt-2 ml-4 flex flex-col gap-2">
+    <Link to="/courses/python-programming" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Python Programming
+    </Link>
+
+    <Link to="/courses/django-developer" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Django Developer
+    </Link>
+
+    <Link to="/courses/java-programming" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Java Programming
+    </Link>
+
+    <Link to="/courses/android-developer" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Android Developer
+    </Link>
+
+    <Link to="/courses/devops-certification" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      DevOps Certification
+    </Link>
+
+    <Link to="/courses/secure-full-stack-developer" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      Secure Full Stack Developer
+    </Link>
+
+    <Link to="/courses/iot-development" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+      IoT Development
+    </Link>
+  </div>
+</details>
               </div>
             </details>
             <NavLink to="/contact">Contact</NavLink>
