@@ -1,0 +1,2 @@
+export const metadata = { title: "DPDP Act Compliance Consulting", description: "DPDP Act compliance consulting information for organizations handling personal data in India.", alternates: { canonical: "/services/dpdp" } };
+export default function Layout({ children }) { return children; }

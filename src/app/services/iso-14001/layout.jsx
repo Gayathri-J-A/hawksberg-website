@@ -1,0 +1,2 @@
+export const metadata = { title: "ISO 14001 Consulting", description: "ISO 14001 environmental management system consulting information from Hawksberg International.", alternates: { canonical: "/services/iso-14001" } };
+export default function Layout({ children }) { return children; }

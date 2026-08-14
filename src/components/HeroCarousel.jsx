@@ -1,5 +1,7 @@
+"use client";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import Link from "next/link";
 
 import hero1 from "@/assets/hero1.webp";   // change to your image
 import hero2 from "@/assets/hero2.webp";   // change to your image
@@ -57,7 +59,7 @@ link: "/services/iso-27001",
     title: "Our Trainings",
     sub: "Hands-on programs in Ethical Hacking, Bug Bounty, CCNA, Python, Java and Penetration Testing — by industry professionals.",
     button: "View Trainings",
-link: "/training/ethical-hacking",
+link: "/courses/ethical-hacking",
   },
 
   {
@@ -75,8 +77,10 @@ link: "/about",
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  const shouldAnimate = mounted && !isMobile;
 
   // const orderedSlides = isMobile
   //   ? [slides[1], slides[0], slides[2], slides[3]]
@@ -86,6 +90,7 @@ export default function HeroCarousel() {
   : slides;
 
  useEffect(() => {
+  setMounted(true);
   setCurrent(0);
 
   const timer = setInterval(() => {
@@ -97,7 +102,7 @@ export default function HeroCarousel() {
 
   return (
     // <section className="relative h-screen w-full overflow-hidden">
-    <section className="relative h-screen w-screen overflow-hidden">
+    <section className="relative min-h-[100svh] h-[100svh] w-full overflow-hidden md:h-screen">
       {/* {slides.map((slide, index) => ( */}
       {orderedSlides.map((slide, index) => (
        
@@ -117,13 +122,19 @@ export default function HeroCarousel() {
     current === index ? "animate-zoom" : ""
   }`}
 /> */}
-<img
-  src={isMobile ? slide.mobileSrc : slide.src}
-  alt=""
-  className={`block h-full w-full object-cover ${
-    current === index ? "animate-zoom" : ""
-  }`}
-/>
+<picture>
+  <source
+    media="(max-width: 767px)"
+    srcSet={slide.mobileSrc.src}
+  />
+  <img
+    src={slide.src.src}
+    alt=""
+    className={`block h-full w-full object-cover ${
+      current === index ? "animate-zoom" : ""
+    }`}
+  />
+</picture>
 
           {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/45"></div>
@@ -152,7 +163,7 @@ export default function HeroCarousel() {
   {slide.eyebrow}
 </span> */}
 <motion.span
-  initial={isMobile ? false : { opacity: 0, y: 25 }}
+  initial={shouldAnimate ? { opacity: 0, y: 25 } : false}
   // animate={
   //   isMobile
   //     ? {}
@@ -161,7 +172,7 @@ export default function HeroCarousel() {
   //     : { opacity: 0, y: 25 }
   // }
   animate={
-  isMobile
+  !shouldAnimate
     ? {}
     : current === index
     ? { opacity: 1, y: 0 }
@@ -183,9 +194,9 @@ className="inline-flex items-center gap-2 rounded-full border border-[#D8A23A]/7
 
 
 <motion.h1
-  initial={isMobile ? false : { opacity: 0, y: 40 }}
+  initial={shouldAnimate ? { opacity: 0, y: 40 } : false}
   animate={
-  isMobile
+  !shouldAnimate
     ? {}
     : current === index
     ? { opacity: 1, y: 0 }
@@ -213,9 +224,9 @@ className={`mt-5 font-semibold leading-[1.08]
   {slide.title}
 </motion.h1>
  <motion.p
-  initial={isMobile ? false : { opacity: 0, y: 30 }}
+  initial={shouldAnimate ? { opacity: 0, y: 30 } : false}
  animate={
-  isMobile
+  !shouldAnimate
     ? {}
     : current === index
     ? { opacity: 1, y: 0 }
@@ -240,7 +251,8 @@ className={`mt-5 font-semibold leading-[1.08]
   {slide.button} →
 </button> */}
 <Link
-  to={slide.link}
+  // to={slide.link}
+  href={slide.link}
   // className="mt-10 inline-flex items-center rounded-full bg-[#d89d2d] px-8 py-3 font-semibold text-black transition hover:scale-105"
   className="mt-8 inline-flex items-center rounded-full bg-[#d89d2d] px-6 py-3 lg:px-8 lg:py-3 text-[15px] lg:text-base font-semibold text-black transition hover:scale-105"
 >

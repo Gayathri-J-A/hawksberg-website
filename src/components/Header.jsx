@@ -1,5 +1,8 @@
+"use client";
 // import { Link, NavLink as RRNavLink } from "react-router-dom";
-import { Link, NavLink as RRNavLink, useLocation } from "react-router-dom";
+// import { NavLink as RRNavLink, useLocation } from "react-router-dom";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 // import { useState } from "react";
 import { useEffect, useState } from "react";
 // import { company, isoServices, trainings, isoTrainings, serviceMenu } from "@/data/site";
@@ -87,7 +90,8 @@ export default function Header() {
   const [activeCourse, setActiveCourse] = useState(0);
   const [activeSubCourse, setActiveSubCourse] = useState(null);
   const [isoTr, setIsoTr] = useState(false);
-  const { pathname } = useLocation();
+  // const { pathname } = useLocation();
+  const pathname = usePathname();
 const isHome = pathname === "/";
 
 const [scrolled, setScrolled] = useState(false);
@@ -117,30 +121,26 @@ useEffect(() => {
   //     {children}
   //   </RRNavLink>
   // );
-  const NavLink = ({ to, children }) => (
-  <RRNavLink
-    to={to}
-    end
-    className={({ isActive }) =>
-      // `text-sm font-medium tracking-wide transition-colors hover:text-gold ${
-    `text-[15px] font-bold tracking-wide transition-colors hover:text-gold ${
-        isActive
-          ? "text-gold"
-          // : isHome && !scrolled
-          // ? "text-white"
-          // : "text-foreground/80"
-          : open
-? "text-foreground"
-: isHome && !scrolled
-? "text-white"
-: "text-foreground/80"
-      }`
-    }
-    onClick={() => setOpen(false)}
-  >
-    {children}
-  </RRNavLink>
-);
+  const NavLink = ({ href, children }) => {
+    const isActive = pathname === href;
+    return (
+      <Link
+        href={href}
+        className={`text-[15px] font-bold tracking-wide transition-colors hover:text-gold ${
+          isActive
+            ? "text-gold"
+            : open
+            ? "text-foreground"
+            : isHome && !scrolled
+            ? "text-white"
+            : "text-foreground/80"
+        }`}
+        onClick={() => setOpen(false)}
+      >
+        {children}
+      </Link>
+    );
+  };
 
   return (
     // <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/85 backdrop-blur-md">
@@ -209,7 +209,7 @@ useEffect(() => {
       </div>
 
       {/* <div className="container-x flex h-20 items-center justify-between">
-        <Link to="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <span className="logo-circle h-11 w-11 flex items-center justify-center">
             <img src={mainLogo} alt="Hawksberg" className="w-full h-full object-cover scale-[1.18]" />
           </span>
@@ -225,7 +225,7 @@ useEffect(() => {
         </Link> */}
 
         {/* <div className="container-x flex h-20 items-center justify-between">
-  <Link to="/" className="flex items-center gap-3">
+  <Link href="/" className="flex items-center gap-3">
     <span className="logo-circle h-11 w-11 flex items-center justify-center">
       <img
         src={mainLogo}
@@ -265,7 +265,7 @@ useEffect(() => {
 
   {/* <div className="container-x flex h-20 items-center justify-between"> */}
   <div className="container-x flex h-15 lg:h-20 items-center justify-between px-4">
-  <Link to="/" className="flex items-center gap-3">
+  <Link href="/" className="flex items-center gap-3">
     {/* <span className="logo-circle h-11 w-11 flex items-center justify-center">
       <img
         src={mainLogo}
@@ -275,7 +275,7 @@ useEffect(() => {
     </span> */}
     <span className="flex items-center justify-center">
   <img
-    src={mainLogo}
+    src={mainLogo.src}
     alt="Hawksberg"
     // className="h-14 lg:h-16 w-auto object-contain"
     //  className="h-20 lg:h-24 w-auto object-contain"
@@ -356,8 +356,8 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
 
         {/* <nav className="hidden items-center gap-8 lg:flex"> */}
         <nav className="hidden items-center gap-4 xl:gap-8 lg:flex">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/about">About</NavLink>
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="/about">About</NavLink>
 
           <div
             className="relative"
@@ -404,7 +404,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
                       (item) => (
                         <li key={item.label}>
                           <Link
-                            to={item.to}
+                            href={item.to}
                             className="block px-5 py-2.5 text-sm font-medium text-black/85 hover:bg-black/5 hover:text-black"
                           >
                             {item.label}
@@ -486,13 +486,10 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
   {/* {training && ( */}
   {training && <CourseDropdown />}
 </div>
-          {/* <NavLink to="/consultancy">
-  Consultants
-</NavLink> */}
 
-          <NavLink to="/contact">Contact</NavLink>
+          <NavLink href="/contact">Contact</NavLink>
           {/* <Link to="/contact" className="btn-primary !px-5 !py-2 text-xs"> */}
-          <Link to="/contact" className="btn-primary !px-4 !py-2 !text-[11px]">
+          <Link href="/contact" className="btn-primary !px-4 !py-2 !text-[11px]">
             Enquire Now
           </Link>
       
@@ -571,8 +568,8 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
         {open && (
   <div className="border-t border-border bg-white lg:hidden">
           <div className="container-x flex flex-col gap-3 py-4">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
+            <NavLink href="/">Home</NavLink>
+            <NavLink href="/about">About</NavLink>
             {/* <details className="group">
               <summary className="cursor-pointer text-sm font-medium text-foreground/80">
                 Services
@@ -609,7 +606,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
           {category.items.map((item) => (
             <Link
               key={item.label}
-              to={item.to}
+              href={item.to}
               onClick={() => setOpen(false)}
               className="text-sm text-muted-foreground hover:text-gold"
             >
@@ -641,7 +638,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
       {isoTrainingMenu[0].items.map((item) => (
         <Link
           key={item.slug}
-          to={`/iso-training/${item.slug}`}
+          href={`/iso-training/${item.slug}`}
           onClick={() => setOpen(false)}
           className="text-sm text-muted-foreground hover:text-gold"
         >
@@ -662,7 +659,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
       {isoTrainingMenu[1].items.map((item) => (
         <Link
           key={item.slug}
-          to={`/iso-training/${item.slug}`}
+          href={`/iso-training/${item.slug}`}
           onClick={() => setOpen(false)}
           className="text-sm text-muted-foreground hover:text-gold"
         >
@@ -675,7 +672,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
 
   {/* ISO FOUNDATION — DIRECT PAGE */}
 <Link
-  to="/iso-training/iso-foundation"
+  href="/iso-training/iso-foundation"
   onClick={() => setOpen(false)}
   className="block text-sm font-semibold text-foreground hover:text-gold"
 >
@@ -685,7 +682,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
 
   {/* ISO 31000 — DIRECT PAGE */}
   <Link
-    to="/iso-training/iso-31000-risk-management"
+    href="/iso-training/iso-31000-risk-management"
     onClick={() => setOpen(false)}
     className="block text-sm font-semibold text-foreground hover:text-gold"
   >
@@ -695,7 +692,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
 
   {/* ONLINE ISO TRAINING — DIRECT PAGE */}
   <Link
-    to="/iso-training/online-iso-training"
+    href="/iso-training/online-iso-training"
     onClick={() => setOpen(false)}
     className="block text-sm font-semibold text-foreground hover:text-gold"
   >
@@ -757,7 +754,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
 
   <div className="mt-2 ml-4 flex flex-col gap-2">
     <Link
-      to="/courses/diploma-cyber-security"
+      href="/courses/diploma-cyber-security"
       onClick={() => setOpen(false)}
       className="text-sm text-muted-foreground hover:text-gold"
     >
@@ -765,7 +762,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
     </Link>
 
     <Link
-      to="/courses/diploma-machine-learning"
+      href="/courses/diploma-machine-learning"
       onClick={() => setOpen(false)}
       className="text-sm text-muted-foreground hover:text-gold"
     >
@@ -773,7 +770,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
     </Link>
 
     <Link
-      to="/courses/diploma-network-security"
+      href="/courses/diploma-network-security"
       onClick={() => setOpen(false)}
       className="text-sm text-muted-foreground hover:text-gold"
     >
@@ -781,7 +778,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
     </Link>
 
     <Link
-      to="/courses/diploma-web-security"
+      href="/courses/diploma-web-security"
       onClick={() => setOpen(false)}
       className="text-sm text-muted-foreground hover:text-gold"
     >
@@ -789,7 +786,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
     </Link>
 
     <Link
-      to="/courses/diploma-advanced-cloud-network-security"
+      href="/courses/diploma-advanced-cloud-network-security"
       onClick={() => setOpen(false)}
       className="text-sm text-muted-foreground hover:text-gold"
     >
@@ -806,63 +803,63 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
   </summary>
 
   <div className="mt-2 ml-4 flex flex-col gap-2">
-    <Link to="/courses/ethical-hacking" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/ethical-hacking" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Ethical Hacking
     </Link>
 
-    <Link to="/courses/bug-bounty" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/bug-bounty" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Bug Bounty
     </Link>
 
-    <Link to="/courses/cyber-security-professional" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/cyber-security-professional" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Cyber Security Professional
     </Link>
 
-    <Link to="/courses/cyber-psychology" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/cyber-psychology" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Cyber Psychology
     </Link>
 
-    <Link to="/courses/web-application-penetration-tester" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/web-application-penetration-tester" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Web Application Penetration Tester
     </Link>
 
-    <Link to="/courses/network-penetration-tester" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/network-penetration-tester" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Network Penetration Tester
     </Link>
 
-    <Link to="/courses/android-penetration-tester" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/android-penetration-tester" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Android Penetration Tester
     </Link>
 
-    <Link to="/courses/iot-penetration-tester" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/iot-penetration-tester" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       IoT Penetration Tester
     </Link>
 
-    <Link to="/courses/certified-penetration-tester" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/certified-penetration-tester" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Certified Penetration Tester
     </Link>
 
-    <Link to="/courses/reverse-engineering" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/reverse-engineering" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Reverse Engineering
     </Link>
 
-    <Link to="/courses/computer-forensic-training" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/computer-forensic-training" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Computer Forensic Training
     </Link>
 
-    <Link to="/courses/cissp-training" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/cissp-training" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       CISSP Training
     </Link>
 
-    <Link to="/courses/soc-analyst-training" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/soc-analyst-training" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       SOC Analyst Training
     </Link>
 
-    <Link to="/courses/penetration-testing" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/penetration-testing" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Penetration Testing
     </Link>
 
-    <Link to="/courses/advanced-penetration-testing-red-teaming" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/advanced-penetration-testing-red-teaming" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Advanced Penetration Testing & Red Teaming
     </Link>
   </div>
@@ -876,19 +873,19 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
   </summary>
 
   <div className="mt-2 ml-4 flex flex-col gap-2">
-    <Link to="/courses/artificial-intelligence" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/artificial-intelligence" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Artificial Intelligence
     </Link>
 
-    <Link to="/courses/machine-learning-python" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/machine-learning-python" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Machine Learning with Python
     </Link>
 
-    <Link to="/courses/data-science-python" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/data-science-python" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Data Science with Python
     </Link>
 
-    <Link to="/courses/embedded-system-robotics" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/embedded-system-robotics" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Embedded System & Robotics
     </Link>
   </div>
@@ -902,11 +899,11 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
   </summary>
 
   <div className="mt-2 ml-4 flex flex-col gap-2">
-    <Link to="/courses/ccna" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/ccna" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       CCNA
     </Link>
 
-    <Link to="/courses/ccnp" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/ccnp" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       CCNP
     </Link>
   </div>
@@ -920,15 +917,15 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
   </summary>
 
   <div className="mt-2 ml-4 flex flex-col gap-2">
-    <Link to="/courses/aws-basic-training" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/aws-basic-training" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       AWS Basic Training
     </Link>
 
-    <Link to="/courses/microsoft-azure-training" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/microsoft-azure-training" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Microsoft Azure Training
     </Link>
 
-    <Link to="/courses/advance-cloud-computing" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/advance-cloud-computing" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Advance Cloud Computing
     </Link>
   </div>
@@ -942,38 +939,38 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
   </summary>
 
   <div className="mt-2 ml-4 flex flex-col gap-2">
-    <Link to="/courses/python-programming" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/python-programming" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Python Programming
     </Link>
 
-    <Link to="/courses/django-developer" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/django-developer" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Django Developer
     </Link>
 
-    <Link to="/courses/java-programming" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/java-programming" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Java Programming
     </Link>
 
-    <Link to="/courses/android-developer" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/android-developer" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Android Developer
     </Link>
 
-    <Link to="/courses/devops-certification" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/devops-certification" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       DevOps Certification
     </Link>
 
-    <Link to="/courses/secure-full-stack-developer" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/secure-full-stack-developer" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       Secure Full Stack Developer
     </Link>
 
-    <Link to="/courses/iot-development" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
+    <Link href="/courses/iot-development" onClick={() => setOpen(false)} className="text-sm text-muted-foreground hover:text-gold">
       IoT Development
     </Link>
   </div>
 </details>
               </div>
             </details>
-            <NavLink to="/contact">Contact</NavLink>
+            <NavLink href="/contact">Contact</NavLink>
             {/* <NavLink to="/training-login">
   Training Login
 </NavLink> */}

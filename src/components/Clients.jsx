@@ -1,3 +1,4 @@
+"use client";
 // import { motion } from "framer-motion";
 
 import { useRef } from "react";
@@ -132,26 +133,26 @@ const LogoRow = ({ logos, reverse = false }) => {
             // className="flex h-24 min-w-[190px] items-center justify-center rounded-xl border border-border bg-white px-4 shadow-sm"
             className="flex h-20 min-w-[160px] items-center justify-center rounded-xl border border-border bg-white px-3 shadow-sm"
           >
-            <img
-              src={logo}
-              alt={`Client ${index}`}
-//               className={`object-contain transition-transform duration-300 hover:scale-110 ${
-//                 [aloft, epc, asiaeo, mobility, janatics].includes(logo)
-//                   // ? "max-h-24 w-auto"
-//                   // : "max-h-16 w-auto"
-//                   ? "max-h-20 w-auto"
-// : "max-h-14 w-auto"
-//               }`}
-className={`object-contain transition-transform duration-300 hover:scale-110 ${
-  [accumed, steam, cygnus, salzer, isid, innovex].includes(logo)
-  ? "max-h-10 w-auto"
-    : [aloft, epc, asiaeo, mobility, janatics, iit, vit, amritha, courtyard, barani].includes(logo)
-    ? "max-h-24 w-auto"
-    : "max-h-18 w-auto"
-}`}
-              loading="lazy"
-              decoding="async"
-            />
+           <img 
+  src={logo.src} 
+  alt={`Client ${index}`}
+//               className={`object-contain transition-transform duration-300 hover:scale-110 ${ 
+//                 [aloft, epc, asiaeo, mobility, janatics].includes(logo) 
+//                   // ? "max-h-24 w-auto" 
+//                   // : "max-h-16 w-auto" 
+//                   ? "max-h-20 w-auto" 
+// : "max-h-14 w-auto" 
+//               }`} 
+className={`object-contain transition-transform duration-300 hover:scale-110 ${ 
+  [accumed, steam, cygnus, salzer, isid, innovex].includes(logo) 
+  ? "max-h-10 w-auto" 
+    : [aloft, epc, asiaeo, mobility, janatics, iit, vit, amritha, courtyard, barani].includes(logo) 
+    ? "max-h-24 w-auto" 
+    : "max-h-18 w-auto" 
+}`} 
+  loading="lazy" 
+  decoding="async" 
+/>
           </div>
         ))}
       </div>

@@ -1,3 +1,4 @@
+"use client";
 // import { useEffect, useRef } from "react";
 import { useEffect, useRef, useState } from "react";
 
@@ -64,13 +65,6 @@ const PARTICLE_COUNT = isMobile ? 35 : 65;
 
         // this.radius = Math.random() * 2 + 1.5;
         this.radius = Math.random() * 1.2 + 1;
-
-//         this.offsetX = 0;
-// this.offsetY = 0;
-// this.velX = 0;
-// this.velY = 0;
-// this.targetOffsetX = 0;
-// this.targetOffsetY = 0;
 this.offsetX = 0;
 this.offsetY = 0;
 this.velX = 0;
@@ -283,15 +277,6 @@ function drawMouseConnections() {
   animationId = requestAnimationFrame(animate);
 }
     animate();
-
-    // return () => {
-    //   cancelAnimationFrame(animationId);
-
-    //   window.removeEventListener("resize", resizeCanvas);
-
-    //   canvas.removeEventListener("mousemove", mouseMove);
-    //   canvas.removeEventListener("mouseleave", mouseLeave);
-    // };
     return () => {
   cancelAnimationFrame(animationId);
 

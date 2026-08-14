@@ -1,3 +1,4 @@
+"use client";
 import useReveal from "@/hooks/useReveal";
 import PointerNetworkCanvas from "@/components/PointerNetworkCanvas";
 import { useEffect, useState } from "react";

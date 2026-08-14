@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import Link from "next/link";
 import EnquiryForm from "./EnquiryForm";
 // import pageHeroBg from "@/assets/page-hero-bg.webp";
 // import tisaxBg from "@/assets/TISAX.webp";
@@ -12,8 +13,25 @@ import EnquiryForm from "./EnquiryForm";
 import TisaxSections from "./TisaxSections";
 
 export default function ServicePage({ service }) {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `${service.code} — ${service.title}`,
+    description: service.short,
+    provider: {
+      "@type": "Organization",
+      name: "Hawksberg International",
+      url: "https://www.hawksberginternational.com",
+    },
+    url: `https://www.hawksberginternational.com/services/${service.slug}`,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       {/* <section className="relative overflow-hidden gradient-hero py-20 text-brand-foreground"> */}
   {/* <section
   className={`relative overflow-hidden py-20 text-brand-foreground ${
@@ -34,10 +52,13 @@ export default function ServicePage({ service }) {
 > */}
 <section
   className="relative overflow-hidden bg-cover bg-center py-20 text-brand-foreground"
- style={{
-  backgroundImage: `url(${service.heroImage})`,
-}}
 >
+
+<img
+  src={service.heroImage?.src || service.heroImage}
+  alt=""
+  className="absolute inset-0 h-full w-full object-cover"
+/>
 
 {[
   "iso-27001",
@@ -53,7 +74,7 @@ export default function ServicePage({ service }) {
   <div className="absolute inset-0 bg-black/75" />
 )}
         <div className="absolute inset-0 grid-pattern opacity-10" />
-        <div className="container-x relative">
+        <div className="container-x relative z-10">
           <p className="text-xs uppercase tracking-[0.3em] text-gold">
             ISO Consulting Services
           </p>
@@ -83,9 +104,12 @@ export default function ServicePage({ service }) {
             {service.short}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/contact" className="btn-primary">
+            {/* <Link to="/contact" className="btn-primary">
               Get Free Evaluation →
-            </Link>
+            </Link> */}
+            <Link href="/contact" className="btn-primary">
+  Get Free Evaluation →
+</Link>
           </div>
         </div>
       </section>

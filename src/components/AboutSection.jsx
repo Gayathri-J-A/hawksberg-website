@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+"use client";
+import Link from "next/link";
 import { stats } from "@/data/site";
 import managementPartnerImg from "@/assets/management-partner.webp";
 import useReveal from "@/hooks/useReveal";
@@ -22,7 +24,7 @@ export default function AboutSection() {
             {/* <div className="relative aspect-[4/5] overflow-hidden rounded-xl"> */}
            <div className="relative overflow-hidden rounded-xl h-[620px] lg:h-[770px]">
               <img
-  src={managementPartnerImg}
+src={managementPartnerImg.src}
   alt="Hawksberg consulting team — your management partner"
   loading="eager"
   decoding="async"
@@ -104,7 +106,10 @@ export default function AboutSection() {
           <div className="mt-8 flex flex-wrap gap-4">
             {/* <Link to="/about" className="btn-primary">More About Us</Link> */}
             {/* <Link to="/contact" className="btn-outline">Talk to an Expert</Link> */}
-            <Link to="/contact" className="btn-primary">Talk to an Expert</Link>
+            {/* <Link to="/contact" className="btn-primary">Talk to an Expert</Link> */}
+            <Link href="/contact" className="btn-primary">
+  Talk to an Expert
+</Link>
           </div>
         </div>
       </div>

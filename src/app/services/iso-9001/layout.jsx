@@ -1,0 +1,2 @@
+export const metadata = { title: "ISO 9001 Consulting", description: "ISO 9001 quality management system consulting information from Hawksberg International.", alternates: { canonical: "/services/iso-9001" } };
+export default function Layout({ children }) { return children; }

@@ -257,8 +257,7 @@
 }
 
 html,
-body,
-#root {
+body {
   width: 100%;
   max-width: 100%;
   overflow-x: clip;
@@ -267,3 +266,239 @@ body,
 body {
   position: relative;
 }
+
+/* Microsoft Edge password reveal button */
+input::-ms-reveal {
+  display: none !important;
+}
+
+input::-ms-clear {
+  display: none !important;
+}
+
+/* Chromium Edge */
+input::-webkit-credentials-auto-fill-button {
+  visibility: hidden !important;
+  display: none !important;
+}
+
+
+/* =========================================================
+   TISAX PREMIUM INTERACTIVE CARDS
+========================================================= */
+
+.tisax-card{
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    transform-style: preserve-3d;
+    transform: perspective(1200px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+
+    transition:
+        transform .18s ease,
+        box-shadow .35s ease,
+        border-color .35s ease,
+        background .35s ease;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    will-change: transform;
+
+    cursor:pointer;
+}
+
+/* Premium shadow */
+
+.tisax-card:hover{
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.30),
+        0 0 50px rgba(212,175,55,.10),
+        0 0 120px rgba(30,64,175,.18);
+
+    border-color:rgba(212,175,55,.45);
+}
+
+/* Gold animated top line */
+
+.tisax-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:0;
+    height:3px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #c69417,
+        #ffd66b,
+        #c69417
+    );
+
+    transition:width .45s ease;
+
+    z-index:6;
+}
+
+.tisax-card:hover::before{
+
+    width:100%;
+}
+
+/* Mouse spotlight */
+
+.tisax-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+    height:420px;
+
+    left:var(--mx,50%);
+    top:var(--my,50%);
+
+    transform:
+        translate(-50%,-50%);
+
+    background:
+
+    radial-gradient(
+        circle,
+        rgba(255,255,255,.14),
+        rgba(212,175,55,.10),
+        transparent 72%
+    );
+
+    opacity:0;
+
+    transition:
+        opacity .35s ease;
+
+    pointer-events:none;
+
+    z-index:0;
+}
+
+.tisax-card:hover::after{
+
+    opacity:1;
+}
+
+/* Shine */
+
+.tisax-shine{
+
+    position:absolute;
+
+    inset:-50%;
+
+    background:
+
+    linear-gradient(
+        115deg,
+        transparent 35%,
+        rgba(255,255,255,.18) 50%,
+        transparent 65%
+    );
+
+    transform:
+        translateX(-130%) rotate(18deg);
+
+    transition:
+        transform .9s ease;
+
+    pointer-events:none;
+
+    z-index:2;
+}
+
+.tisax-card:hover .tisax-shine{
+
+    transform:
+        translateX(130%) rotate(18deg);
+}
+
+/* Card Content */
+
+.tisax-content{
+
+    position:relative;
+
+    z-index:5;
+
+    transform:
+        translateZ(40px);
+
+}
+
+/* Inner blocks */
+
+.inner-card{
+
+    transition:
+        transform .35s ease,
+        background .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(5px);
+}
+
+.inner-card:hover{
+
+    transform:
+        translateY(-7px);
+
+    background:
+        rgba(255,255,255,.08);
+
+    border-color:
+        rgba(212,175,55,.30);
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.18);
+}
+
+/* Icons */
+
+.inner-card svg{
+
+    transition:
+        transform .35s ease;
+}
+
+.inner-card:hover svg{
+
+    transform:
+        scale(1.12)
+        rotate(-8deg);
+}
+
+/* Text */
+
+.tisax-card h2,
+.tisax-card h3,
+.tisax-card h4{
+
+    transition:
+        color .3s ease;
+}
+
+.tisax-card:hover h2,
+.tisax-card:hover h3,
+.tisax-card:hover h4{
+
+    color:#FFD66B;
+}
+

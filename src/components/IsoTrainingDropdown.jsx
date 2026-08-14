@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function IsoTrainingDropdown() {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -119,7 +121,6 @@ export default function IsoTrainingDropdown() {
       onMouseLeave={() => setActiveCategory(null)}
     >
       <div className="relative w-72 rounded-lg border border-gray-200 bg-white shadow-2xl">
-
         {/* Lead + Internal Auditor */}
         {categories.map((category, index) => (
           <div
@@ -128,6 +129,7 @@ export default function IsoTrainingDropdown() {
             onMouseEnter={() => setActiveCategory(index)}
           >
             <button
+              type="button"
               className={`flex w-full items-center justify-between px-6 py-4 text-left text-sm transition ${
                 activeCategory === index
                   ? "bg-[#D8A43C] text-white"
@@ -148,11 +150,12 @@ export default function IsoTrainingDropdown() {
             </button>
 
             {activeCategory === index && (
-              <div className="absolute left-full top-0 ml-1 max-h-[70vh] w-80 overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-2xl">
+              <div className="absolute left-full top-0 ml-1 max-h-[70vh] w-80 overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-2xl"
+              >
                 {category.items.map((item) => (
                   <Link
                     key={item.to}
-                    to={item.to}
+                    href={item.to}
                     className="block border-b border-gray-100 px-5 py-4 text-sm text-gray-700 hover:bg-gray-100 last:border-b-0"
                   >
                     {item.label}
@@ -165,7 +168,7 @@ export default function IsoTrainingDropdown() {
 
         {/* ISO Foundation */}
         <Link
-          to="/iso-training/iso-foundation"
+          href="/iso-training/iso-foundation"
           className="flex w-full items-center px-6 py-4 text-left text-sm text-gray-900 hover:bg-gray-100"
         >
           ISO Foundation
@@ -173,7 +176,7 @@ export default function IsoTrainingDropdown() {
 
         {/* ISO 31000 */}
         <Link
-          to="/iso-training/iso-31000-risk-management"
+          href="/iso-training/iso-31000-risk-management"
           className="flex w-full items-center px-6 py-4 text-left text-sm text-gray-900 hover:bg-gray-100"
         >
           ISO 31000 Risk Management
@@ -181,7 +184,7 @@ export default function IsoTrainingDropdown() {
 
         {/* Online ISO Training */}
         <Link
-          to="/iso-training/online-iso-training"
+          href="/iso-training/online-iso-training"
           className="flex w-full items-center px-6 py-4 text-left text-sm text-gray-900 hover:bg-gray-100"
         >
           Online ISO Training

@@ -1,13 +1,15 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+"use client";
+import Link from "next/link";
 
-import { serviceMeta as ISO9001 } from "@/pages/services/ISO9001";
-import { serviceMeta as ISO14001 } from "@/pages/services/ISO14001";
-import { serviceMeta as ISO45001 } from "@/pages/services/ISO45001";
-import { serviceMeta as ISO50001 } from "@/pages/services/ISO50001";
-import { serviceMeta as IATF16949 } from "@/pages/services/IATF16949";
-import { serviceMeta as TISAX } from "@/pages/services/TISAX";
-// import { serviceMeta as ISO27001 } from "@/pages/services/ISO27001";
-import { serviceMeta as DPDP } from "@/pages/services/DPDP";
+import { serviceMeta as ISO9001 } from "@/app/services/iso-9001/page";
+import { serviceMeta as ISO14001 } from "@/app/services/iso-14001/page";
+import { serviceMeta as ISO45001 } from "@/app/services/iso-45001/page";
+import { serviceMeta as ISO50001 } from "@/app/services/iso-50001/page";
+import { serviceMeta as IATF16949 } from "@/app/services/iatf-16949/page";
+import { serviceMeta as TISAX } from "@/app/services/tisax/page";
+// import { serviceMeta as ISO27001 } from "@/app/services/iso-27001/page";
+import { serviceMeta as DPDP } from "@/app/services/dpdp/page";
 
 import useReveal from "@/hooks/useReveal";
 
@@ -17,7 +19,8 @@ function ServiceCard({ s, index }) {
   return (
     <Link
       ref={ref}
-      to={s.to}
+      // to={s.to}
+      href={s.to}
       style={{
         transitionDelay: `${(index % 3) * 90}ms`,
       }}
@@ -35,13 +38,13 @@ function ServiceCard({ s, index }) {
         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
       /> */}
 
-      <img
-  src={s.image}
-  alt={s.code || s.label}
-  loading="lazy"
-  decoding="async"
-  width={1024}
-  height={768}
+   <img 
+  src={s.image.src} 
+  alt={s.code || s.label} 
+  loading="lazy" 
+  decoding="async" 
+  width={1024} 
+  height={768} 
   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
 />
 

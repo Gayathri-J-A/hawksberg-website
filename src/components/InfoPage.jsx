@@ -1,10 +1,7 @@
-import { Link } from "react-router-dom";
-import gdprBg from "@/assets/gdpr.webp";
-import socConsultingBg from "@/assets/soc consulting.webp";
-import vaptImg from "@/assets/vapt.webp";
-import webImg from "@/assets/web.webp";
-import mobileImg from "@/assets/mobile.webp";
-import networkImg from "@/assets/network.webp";
+// import { Link } from "react-router-dom";
+import Link from "next/link";
+
+const getAssetUrl = (asset) => asset?.src || asset;
 
 export default function InfoPage({ page }) {
   return (
@@ -14,31 +11,21 @@ export default function InfoPage({ page }) {
       {/* Hero */}
 <section
   className={`relative overflow-hidden bg-cover bg-center py-24 text-brand-foreground`}
- style={{
-  backgroundImage: `url(${
-    page.slug === "gdpr"
-      ? gdprBg
-      : page.slug === "soc-consulting"
-      ? socConsultingBg
-      : page.slug === "vapt"
-      ? vaptImg
-      : page.slug === "web-pentest"
-      ? webImg
-      : page.slug === "mobile-pentest"
-      ? mobileImg
-      : page.slug === "network-pentest"
-      ? networkImg
-      : ""
-  })`,
-}}
 >
+  {page.backgroundImage && (
+    <img
+      src={getAssetUrl(page.backgroundImage)}
+      alt=""
+      className="absolute inset-0 h-full w-full object-cover"
+    />
+  )}
   {/* Dark Overlay */}
   <div className="absolute inset-0 bg-black/70" />
 
   {/* Pattern */}
   <div className="absolute inset-0 grid-pattern opacity-15" />
 
-  <div className="container-x relative text-center">
+  <div className="container-x relative z-10 text-center">
     <h1 className="font-display text-4xl uppercase tracking-wide md:text-5xl">
       {page.hero}
     </h1>
@@ -53,6 +40,7 @@ export default function InfoPage({ page }) {
         {/* <div className="container-x grid gap-10 lg:grid-cols-2 lg:items-center"> */}
         <div className="container-x grid gap-10 lg:grid-cols-2 lg:items-start">
           {/* <div className="reveal overflow-hidden rounded-xl shadow-elegant"> */}
+          {page.lead?.image && (
           <div className="reveal overflow-hidden rounded-xl shadow-elegant h-[320px] lg:h-[420px]">
             {/* <img
               src={page.lead.image}
@@ -61,14 +49,14 @@ export default function InfoPage({ page }) {
               className="h-full w-full object-cover"
             /> */}
             <img
-  src={page.lead.image}
+  src={getAssetUrl(page.lead.image)}
   alt={page.lead.title}
-  loading="eager"
-  fetchPriority="high"
+  loading="lazy"
   decoding="async"
   className="h-full w-full object-cover object-center"
 />
           </div>
+          )}
           <div>
             <h2 className="font-display text-3xl text-foreground md:text-4xl">
               {page.lead.title}
@@ -87,7 +75,7 @@ export default function InfoPage({ page }) {
     {p}
   </p>
 ))}
-            <Link to="/contact" className="btn-primary mt-8 inline-block">
+            <Link href="/contact" className="btn-primary mt-8 inline-block">
               Get Free Evaluation & Get Started Today!
             </Link>
           </div>
@@ -131,7 +119,7 @@ export default function InfoPage({ page }) {
                 {panel.image && (
                   <div className="mt-6 overflow-hidden rounded-lg">
                     <img
-                      src={panel.image}
+                      src={getAssetUrl(panel.image)}
                       alt={panel.title}
                       loading="lazy"
                       className="h-56 w-full object-cover"
@@ -175,7 +163,7 @@ export default function InfoPage({ page }) {
 
         {page.content.image && (
           <img
-            src={page.content.image}
+            src={getAssetUrl(page.content.image)}
             alt={page.content.title}
             // className="mt-10 h-[430px] w-full rounded-2xl object-cover"
             className="mt-6 h-[200px] w-full rounded-2xl object-cover"
@@ -217,7 +205,7 @@ export default function InfoPage({ page }) {
                 ))}
               </div>
               <div className="mt-10 text-center">
-                <Link to="/contact" className="btn-primary inline-block">
+                <Link href="/contact" className="btn-primary inline-block">
                   Get Free Evaluation & Get Started Today!
                 </Link>
               </div>

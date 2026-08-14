@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const slides = [
@@ -22,7 +22,7 @@ const slides = [
     title: "Our Trainings",
     sub: "Hands-on programs in Ethical Hacking, Bug Bounty, CCNA, Python, Java and Penetration Testing — by industry professionals.",
     cta: "View Trainings",
-    to: "/training/ethical-hacking",
+    to: "/courses/ethical-hacking",
   },
 ];
 
@@ -76,7 +76,7 @@ export default function Hero() {
             {s.sub}
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link to={s.to} className="btn-primary">
+            <Link href={s.to} className="btn-primary">
               {s.cta} →
             </Link>
             {/* <Link to="/contact" className="btn-outline">

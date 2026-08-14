@@ -1,0 +1,2 @@
+export const metadata = { title: "ISO 45001 Consulting", description: "ISO 45001 occupational health and safety management consulting information from Hawksberg International.", alternates: { canonical: "/services/iso-45001" } };
+export default function Layout({ children }) { return children; }

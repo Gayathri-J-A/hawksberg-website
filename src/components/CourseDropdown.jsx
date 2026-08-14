@@ -2,7 +2,7 @@ import { useState } from "react";
 // import { Link } from "react-router-dom";
 // import { courseMenu } from "@/data/site";
 // import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 
 export default function CourseDropdown() {
@@ -233,19 +233,26 @@ export default function CourseDropdown() {
 
             {activeCategory === index && (
               // <div className="absolute left-full top-0 ml-1 w-80 rounded-lg border border-gray-200 bg-white shadow-2xl">
-              <div className="absolute left-full top-0 ml-1 max-h-[70vh] w-72 overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-2xl">
+              <div className="absolute left-full top-0 ml-1 max-h-[70vh] w-72 overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-2xl"
+              >
 
 
-                {category.items.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setActiveCategory(null)}
-                    className="block border-b border-gray-100 px-4 py-3 text-sm text-gray-700 transition hover:bg-gray-100 last:border-b-0"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+               {category.items.map((item) => (
+  // <Link 
+  //   key={item.path} 
+  //   to={item.path} 
+  //   onClick={() => setActiveCategory(null)} 
+  //   className="block border-b border-gray-100 px-4 py-3 text-sm text-gray-700 transition hover:bg-gray-100 last:border-b-0" 
+  // > 
+  <Link 
+    key={item.path} 
+    href={item.path} 
+    onClick={() => setActiveCategory(null)}
+    className="block w-full border-b border-gray-100 px-4 py-3 text-sm leading-5 text-gray-700 transition hover:bg-gray-100 last:border-b-0"
+  > 
+    {item.label} 
+  </Link> 
+))}
 
 
               </div>

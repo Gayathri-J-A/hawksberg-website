@@ -1,0 +1,2 @@
+export const metadata = { title: "TISAX Consulting", description: "TISAX information security assessment and consulting information from Hawksberg International.", alternates: { canonical: "/services/tisax" } };
+export default function Layout({ children }) { return children; }

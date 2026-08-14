@@ -27,14 +27,15 @@ export default function CompanyExperience() {
           ref={imgRef}
           className={`overflow-hidden rounded-xl shadow-elegant reveal-on-scroll reveal-left ${imgShown ? "is-visible" : ""}`}
         >
-          <img
-            src={companyExperienceImg}
-            alt="Hawksberg International expert team"
-            loading="lazy"
-            width={1280}
-            height={960}
-            className="h-full w-full object-cover transition-transform duration-[1200ms] hover:scale-110"
-          />
+        <img 
+  src={companyExperienceImg.src} 
+  alt="Hawksberg International expert team" 
+  loading="lazy" 
+  decoding="async"
+  width={1280} 
+  height={960} 
+  className="h-full w-full object-cover transition-transform duration-[1200ms] hover:scale-110" 
+/>
         </div>
 
         <div

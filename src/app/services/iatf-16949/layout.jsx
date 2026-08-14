@@ -1,0 +1,2 @@
+export const metadata = { title: "IATF 16949 Consulting", description: "IATF 16949 quality management consulting information from Hawksberg International.", alternates: { canonical: "/services/iatf-16949" } };
+export default function Layout({ children }) { return children; }

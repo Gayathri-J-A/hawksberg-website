@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import Link from "next/link";
 import useReveal from "@/hooks/useReveal";
 
 // =====================================================
@@ -68,7 +69,8 @@ function TrainingCard({ training, index }) {
   return (
     <Link
       ref={ref}
-      to={`/courses/${training.slug}`}
+      // to={`/courses/${training.slug}`}
+      href={`/courses/${training.slug}`}
       style={{
         transitionDelay: `${(index % 3) * 90}ms`,
       }}
@@ -77,14 +79,15 @@ function TrainingCard({ training, index }) {
       }`}
     >
       {/* Image */}
-      <img
-        src={training.image}
-        alt={training.title}
-        loading="lazy"
-        width={1024}
-        height={768}
-        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-      />
+     <img
+  src={training.image.src}
+  alt={training.title}
+  loading="lazy"
+  decoding="async"
+  width={1024}
+  height={768}
+  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+/>
 
       {/* Dark gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />

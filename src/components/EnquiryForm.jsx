@@ -1,9 +1,10 @@
+"use client";
 import { useState } from "react";
 
 const API_URL =
-  import.meta.env.VITE_API_URL ||
+  process.env.NEXT_PUBLIC_API_URL ||
   // "https://profound-commitment-production-2aae.up.railway.app";
-  "http://127.0.0.1:8000";
+  "http://127.0.0.1:8000/api";
   "https://hawksberg-backend-production.up.railway.app";
 
 export default function EnquiryForm({
@@ -44,7 +45,7 @@ export default function EnquiryForm({
     // setSending(false);
     // setSent(true);
 
-    fetch(`${API_URL}/api/enquiries/`, {
+    fetch(`${API_URL}/enquiries/`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",

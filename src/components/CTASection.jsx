@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+"use client";
 import ctaImage from "@/assets/cta-office.webp"; // <-- unga image name
 
 export default function CTASection() {
@@ -9,11 +10,11 @@ export default function CTASection() {
       {/* <div className="relative overflow-hidden rounded-[28px] md:rounded-[36px] h-[360px] md:h-[520px]"> */}
       <div className="relative overflow-hidden w-full h-[360px] md:h-[450px]">
         {/* Background */}
-        <img
-          src={ctaImage}
-          alt="Hawksberg International"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+        <img 
+  src={ctaImage.src}
+  alt="Hawksberg International"
+  className="absolute inset-0 h-full w-full object-cover"
+/>
 
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/45" />

@@ -1,0 +1,2 @@
+export const metadata = { title: "Contact Hawksberg International", description: "Contact Hawksberg International about ISO consultancy, security audits and professional training programs.", alternates: { canonical: "/contact" } };
+export default function Layout({ children }) { return children; }
