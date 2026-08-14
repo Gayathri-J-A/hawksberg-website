@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import EnquiryForm from "@/components/EnquiryForm";
 import Layout from "@/components/Layout";
 
