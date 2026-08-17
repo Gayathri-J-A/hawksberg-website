@@ -3,29 +3,48 @@ const nextConfig = {
   reactStrictMode: true,
   devIndicators: false,
   allowedDevOrigins: ["192.168.1.4"],
-
+  // async redirects() {
+  //   return [
+  //      // Redirect non-www domain to www domain
+  //   {
+  //     source: "/:path*",
+  //     has: [
+  //       {
+  //         type: "host",
+  //         value: "hawksberginternational.com",
+  //       },
+  //     ],
+  //     destination: "https://www.hawksberginternational.com/:path*",
+  //     permanent: true,
+  //   },
+  //     {
+  //       source: "/services",
+  //       destination: "/ISO-consulting-services",
+  //       permanent: false,
+  //     },
+  //   ];
+  // },
   async redirects() {
-    return [
-      {
-        source: "/:path*",
-        has: [
-          {
-            type: "host",
-            value: "hawksberginternational.com",
-          },
-        ],
-        destination: "https://www.hawksberginternational.com/:path*",
-        permanent: true,
-      },
+  return [
+    {
+      source: "/:path*",
+      has: [
+        {
+          type: "host",
+          value: "hawksberginternational.com",
+        },
+      ],
+      destination: "https://www.hawksberginternational.com/:path*",
+      permanent: true,
+    },
 
-      {
-        source: "/services",
-        destination: "/ISO-consulting-services",
-        permanent: false,
-      },
-    ];
-  },
-
+    {
+      source: "/services",
+      destination: "/ISO-consulting-services",
+      permanent: false,
+    },
+  ];
+},
   async rewrites() {
     return [
       {
@@ -34,7 +53,6 @@ const nextConfig = {
       },
     ];
   },
-
   async headers() {
     return [
       {
