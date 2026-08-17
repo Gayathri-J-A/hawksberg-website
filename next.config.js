@@ -26,6 +26,7 @@ const nextConfig = {
   // },
   async redirects() {
   return [
+    // non-www -> www
     {
       source: "/:path*",
       has: [
@@ -38,6 +39,7 @@ const nextConfig = {
       permanent: true,
     },
 
+    // Existing Services redirect - keep this
     {
       source: "/services",
       destination: "/ISO-consulting-services",
