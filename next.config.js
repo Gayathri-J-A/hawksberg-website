@@ -3,6 +3,23 @@ const nextConfig = {
   reactStrictMode: true,
   devIndicators: false,
   allowedDevOrigins: ["192.168.1.4"],
+  async redirects() {
+    return [
+      {
+        source: "/services",
+        destination: "/ISO-consulting-services",
+        permanent: false,
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/ISO-consulting-services",
+        destination: "/services",
+      },
+    ];
+  },
   async headers() {
     return [
       {
