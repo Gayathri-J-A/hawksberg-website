@@ -590,7 +590,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
             </details> */}
             <details className="group">
   <summary className="cursor-pointer text-sm font-medium text-foreground/80">
-    Services ▾
+    Services
   </summary>
 
   <div className="mt-2 space-y-2 pl-3">
