@@ -1,7 +1,12 @@
 import { NextResponse } from "next/server";
 
 export function proxy(request) {
-  const hostname = request.headers.get("host")?.split(":")[0];
+  const host =
+    request.headers.get("x-forwarded-host") ||
+    request.headers.get("host") ||
+    "";
+
+  const hostname = host.split(":")[0].toLowerCase();
 
   if (hostname === "hawksberginternational.com") {
     const url = request.nextUrl.clone();
@@ -16,5 +21,7 @@ export function proxy(request) {
 }
 
 export const config = {
-  matcher: "/:path*",
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico).*)",
+  ],
 };
