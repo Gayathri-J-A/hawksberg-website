@@ -367,7 +367,8 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
             {/* <button className="text-sm font-medium tracking-wide text-foreground/80 transition-colors hover:text-gold">
               Services ▾
             </button> */}
-          <button
+          <Link
+  href="/ISO-consulting-services"
   className={`text-[15px] font-bold tracking-wide transition-colors hover:text-gold ${
     isHome && !scrolled
       ? "text-white"
@@ -375,7 +376,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
   }`}
 >
   Services ▾
-</button>
+</Link>
             {services && (
               <div className="absolute left-1/2 top-full -translate-x-1/2 pt-3">
                 <div className="reveal flex overflow-hidden rounded-lg border border-border bg-white text-black shadow-elegant">
@@ -589,7 +590,9 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
             </details> */}
             <details className="group">
   <summary className="cursor-pointer text-sm font-medium text-foreground/80">
-    Services
+    <Link href="/ISO-consulting-services" onClick={() => setOpen(false)}>
+      Services ▾
+    </Link>
   </summary>
 
   <div className="mt-2 space-y-2 pl-3">
