@@ -2,7 +2,7 @@
 "use client";
 import Link from "next/link";
 import { stats } from "@/data/site";
-import managementPartnerImg from "@/assets/management-partner.webp";
+import isoConsultantImg from "@/assets/iso-consultant.webp";
 import useReveal from "@/hooks/useReveal";
 
 export default function AboutSection() {
@@ -24,8 +24,8 @@ export default function AboutSection() {
             {/* <div className="relative aspect-[4/5] overflow-hidden rounded-xl"> */}
            <div className="relative overflow-hidden rounded-xl h-[620px] lg:h-[770px]">
               <img
-src={managementPartnerImg.src}
-  alt="Hawksberg consulting team — your management partner"
+                src={isoConsultantImg.src}
+  alt="ISO Consultant"
   loading="eager"
   decoding="async"
   width={1024}

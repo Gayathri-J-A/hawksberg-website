@@ -1,4 +1,4 @@
-import { companyExperienceImg } from "@/data/site";
+import { isoCertificationTrainingImg } from "@/data/site";
 import useReveal from "@/hooks/useReveal";
 
 export default function CompanyExperience() {
@@ -28,8 +28,8 @@ export default function CompanyExperience() {
           className={`overflow-hidden rounded-xl shadow-elegant reveal-on-scroll reveal-left ${imgShown ? "is-visible" : ""}`}
         >
         <img 
-  src={companyExperienceImg.src} 
-  alt="Hawksberg International expert team" 
+  src={isoCertificationTrainingImg.src} 
+  alt="ISO Certification Training" 
   loading="lazy" 
   decoding="async"
   width={1280} 

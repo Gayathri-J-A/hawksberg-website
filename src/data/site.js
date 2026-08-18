@@ -15,8 +15,8 @@ export const company = {
 };
 
 
-import companyExperienceImg from "@/assets/company-experience.webp";
-export { companyExperienceImg };
+import isoCertificationTrainingImg from "@/assets/iso-certification-training.webp";
+export { isoCertificationTrainingImg };
 
 
 
