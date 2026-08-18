@@ -258,8 +258,11 @@ function ServiceCard({ service, dark = false }) {
 
 export default function ServicesPage() {
   return (
-    <Layout>
-      <main>
+    <>
+      <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta name="language" content="English" />
+      <Layout>
+        <main>
         <section
           className="relative overflow-hidden bg-brand bg-cover bg-center bg-no-repeat py-24 text-white md:py-32"
           style={{ backgroundImage: `url(${consultingServiceImage.src})` }}
@@ -387,7 +390,8 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
-      </main>
-    </Layout>
+        </main>
+      </Layout>
+    </>
   );
 }
