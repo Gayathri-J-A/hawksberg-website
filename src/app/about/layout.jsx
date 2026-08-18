@@ -1,2 +1,11 @@
-export const metadata = { title: "About Hawksberg International", description: "Learn about Hawksberg International's ISO consultancy and cybersecurity training work across regulated industries.", alternates: { canonical: "/about" } };
+export const metadata = {
+	title: {
+		absolute: "ISO Certification, Cyber Security, Corporate Training - Hawksberg International",
+	},
+	description:
+		"Looking ISO certification and cybersecurity support? Hawksberg ISO Consultants offers cybersecurity and corporate training to improve workplace skills.",
+	keywords: ["ISO Cyber Security", "ISO Certification Training", "ISO Certification"],
+	robots: { index: true, follow: true },
+	alternates: { canonical: "/about" },
+};
 export default function Layout({ children }) { return children; }
