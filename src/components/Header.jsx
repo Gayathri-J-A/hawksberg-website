@@ -425,15 +425,15 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
   onMouseEnter={() => setIsoTr(true)}
   onMouseLeave={() => setIsoTr(false)}
 >
- <button
+ <div
   className={`text-[15px] font-bold tracking-wide transition-colors hover:text-gold ${
     isHome && !scrolled
       ? "text-white"
       : "text-foreground/80"
   }`}
 >
-  ISO Trainings ▾
-</button>
+  <Link href="/iso-training">ISO Trainings</Link> ▾
+</div>
 
   {isoTr && <IsoTrainingDropdown />}
 </div>
