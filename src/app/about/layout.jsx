@@ -8,4 +8,12 @@ export const metadata = {
 	robots: { index: true, follow: true },
 	alternates: { canonical: "/about" },
 };
-export default function Layout({ children }) { return children; }
+export default function Layout({ children }) {
+	return (
+		<>
+			<meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+			<meta name="language" content="English" />
+			{children}
+		</>
+	);
+}

@@ -11,5 +11,11 @@ export const metadata = {
 };
 
 export default function Home() {
-  return <HomePage />;
+  return (
+    <>
+      <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta name="language" content="English" />
+      <HomePage />
+    </>
+  );
 }
