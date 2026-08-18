@@ -1,7 +1,18 @@
 import Layout from "@/components/Layout";
 import Link from "next/link";
 import consultingServiceImage from "@/assets/services/consultingservice.webp";
-import consultantImage from "@/assets/services/imgconsultant.webp";
+import consultantImage from "@/assets/services/iso-consultancy-chennai.webp";
+
+export const metadata = {
+  title: {
+    absolute: "ISO Consultants for Certification & Compliance | Hawksberg International",
+  },
+  description:
+    "ISO certification and compliance support for businesses, covering ISO 9001, ISO 14001, ISO 27001, ISO 45001 and other international standards.",
+  keywords: ["ISO certification consultant", "ISO Certification"],
+  robots: { index: true, follow: true },
+  alternates: { canonical: "/ISO-consulting-services" },
+};
 
 const standards = [
   {
@@ -280,7 +291,7 @@ export default function ServicesPage() {
               <div className="flex items-start justify-center">
                 <img
                   src={consultantImage.src}
-                  alt="ISO consultant"
+                  alt="ISO Consultancy Chennai"
                   className="h-auto max-h-80 w-auto max-w-full rounded-xl object-contain"
                 />
               </div>
