@@ -15,7 +15,7 @@ export const service = {
     "Implement a robust ISMS framework to safeguard data, ensure confidentiality and earn customer trust.",
 
   overviewTitle:
-    "ISO 27001 Consultancy — Secure, Compliant & Resilient",
+    "ISO 27001 Consulting Services, ISMS Implementation & Certification",
 
   // Service/content image
   image: iso27001Image,
