@@ -3,6 +3,16 @@ import Layout from "@/components/Layout";
 import EnquiryForm from "@/components/EnquiryForm";
 import isoTrainingImage from "@/assets/isotraining/isotraining.webp";
 
+export const metadata = {
+  title: {
+    absolute: "ISO Certification Training | Lead Auditor & Internal Auditor | Hawksberg",
+  },
+  description:
+    "Join ISO certification training courses for Lead Auditor, Internal Auditor and ISO Foundation programs. Build your ISO expertise with Hawksberg International.",
+  keywords: "ISO certification course, ISO Audit training",
+  robots: "index, follow",
+};
+
 const trainingPrograms = [
   {
     title: "ISO Lead Auditor Training",
@@ -32,7 +42,11 @@ const trainingPrograms = [
 
 export default function ISOTrainingLandingPage() {
   return (
-    <Layout>
+    <>
+      <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta name="title" content="ISO Certification Training | Lead Auditor & Internal Auditor | Hawksberg" />
+      <meta name="language" content="English" />
+      <Layout>
       <section
         className="relative min-h-[430px] overflow-hidden bg-cover bg-center bg-no-repeat text-white md:min-h-[440px]"
         style={{ backgroundImage: `url(${isoTrainingImage.src})` }}
@@ -114,5 +128,6 @@ export default function ISOTrainingLandingPage() {
         </div>
       </section>
     </Layout>
+    </>
   );
 }
