@@ -14,16 +14,22 @@ from app.core.database import Base, engine
 #     auth,
 #     consultant
 # )
+from app.routes import training_auth
 
 from app.routes import (
     enquiry,
     service,
     training,
     info_page,
-    auth
+    auth,
+    training_auth
 )
 
 Base.metadata.create_all(bind=engine)
+
+from app.models.training import Training
+from app.models.training_user import TrainingUser
+from app.models.training_video import TrainingVideo
 
 app = FastAPI(title="Hawksberg API")
 
@@ -47,6 +53,8 @@ app.add_middleware(
         "https://frontend-production-2ad6f.up.railway.app",
         "http://localhost:5173",
         "http://localhost:8080",
+        "http://localhost:3000",
+"http://127.0.0.1:3000",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -58,6 +66,7 @@ app.include_router(service.router)
 app.include_router(training.router)
 app.include_router(info_page.router)
 app.include_router(auth.router)
+app.include_router(training_auth.router)
 # app.include_router(consultant.router)
 
 @app.get("/")
