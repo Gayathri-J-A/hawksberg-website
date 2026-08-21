@@ -1,6 +1,4 @@
 "use client";
-// import { Link, NavLink as RRNavLink } from "react-router-dom";
-// import { NavLink as RRNavLink, useLocation } from "react-router-dom";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 // import { useState } from "react";
@@ -121,7 +119,7 @@ useEffect(() => {
   //     {children}
   //   </RRNavLink>
   // );
-  const NavLink = ({ href, children }) => {
+  const NavLink = ({ href, children, className = "" }) => {
     const isActive = pathname === href;
     return (
       <Link
@@ -134,7 +132,7 @@ useEffect(() => {
             : isHome && !scrolled
             ? "text-white"
             : "text-foreground/80"
-        }`}
+        } ${className}`}
         onClick={() => setOpen(false)}
       >
         {children}
@@ -265,7 +263,12 @@ useEffect(() => {
 
   {/* <div className="container-x flex h-20 items-center justify-between"> */}
   <div className="container-x flex h-15 lg:h-20 items-center justify-between px-4">
-  <Link href="/" className="flex items-center gap-3">
+  <Link
+    href="/"
+    className={`flex items-center gap-3 ${
+      isHome && !scrolled ? "-translate-x-3" : ""
+    }`}
+  >
     {/* <span className="logo-circle h-11 w-11 flex items-center justify-center">
       <img
         src={mainLogo}
@@ -356,8 +359,12 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
 
         {/* <nav className="hidden items-center gap-8 lg:flex"> */}
         <nav className="hidden items-center gap-4 xl:gap-8 lg:flex">
-          <NavLink href="/">Home</NavLink>
-          <NavLink href="/about">About</NavLink>
+          <NavLink href="/" className={isHome && !scrolled ? "translate-x-8" : ""}>
+            Home
+          </NavLink>
+          <NavLink href="/about" className={isHome && !scrolled ? "translate-x-8" : ""}>
+            About
+          </NavLink>
 
           <div
             className="relative"
@@ -369,9 +376,9 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
             </button> */}
           <Link
   href="/ISO-consulting-services"
-  className={`text-[15px] font-bold tracking-wide transition-colors hover:text-gold ${
+  className={`inline-block text-[15px] font-bold tracking-wide transition-colors hover:text-gold ${
     isHome && !scrolled
-      ? "text-white"
+      ? "text-white translate-x-8"
       : "text-foreground/80"
   }`}
 >
@@ -428,7 +435,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
  <div
   className={`text-[15px] font-bold tracking-wide transition-colors hover:text-gold ${
     isHome && !scrolled
-      ? "text-white"
+      ? "text-white translate-x-8"
       : "text-foreground/80"
   }`}
 >
@@ -477,7 +484,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
  <button
   className={`text-[15px] font-bold tracking-wide transition-colors hover:text-gold ${
     isHome && !scrolled
-      ? "text-white"
+      ? "text-white translate-x-8"
       : "text-foreground/80"
   }`}
 >
@@ -488,34 +495,30 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
   {training && <CourseDropdown />}
 </div>
 
-          <NavLink href="/contact">Contact</NavLink>
+          {/* <NavLink href="/contact">Contact</NavLink> */}
+          <NavLink
+            href="/training-login"
+            className={isHome && !scrolled ? "translate-x-8" : ""}
+          >
+            TrainingLogin
+          </NavLink>
           {/* <Link to="/contact" className="btn-primary !px-5 !py-2 text-xs"> */}
-          <Link href="/contact" className="btn-primary !px-4 !py-2 !text-[11px]">
+          {/* <Link
+            href="/contact"
+            className={`btn-primary !px-4 !py-2 !text-[11px] ${
+              isHome && !scrolled ? "ml-4" : ""
+            }`}
+          >
             Enquire Now
-          </Link>
-      
-{/* <Link
-  to="/training-login"
-  onClick={() => setOpen(false)}
-  className={`text-[15px] font-bold tracking-wide transition-colors hover:text-gold ${
-    isHome && !scrolled
-      ? "text-white"
-      : "text-foreground/80"
+          </Link> */}
+          <Link
+  href="/contact"
+  className={`btn-primary !px-4 !py-2 !text-[11px] ${
+    isHome && !scrolled ? "translate-x-6 whitespace-nowrap" : ""
   }`}
 >
-  Training Login
-</Link> */}
-
- {/* <Link
-  to="/training-login"
-  className={`text-sm font-bold transition-colors duration-300 ${
-    isTransparent
-      ? "text-white hover:text-gold"
-      : "text-foreground hover:text-gold"
-  }`}
->
-  Training Login
-</Link> */}
+  Enquire Now
+</Link>
         </nav>
 
         <button
@@ -971,10 +974,8 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
 </details>
               </div>
             </details>
-            <NavLink href="/contact">Contact</NavLink>
-            {/* <NavLink to="/training-login">
-  Training Login
-</NavLink> */}
+            {/* <NavLink href="/contact">Contact</NavLink> */}
+            <NavLink href="/training-login">Training Login</NavLink>
             {/* <Link
               to="/contact"
               onClick={() => setOpen(false)}
