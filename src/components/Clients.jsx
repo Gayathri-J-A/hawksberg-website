@@ -19,7 +19,7 @@ import shakara from "@/assets/clients/deccan.webp";
 import jmi from "@/assets/clients/jmi.webp";
 import gighz from "@/assets/clients/gighz.webp";
 import logicvalley from "@/assets/clients/logicvalley.webp";
-import asiaeo from "@/assets/clients/asia e & o.webp";
+import asiaeo from "@/assets/clients/asia-e-o.webp";
 import janatics from "@/assets/clients/janatics.webp";
 import accumed from "@/assets/clients/accumed.webp";
 import salzer from "@/assets/clients/salzer.webp";
@@ -135,7 +135,7 @@ const LogoRow = ({ logos, reverse = false }) => {
           >
            <img 
   src={logo.src} 
-  alt={`Client ${index}`}
+  alt={logo === asiaeo ? "Asia E & O" : `Client ${index}`}
 //               className={`object-contain transition-transform duration-300 hover:scale-110 ${ 
 //                 [aloft, epc, asiaeo, mobility, janatics].includes(logo) 
 //                   // ? "max-h-24 w-auto" 
