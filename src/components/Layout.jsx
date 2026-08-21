@@ -2,7 +2,6 @@
 // import Header from "./Header";
 // import Footer from "./Footer";
 // import WhatsAppFloat from "./WhatsAppFloat";
-// // import { useLocation } from "react-router-dom";
 // import { usePathname } from "next/navigation";
 
 // export default function Layout({ children }) {
@@ -45,7 +44,7 @@ import Footer from "./Footer";
 import WhatsAppFloat from "./WhatsAppFloat";
 import { usePathname } from "next/navigation";
 
-export default function Layout({ children }) {
+export default function Layout({ children, hideFooter = false }) {
   const pathname = usePathname();
 
   return (
@@ -60,7 +59,7 @@ export default function Layout({ children }) {
         {children}
       </main>
 
-      <Footer />
+      {!hideFooter && <Footer />}
       <WhatsAppFloat />
     </div>
   );

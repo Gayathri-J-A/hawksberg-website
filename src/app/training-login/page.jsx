@@ -178,8 +178,9 @@ console.log("USER ROLE", res.user.role);
 };
 
   return (
-    <Layout>
-      <section className="relative min-h-screen overflow-hidden">
+    // <Layout>
+    <Layout hideFooter>
+      <section className="relative min-h-screen overflow-hidden bg-[#081B35]">
 
         {/* Background */}
         {/* <div
