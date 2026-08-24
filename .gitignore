@@ -53,3 +53,5 @@ alembic/versions/__pycache__/
 .env.development
 .env.production
 .env.*
+
+.next/
