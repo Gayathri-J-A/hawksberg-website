@@ -180,6 +180,7 @@ console.log("USER ROLE", res.user.role);
   return (
     // <Layout>
     <Layout hideFooter>
+      {/* <section className="relative min-h-screen overflow-hidden"> */}
       <section className="relative min-h-screen overflow-hidden bg-[#081B35]">
 
         {/* Background */}
@@ -191,7 +192,8 @@ console.log("USER ROLE", res.user.role);
         /> */}
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-[#081B35]/90" />
+        {/* <div className="absolute inset-0 bg-[#081B35]/90" /> */}
+        <div className="absolute inset-0 bg-[#081B35]" />
 
         {/* Grid */}
         <div className="absolute inset-0 grid-pattern opacity-10" />

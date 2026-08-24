@@ -1,230 +1,1165 @@
 "use client";
 
-import { useEffect, useState } from "react";
-// import { Navigate } from "react-router-dom";
-import { redirect, useRouter } from "next/navigation";
+import {
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
+
+import { useRouter } from "next/navigation";
+
 import Layout from "@/components/Layout";
 import trainingApi from "@/services/trainingApi";
 import AdminVideoForm from "@/components/AdminVideoForm";
 
-export default function AdminTraining() {
-  const [user, setUser] = useState(null);
-  const [authChecked, setAuthChecked] = useState(false);
-  const router = useRouter();
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("trainingUser");
-    setUser(storedUser ? JSON.parse(storedUser) : null);
-    setAuthChecked(true);
-  }, []);
+// =====================================================
+// CONSTANTS
+// =====================================================
 
-  const portals = [
-  { key: "iso9001", title: "ISO 9001" },
-  { key: "iso14001", title: "ISO 14001" },
-  { key: "iso27001", title: "ISO 27001" },
-  { key: "riskidentification", title: "Risk Identification" },
-  { key: "riskevaluation", title: "Risk Evaluation" },
-  { key: "riskassessment", title: "Risk Assessment" },
-  { key: "risktreatment", title: "Risk Treatment" },
+const MAX_VIDEO_SIZE =
+  50 * 1024 * 1024;
+
+
+// =====================================================
+// EMPTY FORM
+// =====================================================
+
+const EMPTY_FORM = {
+  title: "",
+  description: "",
+  duration: "",
+  instructor: "Hawksberg International",
+
+  // YouTube Embed URL
+  video: "",
+
+  // MP4 File
+  video_file: null,
+
+  // Training Portal
+  training_name: "",
+};
+
+
+// =====================================================
+// TRAINING PORTALS
+// =====================================================
+
+const PORTALS = [
+  {
+    key: "iso9001",
+    title: "ISO 9001",
+  },
+  {
+    key: "iso14001",
+    title: "ISO 14001",
+  },
+  {
+    key: "iso27001",
+    title: "ISO 27001",
+  },
+  {
+    key: "riskidentification",
+    title: "Risk Identification",
+  },
+  {
+    key: "riskevaluation",
+    title: "Risk Evaluation",
+  },
+  {
+    key: "riskassessment",
+    title: "Risk Assessment",
+  },
+  {
+    key: "risktreatment",
+    title: "Risk Treatment",
+  },
 ];
 
-  const [videos, setVideos] = useState([]);
 
-  const [loading, setLoading] = useState(false);
+// =====================================================
+// HELPER - MP4 VALIDATION
+// =====================================================
 
-  const [editingId, setEditingId] = useState(null);
-  const [showVideoForm, setShowVideoForm] = useState(false);
+function isValidMp4(file) {
+  if (!file) {
+    return false;
+  }
 
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    duration: "",
-    instructor: "Hawksberg International",
-    video: "",
+  const fileName =
+    file.name?.toLowerCase() || "";
+
+  const fileType =
+    file.type?.toLowerCase() || "";
+
+  return (
+    fileType === "video/mp4" ||
+    fileName.endsWith(".mp4")
+  );
+}
+
+
+// =====================================================
+// HELPER - YOUTUBE EMBED URL VALIDATION
+// =====================================================
+
+function isValidYoutubeUrl(url) {
+  if (!url) {
+    return false;
+  }
+
+  const value =
+    String(url).trim();
+
+  if (!value) {
+    return false;
+  }
+
+  try {
+    const parsed =
+      new URL(value);
+
+    const hostname =
+      (
+        parsed.hostname || ""
+      ).toLowerCase();
+
+    const pathname =
+      parsed.pathname || "";
+
+    const allowedHosts = [
+      "youtube.com",
+      "www.youtube.com",
+      "youtube-nocookie.com",
+      "www.youtube-nocookie.com",
+    ];
+
+    if (
+      !allowedHosts.includes(
+        hostname
+      )
+    ) {
+      return false;
+    }
+
+    // Only Embed URL is allowed.
+    if (
+      !pathname.startsWith(
+        "/embed/"
+      )
+    ) {
+      return false;
+    }
+
+    const videoId =
+      pathname
+        .replace(
+          "/embed/",
+          ""
+        )
+        .replace(
+          /\/+$/,
+          ""
+        )
+        .trim();
+
+    return Boolean(
+      videoId
+    );
+  } catch {
+    return false;
+  }
+}
+
+
+// =====================================================
+// COMPONENT
+// =====================================================
+
+export default function AdminTraining() {
+  const router =
+    useRouter();
+
+
+  // ===================================================
+  // AUTH
+  // ===================================================
+
+  const [
+    user,
+    setUser,
+  ] = useState(null);
+
+  const [
+    authChecked,
+    setAuthChecked,
+  ] = useState(false);
+
+
+  // ===================================================
+  // VIDEOS
+  // ===================================================
+
+  const [
+    videos,
+    setVideos,
+  ] = useState([]);
+
+  const [
+    loading,
+    setLoading,
+  ] = useState(false);
+
+
+  // ===================================================
+  // FORM
+  // ===================================================
+
+  const [
+    editingId,
+    setEditingId,
+  ] = useState(null);
+
+  const [
+    showVideoForm,
+    setShowVideoForm,
+  ] = useState(false);
+
+  const [
+    formData,
+    setFormData,
+  ] = useState({
+    ...EMPTY_FORM,
   });
 
 
+  // ===================================================
+  // AUTH CHECK
+  // ===================================================
+
   useEffect(() => {
-    if (!authChecked || !user || user.role !== "admin") return;
-    loadVideos();
-  }, [authChecked, user]);
+    if (
+      typeof window ===
+      "undefined"
+    ) {
+      return;
+    }
 
-  if (!authChecked) return null;
+    const storedUser =
+      localStorage.getItem(
+        "trainingUser"
+      );
 
-  if (!user || user.role !== "admin") {
-    redirect("/training-login");
-  }
-  const loadVideos = async () => {
-  try {
-    setLoading(true);
+    if (!storedUser) {
+      setUser(null);
+      setAuthChecked(true);
+      return;
+    }
 
-    const res = await trainingApi.getVideos();
+    try {
+      const parsedUser =
+        JSON.parse(
+          storedUser
+        );
 
-console.log("Videos API:", res);
+      setUser(
+        parsedUser
+      );
+    } catch (error) {
+      console.error(
+        "INVALID TRAINING USER:",
+        error
+      );
 
-setVideos(res);
-  } finally {
-    setLoading(false);
-  }
-};
+      localStorage.removeItem(
+        "trainingUser"
+      );
 
-//   const loadVideos = async () => {
-//     try {
-//       setLoading(true);
-//       const res = await trainingApi.getVideos();
+      setUser(null);
+    }
 
-// setVideos(res);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
+    setAuthChecked(true);
+  }, []);
 
-// const loadVideos = async (trainingName = null) => {
-//   try {
-//     setLoading(true);
 
-//     let res;
+  // ===================================================
+  // AUTH REDIRECT
+  // ===================================================
 
-//     if (trainingName) {
-//       res = await trainingApi.getVideosByTraining(trainingName);
-//     } else {
-//       res = await trainingApi.getVideos();
-//     }
+  useEffect(() => {
+    if (!authChecked) {
+      return;
+    }
 
-//     setVideos(res);
-//   } finally {
-//     setLoading(false);
-//   }
-// };
+    if (!user) {
+      router.replace(
+        "/training-login"
+      );
+      return;
+    }
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+    if (
+      user.role !== "admin"
+    ) {
+      router.replace(
+        "/training-login"
+      );
+    }
+  }, [
+    authChecked,
+    user,
+    router,
+  ]);
 
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
 
-  const resetForm = () => {
-    setEditingId(null);
+  // ===================================================
+  // LOAD VIDEOS
+  // ===================================================
 
-    setFormData({
-      title: "",
-      description: "",
-      duration: "",
-      instructor: "Hawksberg International",
-      video: "",
-    });
-  };
+  const loadVideos =
+    useCallback(
+      async () => {
+        try {
+          setLoading(true);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+          const response =
+            await trainingApi.getVideos();
 
-    // if (editingId) {
-    //   setVideos((prev) =>
-    //     prev.map((item) =>
-    //       item.id === editingId
-    //         ? {
-    //             ...item,
-    //             ...formData,
-    //           }
-    //         : item
-    //     )
-    //   );
+          if (
+            Array.isArray(
+              response
+            )
+          ) {
+            setVideos(
+              response
+            );
+          } else if (
+            Array.isArray(
+              response?.data
+            )
+          ) {
+            setVideos(
+              response.data
+            );
+          } else if (
+            Array.isArray(
+              response?.videos
+            )
+          ) {
+            setVideos(
+              response.videos
+            );
+          } else {
+            setVideos([]);
+          }
+        } catch (error) {
+          console.error(
+            "LOAD VIDEOS ERROR:",
+            error
+          );
 
-    //   resetForm();
+          setVideos([]);
 
-    //   return;
-    // }
-
-    // const newVideo = {
-    //   id: Date.now(),
-    //   ...formData,
-    // };
-
-    // setVideos((prev) => [...prev, newVideo]);
-
-    // resetForm();
-//     if (editingId) {
-//   await trainingApi.updateVideo(editingId, formData);
-// } else {
-//   await trainingApi.createVideo(formData);
-// }
-
-// await loadVideos();
-
-// resetForm();
-//   };
-if (editingId) {
-  await trainingApi.updateVideo(editingId, formData);
-} else {
-  await trainingApi.createVideo(formData);
-}
-
-await loadVideos();
-
-resetForm();
-};
-
-const handleEdit = (video) => {
-  setShowVideoForm(true);
-    setEditingId(video.id);
-
-    setFormData({
-      title: video.title,
-      description: video.description,
-      duration: video.duration,
-      instructor: video.instructor,
-      video: video.video,
-    });
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const handleDelete = async (id) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this training video?"
+          // Don't show an alert during initial page load.
+          // Console has the actual error.
+        } finally {
+          setLoading(false);
+        }
+      },
+      []
     );
 
-    if (!confirmDelete) return;
 
-    // setVideos((prev) => prev.filter((item) => item.id !== id));
-    // await trainingApi.deleteVideo(id);
+  // ===================================================
+  // LOAD AFTER AUTH
+  // ===================================================
 
-// await loadVideos();
-
-// if (editingId === id) {
-//   resetForm();
-// }
-await trainingApi.deleteVideo(id);
-
-await loadVideos();
-
-if (editingId === id) {
-  resetForm();
-}
-
-    if (editingId === id) {
-      resetForm();
+  useEffect(() => {
+    if (!authChecked) {
+      return;
     }
-  };
+
+    if (!user) {
+      return;
+    }
+
+    if (
+      user.role !== "admin"
+    ) {
+      return;
+    }
+
+    loadVideos();
+  }, [
+    authChecked,
+    user,
+    loadVideos,
+  ]);
+
+
+  // ===================================================
+  // HANDLE FORM CHANGE
+  // ===================================================
+
+  const handleChange =
+    (event) => {
+      const target =
+        event?.target;
+
+      if (!target) {
+        return;
+      }
+
+      const {
+        name,
+        value,
+        files,
+      } = target;
+
+
+      // =================================================
+      // MP4 FILE
+      // =================================================
+
+      if (
+        name ===
+        "video_file"
+      ) {
+        const selectedFile =
+          files?.[0] ||
+          null;
+
+        if (!selectedFile) {
+          setFormData(
+            (previous) => ({
+              ...previous,
+              video_file:
+                null,
+            })
+          );
+
+          return;
+        }
+
+
+        // -----------------------------------------------
+        // MP4 extension/type
+        // -----------------------------------------------
+
+        if (
+          !isValidMp4(
+            selectedFile
+          )
+        ) {
+          alert(
+            "Only MP4 video files are allowed."
+          );
+
+          target.value = "";
+
+          setFormData(
+            (previous) => ({
+              ...previous,
+              video_file:
+                null,
+            })
+          );
+
+          return;
+        }
+
+
+        // -----------------------------------------------
+        // 50 MB
+        // -----------------------------------------------
+
+        if (
+          selectedFile.size >
+          MAX_VIDEO_SIZE
+        ) {
+          alert(
+            "Video file must be less than 50 MB."
+          );
+
+          target.value = "";
+
+          setFormData(
+            (previous) => ({
+              ...previous,
+              video_file:
+                null,
+            })
+          );
+
+          return;
+        }
+
+
+        // -----------------------------------------------
+        // MP4 selected
+        //
+        // Remove YouTube source.
+        // Exactly one source.
+        // -----------------------------------------------
+
+        setFormData(
+          (previous) => ({
+            ...previous,
+            video: "",
+            video_file:
+              selectedFile,
+          })
+        );
+
+        return;
+      }
+
+
+      // =================================================
+      // YOUTUBE EMBED URL
+      // =================================================
+
+      if (
+        name === "video"
+      ) {
+        const youtubeValue =
+          value?.trim() || "";
+
+        setFormData(
+          (previous) => ({
+            ...previous,
+            video:
+              youtubeValue,
+            video_file:
+              null,
+          })
+        );
+
+        return;
+      }
+
+
+      // =================================================
+      // NORMAL INPUTS
+      // =================================================
+
+      setFormData(
+        (previous) => ({
+          ...previous,
+          [name]: value,
+        })
+      );
+    };
+
+
+  // ===================================================
+  // RESET FORM
+  // ===================================================
+
+  const resetForm =
+    () => {
+      setEditingId(
+        null
+      );
+
+      setFormData({
+        ...EMPTY_FORM,
+      });
+
+
+      // Clear file input
+      if (
+        typeof document !==
+        "undefined"
+      ) {
+        const fileInput =
+          document.getElementById(
+            "video_file"
+          );
+
+        if (fileInput) {
+          fileInput.value =
+            "";
+        }
+      }
+    };
+
+
+  // ===================================================
+  // CLOSE FORM
+  // ===================================================
+
+  const handleCloseForm =
+    () => {
+      resetForm();
+
+      setShowVideoForm(
+        false
+      );
+    };
+
+
+  // ===================================================
+  // NEW VIDEO
+  // ===================================================
+
+  const handleNewVideo =
+    () => {
+      resetForm();
+
+      setShowVideoForm(
+        true
+      );
+
+      // Don't let loading state block the button.
+      if (
+        typeof window !==
+        "undefined"
+      ) {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+    };
+
+
+  // ===================================================
+  // SUBMIT
+  // ===================================================
+
+  const handleSubmit =
+    async (event) => {
+      event.preventDefault();
+
+
+      // =================================================
+      // BASIC VALUES
+      // =================================================
+
+      const title =
+        formData.title
+          ?.trim() || "";
+
+      const description =
+        formData.description
+          ?.trim() || "";
+
+      const duration =
+        formData.duration
+          ?.trim() || "";
+
+      const instructor =
+        formData.instructor
+          ?.trim() || "";
+
+      const trainingName =
+        formData.training_name
+          ?.trim()
+          .toLowerCase() || "";
+
+      const youtubeUrl =
+        formData.video
+          ?.trim() || "";
+
+      const videoFile =
+        formData.video_file;
+
+
+      // =================================================
+      // REQUIRED FIELDS
+      // =================================================
+
+      if (!title) {
+        alert(
+          "Please enter the video title."
+        );
+        return;
+      }
+
+      if (!description) {
+        alert(
+          "Please enter the video description."
+        );
+        return;
+      }
+
+      if (!duration) {
+        alert(
+          "Please enter the video duration."
+        );
+        return;
+      }
+
+      if (!instructor) {
+        alert(
+          "Please enter the instructor name."
+        );
+        return;
+      }
+
+      if (!trainingName) {
+        alert(
+          "Please select a Training Portal."
+        );
+        return;
+      }
+
+
+      // =================================================
+      // VALID PORTAL
+      // =================================================
+
+      const validPortal =
+        PORTALS.some(
+          (portal) =>
+            portal.key ===
+            trainingName
+        );
+
+      if (!validPortal) {
+        alert(
+          "Invalid Training Portal selected."
+        );
+        return;
+      }
+
+
+      // =================================================
+      // SOURCE
+      // =================================================
+
+      const hasYoutube =
+        Boolean(
+          youtubeUrl
+        );
+
+      const hasMp4 =
+        videoFile instanceof
+        File;
+
+
+      // =================================================
+      // CREATE
+      //
+      // Exactly one source required.
+      //
+      // EDIT
+      //
+      // Existing source can be kept by submitting
+      // without a new source.
+      // =================================================
+
+      if (
+        editingId === null
+      ) {
+        if (
+          !hasYoutube &&
+          !hasMp4
+        ) {
+          alert(
+            "Please enter a YouTube Embed URL or upload an MP4 video."
+          );
+          return;
+        }
+      }
+
+
+      // =================================================
+      // NEVER SEND BOTH
+      // =================================================
+
+      if (
+        hasYoutube &&
+        hasMp4
+      ) {
+        alert(
+          "Please use either YouTube Embed URL OR MP4 video."
+        );
+        return;
+      }
+
+
+      // =================================================
+      // YOUTUBE VALIDATION
+      // =================================================
+
+      if (hasYoutube) {
+        if (
+          !isValidYoutubeUrl(
+            youtubeUrl
+          )
+        ) {
+          alert(
+            "Please enter a valid YouTube Embed URL, for example https://www.youtube.com/embed/VIDEO_ID"
+          );
+          return;
+        }
+      }
+
+
+      // =================================================
+      // MP4 VALIDATION
+      // =================================================
+
+      if (hasMp4) {
+        if (
+          !isValidMp4(
+            videoFile
+          )
+        ) {
+          alert(
+            "Only MP4 video files are allowed."
+          );
+          return;
+        }
+
+        if (
+          videoFile.size >
+          MAX_VIDEO_SIZE
+        ) {
+          alert(
+            "Video file must be less than 50 MB."
+          );
+          return;
+        }
+      }
+
+
+      // =================================================
+      // FORMDATA
+      // =================================================
+
+      const data =
+        new FormData();
+
+      data.append(
+        "title",
+        title
+      );
+
+      data.append(
+        "description",
+        description
+      );
+
+      data.append(
+        "duration",
+        duration
+      );
+
+      data.append(
+        "instructor",
+        instructor
+      );
+
+      data.append(
+        "training_name",
+        trainingName
+      );
+
+
+      // =================================================
+      // SOURCE
+      // =================================================
+
+      if (hasYoutube) {
+        data.append(
+          "youtube_url",
+          youtubeUrl
+        );
+      }
+
+      if (hasMp4) {
+        data.append(
+          "video_file",
+          videoFile,
+          videoFile.name
+        );
+      }
+
+
+      // =================================================
+      // API
+      // =================================================
+
+      try {
+        setLoading(true);
+
+
+        // -----------------------------------------------
+        // EDIT
+        // -----------------------------------------------
+
+        if (
+          editingId !== null
+        ) {
+          await trainingApi.updateVideo(
+            editingId,
+            data
+          );
+
+          alert(
+            "Training video updated successfully."
+          );
+        }
+
+
+        // -----------------------------------------------
+        // CREATE
+        // -----------------------------------------------
+
+        else {
+          await trainingApi.createVideo(
+            data
+          );
+
+          alert(
+            "Training video uploaded successfully."
+          );
+        }
+
+
+        // -----------------------------------------------
+        // Refresh list from database
+        // -----------------------------------------------
+
+        await loadVideos();
+
+
+        // -----------------------------------------------
+        // Close/reset form
+        // -----------------------------------------------
+
+        resetForm();
+
+        setShowVideoForm(
+          false
+        );
+
+      } catch (error) {
+        console.error(
+          "TRAINING VIDEO SUBMIT ERROR:",
+          error
+        );
+
+        alert(
+          error?.message ||
+            "Unable to save training video."
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+
+  // ===================================================
+  // EDIT VIDEO
+  // ===================================================
+
+  const handleEdit =
+    (video) => {
+      if (!video) {
+        return;
+      }
+
+      setEditingId(
+        video.id
+      );
+
+
+      // -------------------------------------------------
+      // API response:
+      //
+      // YouTube:
+      // video.youtube_url
+      //
+      // MP4:
+      // video.video_url
+      // -------------------------------------------------
+
+      setFormData({
+        title:
+          video.title ||
+          "",
+
+        description:
+          video.description ||
+          "",
+
+        duration:
+          video.duration ||
+          "",
+
+        instructor:
+          video.instructor ||
+          "Hawksberg International",
+
+        // Only load YouTube URL into
+        // editable YouTube field.
+        video:
+          video.youtube_url ||
+          "",
+
+        // Existing MP4 is NOT placed
+        // into file input.
+        //
+        // Backend keeps existing video_url
+        // when no new source is supplied.
+        video_file:
+          null,
+
+        training_name:
+          video.training_name ||
+          "",
+      });
+
+
+      setShowVideoForm(
+        true
+      );
+
+
+      if (
+        typeof window !==
+        "undefined"
+      ) {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+    };
+
+
+  // ===================================================
+  // DELETE VIDEO
+  // ===================================================
+
+  const handleDelete =
+    async (id) => {
+      if (!id) {
+        return;
+      }
+
+
+      const confirmed =
+        window.confirm(
+          "Are you sure you want to delete this training video?"
+        );
+
+      if (!confirmed) {
+        return;
+      }
+
+
+      try {
+        setLoading(true);
+
+        await trainingApi.deleteVideo(
+          id
+        );
+
+
+        // Refresh from DB
+        await loadVideos();
+
+
+        // If deleted video was
+        // being edited, close form.
+        if (
+          String(editingId) ===
+          String(id)
+        ) {
+          resetForm();
+
+          setShowVideoForm(
+            false
+          );
+        }
+
+
+        alert(
+          "Training video deleted successfully."
+        );
+
+      } catch (error) {
+        console.error(
+          "DELETE VIDEO ERROR:",
+          error
+        );
+
+        alert(
+          error?.message ||
+            "Unable to delete training video."
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+
+  // ===================================================
+  // AUTH LOADING
+  // ===================================================
+
+  if (!authChecked) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#071A33]">
+        <p className="text-white/60">
+          Checking authentication...
+        </p>
+      </div>
+    );
+  }
+
+
+  // ===================================================
+  // REDIRECT STATE
+  // ===================================================
+
+  if (
+    !user ||
+    user.role !== "admin"
+  ) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#071A33]">
+        <p className="text-white/60">
+          Redirecting to training login...
+        </p>
+      </div>
+    );
+  }
+
+
+  // ===================================================
+  // UI
+  // ===================================================
 
   return (
     <Layout>
       <section className="relative min-h-screen overflow-hidden bg-[#071A33]">
 
-        {/* Background Effects */}
+        {/* Background */}
+
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(216,162,58,0.12),transparent_35%)]" />
+
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(37,99,235,0.12),transparent_40%)]" />
+
         <div className="absolute inset-0 grid-pattern opacity-10" />
+
+
+        {/* Content */}
 
         <div className="container-x relative py-16">
 
-          <div className="mb-10 flex items-center justify-between">
+
+          {/* =================================================
+              HEADER
+          ================================================= */}
+
+          <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
 
             <div>
 
@@ -232,7 +1167,7 @@ if (editingId === id) {
                 Hawksberg International
               </p>
 
-              <h1 className="mt-3 text-5xl font-display text-white">
+              <h1 className="mt-3 text-4xl font-display text-white md:text-5xl">
                 Admin Training Dashboard
               </h1>
 
@@ -242,288 +1177,138 @@ if (editingId === id) {
 
             </div>
 
-            {/* <button
-              onClick={resetForm}
-              className="rounded-xl border border-gold px-6 py-3 text-gold transition hover:bg-gold hover:text-black"
-            >
-              New Video
-            </button> */}
+
+            {/* =================================================
+                NEW VIDEO BUTTON
+
+                Always clickable.
+                Loading state does not disable it.
+            ================================================= */}
+
             <button
-  onClick={() => {
-    resetForm();
-    setShowVideoForm(true);
-  }}
-  className="rounded-xl border border-gold px-6 py-3 text-gold transition hover:bg-gold hover:text-black"
->
-  New Video
-</button>
+              type="button"
+              onClick={
+                handleNewVideo
+              }
+              className="w-fit cursor-pointer rounded-xl border border-gold px-6 py-3 font-semibold text-gold transition hover:bg-gold hover:text-black"
+            >
+              + New Video
+            </button>
 
           </div>
 
-          {/* Upload Form */}
 
-          {/* <div className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+          {/* =================================================
+              VIDEO FORM
+          ================================================= */}
 
-            <h2 className="mb-8 text-2xl font-bold text-white">
+          {showVideoForm && (
+            <div className="mb-10">
 
-              {editingId ? "Edit Training Video" : "Upload Training Video"}
+              <AdminVideoForm
+                formData={
+                  formData
+                }
+                handleChange={
+                  handleChange
+                }
+                handleSubmit={
+                  handleSubmit
+                }
+                editingId={
+                  editingId
+                }
+                resetForm={
+                  handleCloseForm
+                }
+                loading={
+                  loading
+                }
+              />
 
-            </h2>
-
-            <form
-              onSubmit={handleSubmit}
-              className="grid gap-6"
-            >
-
-              <div>
-                <label className="mb-2 block text-sm font-medium text-white">
-                  Video Title
-                </label>
-
-                <input
-                  type="text"
-                  name="title"
-                  value={formData.title}
-                  onChange={handleChange}
-                  placeholder="Enter training title"
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-gold"
-                  required
-                />
-              </div>
+            </div>
+          )}
 
 
-              <div>
-                <label className="mb-2 block text-sm font-medium text-white">
-                  Description
-                </label>
+          {/* =================================================
+              TRAINING PORTALS
+          ================================================= */}
 
-                <textarea
-                  rows={5}
-                  name="description"
-                  value={formData.description}
-                  onChange={handleChange}
-                  placeholder="Enter description..."
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-gold"
-                  required
-                />
-              </div>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 
-              <div className="grid gap-6 md:grid-cols-2">
+            {PORTALS.map(
+              (portal) => {
 
-   
+                const portalVideos =
+                  videos.filter(
+                    (video) =>
+                      String(
+                        video?.training_name ||
+                          ""
+                      )
+                        .trim()
+                        .toLowerCase() ===
+                      portal.key
+                  );
 
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-white">
-                    Duration
-                  </label>
 
-                  <input
-                    type="text"
-                    name="duration"
-                    value={formData.duration}
-                    onChange={handleChange}
-                    placeholder="20 mins"
-                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-gold"
-                    required
-                  />
-                </div>
-
-            
-
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-white">
-                    Instructor
-                  </label>
-
-                  <input
-                    type="text"
-                    name="instructor"
-                    value={formData.instructor}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-gold"
-                    required
-                  />
-                </div>
-
-              </div>
-
-              
-
-              <div>
-                <label className="mb-2 block text-sm font-medium text-white">
-                  YouTube Embed URL
-                </label>
-
-                <input
-                  type="text"
-                  name="video"
-                  value={formData.video}
-                  onChange={handleChange}
-                  placeholder="https://www.youtube.com/embed/VIDEO_ID"
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-gold"
-                  required
-                />
-              </div>
-
-              <div className="flex gap-4">
-
-                <button
-                  type="submit"
-                  className="rounded-xl bg-gold px-8 py-3 font-semibold text-black transition hover:scale-105"
-                >
-                  {editingId ? "Update Video" : "Upload Video"}
-                </button>
-
-                <button
-                  type="button"
-                  onClick={resetForm}
-                  className="rounded-xl border border-white/20 px-8 py-3 font-semibold text-white transition hover:border-gold"
-                >
-                  Clear
-                </button>
-
-              </div>
-
-            </form>
-
-          </div> */}
-
-          {/* <AdminVideoForm
-  formData={formData}
-  handleChange={handleChange}
-  handleSubmit={handleSubmit}
-  editingId={editingId}
-  resetForm={resetForm}
-/> */}
-{showVideoForm && (
-  <AdminVideoForm
-    formData={formData}
-    handleChange={handleChange}
-    handleSubmit={handleSubmit}
-    editingId={editingId}
-    resetForm={() => {
-      resetForm();
-      setShowVideoForm(false);
-    }}
-  />
-)}
-
-          {/* Video List */}
-
-          {/* <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-
-            <h2 className="mb-8 text-2xl font-bold text-white">
-              Training Videos
-            </h2>
-
-            {loading ? (
-
-              <p className="text-white/60">
-                Loading...
-              </p>
-
-            ) : (
-
-              <div className="space-y-6">
-
-                {videos.map((video) => (
-
+                return (
                   <div
-                    key={video.id}
-                    className="rounded-xl border border-white/10 bg-white/5 p-6"
+                    key={
+                      portal.key
+                    }
+                    className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
                   >
 
-                    <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                    <h2 className="text-2xl font-bold text-white">
+                      {
+                        portal.title
+                      }
+                    </h2>
 
-                      <div>
+                    <p className="mt-3 text-white/60">
+                      Total Videos:{" "}
+                      <span className="font-semibold text-gold">
+                        {
+                          portalVideos.length
+                        }
+                      </span>
+                    </p>
 
-                        <h3 className="text-xl font-bold text-white">
-                          {video.title}
-                        </h3>
 
-                        <p className="mt-3 text-white/70">
-                          {video.description}
-                        </p>
-
-                        <div className="mt-4 flex flex-wrap gap-6 text-sm">
-
-                          <span className="text-gold">
-                            {video.duration}
-                          </span>
-
-                          <span className="text-white/70">
-                            {video.instructor}
-                          </span>
-
-                        </div>
-
-                      </div>
-
-                      <div className="flex gap-3">
-
-                        <button
-                          onClick={() => handleEdit(video)}
-                          className="rounded-lg border border-gold px-5 py-2 font-semibold text-gold hover:bg-gold hover:text-black"
-                        >
-                          Edit
-                        </button>
-
-                        <button
-                          onClick={() => handleDelete(video.id)}
-                          className="rounded-lg border border-red-500 px-5 py-2 font-semibold text-red-400 hover:bg-red-500 hover:text-white"
-                        >
-                          Delete
-                        </button>
-
-                      </div>
-
-                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        router.push(
+                          `/training?trainingName=${encodeURIComponent(
+                            portal.key
+                          )}`
+                        );
+                      }}
+                      className="mt-6 w-full cursor-pointer rounded-xl bg-gold py-3 font-semibold text-black transition hover:scale-[1.02] hover:bg-[#f1bc47]"
+                    >
+                      Manage Videos
+                    </button>
 
                   </div>
+                );
+              }
+            )}
 
-                ))}
+          </div>
 
-              </div>
 
-                     )}
-          </div> */}
-          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-  {portals.map((portal) => (
-    <div
-      key={portal.key}
-      className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
-    >
-      <h2 className="text-2xl font-bold text-white">
-        {portal.title}
-      </h2>
+          {/* =================================================
+              VIDEO COUNT / LOADING
+          ================================================= */}
 
-      {/* <p className="mt-3 text-white/60">
-        Total Videos : 0
-      </p> */}
-      <p className="mt-3 text-white/60">
-  Total Videos : {
-    videos.filter(
-      (video) => video.training_name === portal.key
-    ).length
-  }
-</p>
+          {loading &&
+            !showVideoForm && (
+              <p className="mt-8 text-center text-sm text-white/50">
+                Loading training videos...
+              </p>
+            )}
 
-      {/* <button
-        className="mt-6 w-full rounded-xl bg-gold py-3 font-semibold text-black hover:scale-105 transition"
-      >
-        Manage Videos
-      </button> */}
-     <button
- onClick={() => {
-      router.replace(`/training?trainingName=${encodeURIComponent(portal.key)}`);
-}}
-  className="mt-6 w-full rounded-xl bg-gold py-3 font-semibold text-black hover:scale-105 transition"
->
-  Manage Videos
-</button>
-    </div>
-  ))}
-</div>
         </div>
       </section>
     </Layout>
