@@ -389,7 +389,7 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
                 <div className="reveal flex overflow-hidden rounded-lg border border-border bg-white text-black shadow-elegant">
                   {/* Categories column */}
                   <ul className="w-56 border-r border-black/10 bg-white py-2">
-                    {serviceMenu.map((cat) => (
+                    {/* {serviceMenu.map((cat) => (
                       <li key={cat.key}>
                         <button
                           onMouseEnter={() => setActiveCat(cat.key)}
@@ -399,12 +399,47 @@ className={`block uppercase tracking-[0.22em] transition-all duration-300 ${
                               ? "bg-black/5 text-black"
                               : "text-black/80 hover:bg-black/5"
                           }`}
-                        >
-                          <span>{cat.label}</span>
+                        > */}
+                          {/* <span>{cat.label}</span> */}
+                          {/* <span>
+  {cat.key === "iso" ? "ISO-Certification" : cat.label}
+</span>
                           <span className="text-black/40">›</span>
                         </button>
                       </li>
-                    ))}
+                    ))} */}
+
+                    {serviceMenu.map((cat) => (
+  <li key={cat.key}>
+    {cat.key === "iso" ? (
+      <Link
+        href="/iso-certification"
+        onMouseEnter={() => setActiveCat(cat.key)}
+        className={`flex w-full items-center justify-between px-4 py-3 text-left text-sm font-semibold transition-colors ${
+          activeCat === cat.key
+            ? "bg-black/5 text-black"
+            : "text-black/80 hover:bg-black/5"
+        }`}
+      >
+        <span>ISO-Certification</span>
+        <span className="text-black/40">›</span>
+      </Link>
+    ) : (
+      <button
+        onMouseEnter={() => setActiveCat(cat.key)}
+        onClick={() => setActiveCat(cat.key)}
+        className={`flex w-full items-center justify-between px-4 py-3 text-left text-sm font-semibold transition-colors ${
+          activeCat === cat.key
+            ? "bg-black/5 text-black"
+            : "text-black/80 hover:bg-black/5"
+        }`}
+      >
+        <span>{cat.label}</span>
+        <span className="text-black/40">›</span>
+      </button>
+    )}
+  </li>
+))}
                   </ul>
                   {/* Items column */}
                   <ul className="min-w-[260px] bg-white py-2">
