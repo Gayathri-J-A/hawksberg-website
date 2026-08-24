@@ -1,6 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+// import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  Suspense,
+} from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import Layout from "@/components/Layout";
@@ -214,7 +221,7 @@ function getYoutubeEmbedUrl(url) {
 // COMPONENT
 // =====================================================
 
-export default function TrainingPortal() {
+function TrainingPortalContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -1714,5 +1721,19 @@ export default function TrainingPortal() {
         </div>
       </section>
     </Layout>
+  );
+}
+
+export default function TrainingPortal() {
+  return (
+    <Suspense fallback={
+      <div className="flex min-h-screen items-center justify-center bg-[#071A33]">
+        <p className="text-white/60">
+          Loading training portal...
+        </p>
+      </div>
+    }>
+      <TrainingPortalContent />
+    </Suspense>
   );
 }
