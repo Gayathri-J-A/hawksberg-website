@@ -348,13 +348,13 @@ export default function ISOCertificationPage() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
-                <a
+                {/* <a
                   href="#consultation"
                   className="inline-flex items-center gap-2 rounded-full bg-[#d99a2b] px-7 py-3.5 font-bold text-[#10243d] transition hover:bg-[#e7ad3d]"
                 >
                   Get Free Consultation
                   <ArrowIcon />
-                </a>
+                </a> */}
 
               </div>
             </div>
