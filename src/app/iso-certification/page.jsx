@@ -393,12 +393,12 @@ export default function ISOCertificationPage() {
                 </a>
               </div>
 
-              <div className="mt-7 border-t border-slate-200 pt-6">
+              {/* <div className="mt-7 border-t border-slate-200 pt-6">
                 <p className="text-center text-sm leading-6 text-slate-500">
                   Suitable for startups, MSMEs, manufacturing, IT, healthcare,
                   construction, food, export, and other business sectors.
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
