@@ -55,15 +55,34 @@ export default function RootLayout({ children }) {
     sameAs: [company.social.instagram, company.social.linkedin],
   };
 
-  return (
-    <html lang="en">
-      <body>
-        {children}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
-        />
-      </body>
-    </html>
-  );
+  // return (
+  //   <html lang="en">
+  //     <body>
+  //       {children}
+  //       <script
+  //         type="application/ld+json"
+  //         dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
+  //       />
+  //     </body>
+  //   </html>
+  // );
+  return ( 
+  <html lang="en">
+   <head>
+  <meta
+    httpEquiv="Content-Type"
+    content="text/html; charset=utf-8"
+  />
+  <meta name="language" content="English" />
+</head>
+
+    <body> 
+      {children} 
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} 
+      /> 
+    </body> 
+  </html> 
+);
 }

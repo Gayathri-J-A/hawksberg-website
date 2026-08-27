@@ -4,6 +4,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 
+export const metadata = {
+  title: "ISO Certification Services Chennai, ISO Consultant - Hawksberg",
+  description:
+    "ISO certification from a trusted ISO consultant for Education, Healthcare, Food, manufacturing, and other industries in Chennai and across India.",
+  keywords: ["ISO certification", "ISO consultant"],
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 const standards = [
   {
     title: "ISO 9001",
