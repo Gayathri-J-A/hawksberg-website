@@ -1594,10 +1594,16 @@ input::-webkit-credentials-auto-fill-button {
 
   opacity: 0.72;
   transform: scale(0.96);
-  filter: none;
+  /* filter: none; */
+  filter: none !important;
 
   will-change: transform, opacity, filter;
 }
+
+  .iso-carousel-card,
+  .iso-card-clone {
+    filter: none !important;
+  }
 
 .iso-carousel-card-inner {
   width: 100%;

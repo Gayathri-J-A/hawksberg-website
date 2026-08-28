@@ -349,102 +349,103 @@ function CompanyContent() {
                   </div>
                 </article>
 
-                {/* 05 */}
-                <article className="iso-carousel-card iso-card-05">
-                  <div className="iso-carousel-card-inner">
+               {/* 05 */}
+<article className="iso-carousel-card iso-card-05 overflow-hidden">
+  <div className="iso-carousel-card-inner h-full overflow-hidden">
 
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <p className="font-display text-4xl text-gold">
-                          05
-                        </p>
+    <div className="flex items-start justify-between gap-3">
+      <div className="min-w-0">
+        <p className="font-display text-4xl text-gold">
+          05
+        </p>
 
-                        <span className="mt-3 inline-flex rounded-full bg-[#f7f1e5] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
-                          Stronger Compliance
-                        </span>
-                      </div>
+        <span className="mt-3 inline-flex max-w-full rounded-full bg-[#f7f1e5] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-gold sm:text-[11px] sm:tracking-[0.2em]">
+          Stronger Compliance
+        </span>
+      </div>
 
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#f7f1e5] text-lg">
-                        ✓
-                      </div>
-                    </div>
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#f7f1e5] text-base sm:h-11 sm:w-11 sm:text-lg">
+        ✓
+      </div>
+    </div>
 
-                    <h3 className="mt-7 font-display text-2xl text-foreground">
-                      Stronger compliance
-                    </h3>
+    <h3 className="mt-5 break-words font-display text-xl leading-tight text-foreground sm:mt-7 sm:text-2xl">
+      Stronger compliance
+    </h3>
 
-                    <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                      Helps organisations meet regulatory, contractual, and
-                      industry-specific requirements with greater consistency
-                      and accountability.
-                    </p>
+    <p className="mt-3 break-words text-xs leading-6 text-muted-foreground sm:text-sm sm:leading-7">
+      Helps organisations meet regulatory, contractual, and industry-specific
+      requirements with greater consistency and accountability.
+    </p>
 
-                  </div>
-                </article>
+  </div>
+</article>
 
-                {/* 06 */}
-                <article className="iso-carousel-card iso-card-06">
-                  <div className="iso-carousel-card-inner">
 
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <p className="font-display text-4xl text-gold">
-                          06
-                        </p>
+{/* 06 */}
+<article className="iso-carousel-card iso-card-06 overflow-hidden">
+  <div className="iso-carousel-card-inner h-full overflow-hidden">
 
-                        <span className="mt-3 inline-flex rounded-full bg-[#f7f1e5] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
-                          Risk Management
-                        </span>
-                      </div>
+    <div className="flex items-start justify-between gap-3">
+      <div className="min-w-0">
+        <p className="font-display text-4xl text-gold">
+          06
+        </p>
 
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#f7f1e5] text-lg">
-                        ◆
-                      </div>
-                    </div>
+        <span className="mt-3 inline-flex max-w-full rounded-full bg-[#f7f1e5] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-gold sm:text-[11px] sm:tracking-[0.2em]">
+          Risk Management
+        </span>
+      </div>
 
-                    <h3 className="mt-7 font-display text-2xl text-foreground">
-                      Better risk management
-                    </h3>
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#f7f1e5] text-base sm:h-11 sm:w-11 sm:text-lg">
+        ◆
+      </div>
+    </div>
 
-                    <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                      Identifies potential risks early and supports structured
-                      actions to reduce their impact on business operations.
-                    </p>
+    <h3 className="mt-5 break-words font-display text-xl leading-tight text-foreground sm:mt-7 sm:text-2xl">
+      Better risk management
+    </h3>
 
-                  </div>
-                </article>
+    <p className="mt-3 break-words text-xs leading-6 text-muted-foreground sm:text-sm sm:leading-7">
+      Identifies potential risks early and supports structured actions to
+      reduce their impact on business operations.
+    </p>
 
-                {/* 07 */}
-                <article className="iso-carousel-card iso-card-07">
-                  <div className="iso-carousel-card-inner">
+  </div>
+</article>
 
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <p className="font-display text-4xl text-gold">
-                          07
-                        </p>
 
-                        <span className="mt-3 inline-flex rounded-full bg-[#f7f1e5] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
-                          Operational Efficiency
-                        </span>
-                      </div>
+{/* 07 */}
+<article className="iso-carousel-card iso-card-07 overflow-hidden">
+  <div className="iso-carousel-card-inner h-full overflow-hidden">
 
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#f7f1e5] text-lg">
-                        ★
-                      </div>
-                    </div>
+    <div className="flex items-start justify-between gap-3">
+      <div className="min-w-0">
+        <p className="font-display text-4xl text-gold">
+          07
+        </p>
 
-                    <h3 className="mt-7 font-display text-2xl text-foreground">
-                      Improved efficiency
-                    </h3>
+        <span className="mt-3 inline-flex max-w-full rounded-full bg-[#f7f1e5] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-gold sm:text-[11px] sm:tracking-[0.2em]">
+          Operational Efficiency
+        </span>
+      </div>
 
-                    <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                      Creates clearer processes, defined responsibilities, and
-                      better control over day-to-day organisational activities.
-                    </p>
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#f7f1e5] text-base sm:h-11 sm:w-11 sm:text-lg">
+        ★
+      </div>
+    </div>
 
-                  </div>
-                </article>
+    <h3 className="mt-5 break-words font-display text-xl leading-tight text-foreground sm:mt-7 sm:text-2xl">
+      Improved efficiency
+    </h3>
+
+    <p className="mt-3 break-words text-xs leading-6 text-muted-foreground sm:text-sm sm:leading-7">
+      Creates clearer processes, defined responsibilities, and better control
+      over day-to-day organisational activities.
+    </p>
+
+  </div>
+</article>
 
                 {/* 08 */}
                 <article className="iso-carousel-card iso-card-08">
