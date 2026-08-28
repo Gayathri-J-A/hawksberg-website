@@ -223,30 +223,30 @@ function CompanyContent() {
               <div className="iso-carousel-track">
 
                 {/* 01 */}
-                <article className="iso-carousel-card iso-card-01">
-                  <div className="iso-carousel-card-inner">
+                <article className="iso-carousel-card iso-card-01 overflow-hidden">
+                  <div className="iso-carousel-card-inner h-full overflow-hidden">
 
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
                         <p className="font-display text-4xl text-gold">
                           01
                         </p>
 
-                        <span className="mt-3 inline-flex rounded-full bg-[#f7f1e5] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
+                        <span className="mt-3 inline-flex max-w-full rounded-full bg-[#f7f1e5] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-gold sm:text-[11px] sm:tracking-[0.2em]">
                           Standardised Processes
                         </span>
                       </div>
 
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#f7f1e5] text-lg">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#f7f1e5] text-base sm:h-11 sm:w-11 sm:text-lg">
                         ✓
                       </div>
                     </div>
 
-                    <h3 className="mt-7 font-display text-2xl text-foreground">
+                    <h3 className="mt-5 break-words font-display text-xl leading-tight text-foreground sm:mt-7 sm:text-2xl">
                       Standardised processes
                     </h3>
 
-                    <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                    <p className="mt-3 break-words text-xs leading-6 text-muted-foreground sm:text-sm sm:leading-7">
                       All processes are evaluated and standardised across the
                       organisation.
                     </p>
