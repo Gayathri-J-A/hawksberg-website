@@ -1,2 +1,18 @@
-export const metadata = { title: "IATF 16949 Consulting", description: "IATF 16949 quality management consulting information from Hawksberg International.", alternates: { canonical: "/services/iatf-16949" } };
-export default function Layout({ children }) { return children; }
+export const metadata = {
+	title: {
+		absolute: "IATF 16949 Certification | Automotive QMS Certification| Hawksberg",
+	},
+	description:
+		"Need IATF 16949 certification for your automotive business? Hawksberg provides core tools training (APQP, PPAP, FMEA), documentation & audit support.",
+	keywords:
+		"IATF 16949 consultants in Chennai, Trusted IATF 16949 consultants",
+	robots: "index, follow",
+	alternates: { canonical: "/services/iatf-16949" },
+	other: {
+		title: "IATF 16949 Certification | Automotive QMS Certification| Hawksberg",
+	},
+};
+
+export default function Layout({ children }) {
+	return children;
+}
